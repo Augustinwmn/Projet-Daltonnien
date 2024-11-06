@@ -1,0 +1,57 @@
+#container-navi {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    background: $main-color;
+    margin: 20px 0 0 20px;
+    animation: nav-close-right .5s .5s ease-in-out,
+               nav-close-down .5s ease-in-out;
+    &:hover {
+      animation: nav-open-right .5s ease-in-out forwards,
+                 nav-open-down .5s .5s ease-in-out forwards;
+      ul{
+        visibility:visible;
+        opacity: 1;
+       transition-delay: 0.8s, 0.8s;
+      }
+    }
+    
+    span {
+      z-index: 2;
+      color: white;
+      font-size: 40px;
+      line-height: 60px;
+    }
+    
+    ul {
+      width:180px;
+      visibility:hidden;
+      opacity:0;
+      transition-property: opacity, visibility;
+      transition-duration: .4s, 0s;
+      transition-delay: 0s, .4s;
+      position: inherit;
+      text-align: right;
+      padding-top: 80px;
+      padding-right:20px;
+      list-style-type: none;
+      li {
+        &:not(:last-child) {
+          margin-bottom: 5px;
+        }
+        a {
+          color: white;
+          transition: opacity .4s ease-in-out;
+          opacity: 0.5;
+  
+          &:hover {
+            opacity: 1;
+          }
+          &:focus {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+  

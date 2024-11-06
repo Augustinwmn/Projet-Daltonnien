@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/style.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+    <!-- bootstrap -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script> -->
+    <!-- bootstrap -->
+    <title>Simulateur de couleur</title>
+  </head>
+
+  <body>
+    <nav class="nav" id="nav">
+      <!-- Menu hamburger -->
+      <!-- <button id="burger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </button> -->
+      <input type="checkbox" id="okbox">
+      <label for="okbox">
+          
+          <div id="burger">
+              <div></div>
+              <div></div>
+              <div></div>
+          </div>
+      </label>
+      <ul>
+        <li><a href="#simulateurCouleur">Simulateur de couleur</a></li>
+        <li><a href="#simulateurImage">Simulateur d'image</a></li>
+        <li><a href="#paragraphe">À propos</a></li>
+      </ul>
+      <!-- Menu hamburger -->
+
+      <!-- Titre -->
+      <h1>ColorAccess</h1>
+      <!-- Titre -->
+
+      <!-- Langue -->
+      <div class="langue">
+        <select name="langue" id="langue">
+          <option value="fr">FR</option>
+          <option value="en">EN</option>
+        </select>
+        <!-- <a href="">Fr / En</a> -->
+      </div>
+    </nav>
+    <!-- Langue -->
+
+    <!-- i -->
+    <a href="#paragraphe">
+      <div id="boite-dialogue" class="visible">
+        <div id="message">
+          <p>&#x2139;</p>
+          
+        </div>
+      </div>
+    </a>
+    <!-- i -->
+
+
+    <!-- Simulateur de couleur -->
+    <div id="simulateurCouleur">
+      <h2>Simulateur de couleur</h2>
+      <div class="add">
+        <div id="floatplus"><a href="">+</a></div>
+        <div id="floatmoin"><a href="">-</a></div>
+      </div>
+      <div class="simuCouleur">
+        <div class="div_palette">
+          <input type="color" name="palette" id="palette-1" value="#000000" onchange="updateColors(this.value, 1)">
+          <input type="color" name="palette" id="palette-2" value="#0000ff" onchange="updateColors(this.value, 2)">
+          <input type="color" name="palette" id="palette-3" value="#00ff00" onchange="updateColors(this.value, 3)">
+          <input type="color" name="palette" id="palette-4" value="#ff0000" onchange="updateColors(this.value, 4)">
+        </div>
+        <div class="div_palette2">
+          <input type="text" name="text" id="couleurInput-1" placeholder="#000000" value="#ff0000"
+            onchange="updateColors(this.value, 1)">
+          <input type="text" name="text" id="couleurInput-2" placeholder="#000000" value="#00ff00"
+            onchange="updateColors(this.value, 2)">
+          <input type="text" name="text" id="couleurInput-3" placeholder="#000000" value="#0000ff"
+            onchange="updateColors(this.value, 3)">
+          <input type="text" name="text" id="couleurInput-4" placeholder="#000000" value="#fffff0"
+            onchange="updateColors(this.value, 4)">
+
+        </div>
+      </div>
+
+      <div class="colonne">
+        <label for="range_protanopie">Force de correction</label>
+        <input type="range" id="myRange" min="0" max="1.0" step="0.01" list="marker" oninput="updateColorsFromRange()">
+        <datalist id="marker">
+          <option value="" label="0.0"></option>
+          <option value="" label="0.1"></option>
+          <option value="" label="0.2"></option>
+          <option value="" label="0.3"></option>
+          <option value="" label="0.4"></option>
+          <option value="" label="0.5"></option>
+          <option value="" label="0.6"></option>
+          <option value="" label="0.7"></option>
+          <option value="" label="0.8"></option>
+          <option value="" label="0.9"></option>
+          <option value="" label="1.0"></option>
+        </datalist>
+      </div>
+      <div class="couleur_colonne">
+        <!-- Protanope -->
+        <div class="Protanope">
+          <h4>Protanope</h4>
+          <div class="Bandeau_Protanopie">
+            <div class="couleur">
+              <div id="protanope-1"></div>
+              <div id="protanope-2"></div>
+              <div id="protanope-3"></div>
+              <div id="protanope-4"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Deuteranope -->
+        <div class="Deuteranope">
+          <h4>Deuteranope</h4>
+          <div class="Bandeau_Deuteranopie">
+            <div class="couleur">
+              <div id="deuteranope-1"></div>
+              <div id="deuteranope-2"></div>
+              <div id="deuteranope-3"></div>
+              <div id="deuteranope-4"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Tritanope -->
+        <div class="Tritanope">
+          <h4>Tritanope</h4>
+          <div class="Bandeau_Tritanopie">
+            <div class="couleur">
+              <div id="tritanope-1"></div>
+              <div id="tritanope-2"></div>
+              <div id="tritanope-3"></div>
+              <div id="tritanope-4"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!------------ Simulateur image ------------------>
+    <div id="simulateurImage">
+      <h2>Simulateur d'image</h2>
+
+
+      <!-- Drag an drop -->
+
+      <div class="hero">
+        <label for="input-file" id="drop-area">
+          <input type="file" accept="image/*" id="input-file">
+          <div id="img-view">
+            <img src="https://picsum.photos/800/300" alt="" id="imgOrigine">
+            <!-- <p>Drag an drop or click here<br>to upload image</p> -->
+            <!-- <span>Upload any image from desktop</span> -->
+          </div>
+        </label>
+
+      </div>
+      <!-- Drag an drop -->
+      <div class="btn">
+        <button id="btnProtanope">Protanope</button>
+        <button id="btnTritanope">Tritanope</button>
+        <button id="btnDeutéranope">Deutéranope</button>
+      </div>
+      <div class="colonneImage">
+        <label for="range_protanopie">Force de correction</label>
+        <input type="range" id="rangeImg" min="0" max="1.0" step="0.001" list="range_img">
+        <datalist id="range_img">
+          <option value="" label="0"></option>
+          <option value="" label="0.1"></option>
+          <option value="" label="0.2"></option>
+          <option value="" label="0.3"></option>
+          <option value="" label="0.4"></option>
+          <option value="" label="0.5"></option>
+          <option value="" label="0.6"></option>
+          <option value="" label="0.7"></option>
+          <option value="" label="0.8"></option>
+          <option value="" label="0.9"></option>
+          <option value="" label="1.0"></option>
+        </datalist>
+      </div>
+      <img src="https://picsum.photos/800/300" alt="" id="imageDaltonnisme">
+    </div>
+    <div id="paragraphe">
+      <h2>Comment voit un daltonien ?</h2>
+      <p>Nous voyons les couleurs différemment
+        Environ 1 personne sur 20 est daltonienne d'une manière ou d'une autre. Cela signifie qu'un ou plusieurs types
+        de cellules coniques de leurs yeux - les cellules que nous utilisons pour détecter les couleurs - ne
+        fonctionnent pas normalement. De ce fait, une personne daltonienne voit un espace colorimétrique réduit ; deux
+        couleurs qui semblent distinctes à une personne ayant une vision normale des couleurs peuvent sembler identiques
+        à une personne <strong>daltonienne</strong>. Ce phénomène n'est pas aléatoire. Mathématiquement, il existe des
+        lignes à travers l'espace colorimétrique - appelées « lignes de confusion » - telles que chaque couleur sur une
+        ligne de confusion apparaît identique à toutes les autres couleurs sur cette même ligne de confusion pour une
+        personne daltonienne.</p>
+
+      <p>Cela signifie que nous pouvons, dans une certaine mesure, <strong>simuler le daltonisme</strong>. En
+        reproduisant mathématiquement le phénomène de la ligne de confusion, nous pouvons remplacer les couleurs d'une
+        image de sorte que si deux des couleurs originales se trouvent sur la même ligne de confusion, elles sont toutes
+        deux remplacées par la même nouvelle couleur. Si nous procédons de la bonne manière, une personne dont la vision
+        des couleurs est normale peut éprouver une sorte de daltonisme.</p>
+
+      <p>Ce site web s'adresse aux personnes dont la vision des couleurs est normale ou presque normale. L'objectif de
+        ce site est de simuler pour vous ce que la palette de couleurs que vous avez choisie semble être pour les
+        daltoniens. Les couleurs de la colonne la plus à gauche sont les « vraies » couleurs ; elles sont affichées dans
+        les trois autres colonnes de la manière dont une personne atteinte de protanopie, deutéranopie ou tritanopie les
+        verrait, respectivement.
+      </p>
+    </div>
+    <footer>
+      <p id="test"></p>
+    </footer>
+    <script src="./JS/scripttest.js"></script>
+    <script src="./JS/Animation.js"></script>
+  </body>
+
+</html>

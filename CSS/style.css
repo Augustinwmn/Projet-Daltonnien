@@ -1,0 +1,501 @@
+html{
+    width: 100%;
+}
+body{
+    width: 100%;
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: large;
+}
+nav{
+    background-color: chocolate;
+    margin: 0;
+    padding: 1%;
+    display: flex;
+    justify-content: space-between;
+}
+/* menu burger */
+#nav #burger{
+    width: 100px;
+    height: 100px;
+    padding: 0;
+    position: relative;
+    /* background-color: transparent;
+    border: none; */
+}
+#nav ul{
+    margin: 0;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    list-style: none;
+}
+
+
+/* **********Menu Burger************ */
+#burger {
+    width: 800px;
+    height: 800px;
+    position: relative;
+}
+
+label{
+    display: block;
+    width: fit-content;
+}
+/***** ETAT PAR DEFAULT  ******/
+
+#burger div {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    width: 80%;
+    height: 10%;
+    transition: top 0.5s 0.5s, width 0.5s 0.75s, transform 0.5s;
+}
+
+#burger div:first-child {
+    top: 30%;
+}
+
+#burger div:last-child {
+    top: 70%;
+}
+
+/***** ETAT 2 : INLINE  ******/
+
+#okbox:checked + label #burger div {
+    transition: top 0.5s 0.25s, width 0.5s, transform 0.5s 0.5s;
+}
+
+
+#okbox:checked + label #burger div:first-child,
+#okbox:checked + label #burger div:last-child {
+    top: 50%;
+}
+
+#okbox:checked + label #burger div:nth-child(2) {
+    width: 0%;
+}
+
+#okbox:checked + label #burger div:first-child {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+#okbox:checked + label #burger div:last-child {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+#okbox{
+    display: none;
+}
+
+#burger:hover{
+    transform: scale(1.1);
+} 
+
+/* **********Menu Burger************ */
+
+ 
+
+#langue{
+    display: block;
+}
+.langue{
+    display: flex;
+    align-items: center;
+}
+select{
+    background-color: transparent;
+    border: 0;
+}
+
+
+nav h1{
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+.simuCouleur{
+    margin-left: 3%;
+}
+/* ****************************** Bouton i ****************************** */
+
+#boite-dialogue{
+    width: 70px;
+    height: 70px;
+    /* box-shadow: 10px 10px 15px aqua; 
+    background-color: fuchsia; */
+    /* padding: 20px; */
+    text-align: center;
+    border-radius: 250px;
+    background-color: rgb(0, 166, 237);
+
+    /* Comportement modale */
+    position: fixed;
+    bottom: 1vh;
+    right: 1vw;
+    transform: translate(-50%, -50%);
+
+    
+    /* display: none; */
+    /* opacity: 0; */
+    margin-top: 20px;
+}
+
+#boite-dialogue.visible{
+    /* display: block; */
+    /* opacity: 1; */
+    margin-top: 0;
+}
+#message{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#message p{
+    font-size: xx-large;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    color: rgb(255, 255, 255);
+    /* content: "\002139"; */
+}
+#message i{
+    display: flex;
+    justify-content: center;
+}
+nav a{
+    text-decoration: none;
+    color: black;
+}
+
+/* #fix{
+    margin: 1%;
+    width: 50%;
+    background-color: yellow;
+    box-shadow: 5px 5px 2px yellowgreen;
+
+ } */
+
+/******************************* Bouton i *******************************/
+#simulateurCouleur{
+    min-height: 100vh;
+    margin: 0;
+}
+h1, h2{
+    text-align: center;
+}
+#simulateurCouleur h2{
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+p{
+    padding-left: 1%;
+    padding-right: 1%;
+}
+.add{
+    display: flex;
+    flex-direction: column;
+    width: 5%;
+    height: 10%;
+    margin-right: 3%;
+    margin-top: 5%;
+    float: right;
+    /* border: none; */
+}
+#floatmoin, #floatplus{
+    text-align: center;
+    font-size: 3vw;
+}
+.add a{
+    text-decoration: none;
+    color: black;
+}
+.simuCouleur .add{
+    display: flex;
+    justify-content: center;
+}
+strong{
+    font-size: large;
+}
+
+input[type="color"]{
+    /* height: 30px; */
+    margin: 0;
+}
+/* input[type="color"]:hover{
+    Ouvrir la palette 
+} */
+input[type="text"]{
+    margin: 0;
+    width: 100%;
+}
+#palette-1, #palette-2, #palette-3, #palette-4{
+    width: 20vw;
+    height: 20vh;
+    padding: 0;
+}
+/***** Barre de correction *****/
+datalist {
+    display: flex;
+    justify-content: space-between;
+    writing-mode: horizontal-tb;
+    width: 100%;
+}
+option {
+    display: flex;
+    padding: 0;
+    width: 25px;
+}
+
+input[type="range"] {
+    margin: 0;   
+    width: 100%;
+}
+/* **************************** */
+/* .div_palette{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    padding-bottom: 0;
+}
+.div_palette2{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 0;
+} */
+.div_palette2, .div_palette{
+    display: flex;
+    justify-content: space-around;
+    gap: 5%;
+    width: 80vw;
+    margin: 1%;
+}
+.div_palette{
+    height: 20vh;
+}
+.div_palette2 #couleurInput-1, #couleurInput-2, #couleurInput-3, #couleurInput-4{
+    width: 100%;
+}
+
+button, input[type="text"] {
+    text-align: center;
+    width: 10%;
+    /* border-style: none; */
+    /* height: 20px; */
+    padding: 0;
+    /* padding-top: 10px; */
+}
+.couleur_colonne{
+    display: flex;
+    justify-content:space-around;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    
+}
+.Deuteranope h4, .Tritanope h4, .Protanope h4{
+    text-align: center;
+    padding: 20px;
+}
+
+.Bandeau_Protanopie ,.Bandeau_Tritanopie ,.Bandeau_Deuteranopie{
+    display: flex;
+    justify-content: center;
+}
+
+.Protanope, .Tritanope, .Deuteranope{
+    width: 25%;
+    /* background-color: darkgray; */
+    border: 1px solid ;
+    /* border: solid;
+    border-color: rgb(0, 0, 0);  */
+}
+
+.couleur{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 300px;
+}
+
+.colonne{
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 20px;
+width: 70%;
+}
+
+label{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* *********************************************************************************** */
+/* ------------------------------------- Couleur ------------------------------------- */
+/* *********************************************************************************** */
+
+#protanope-1, #tritanope-1, #deuteranope-1, /* -- Palette 1 -- */
+#protanope-2, #tritanope-2, #deuteranope-2, /* -- Palette 2 -- */
+#protanope-3, #tritanope-3, #deuteranope-3, /* -- Palette 3 -- */
+#protanope-4, #tritanope-4, #deuteranope-4{ /* -- Palette 4 -- */
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid ; */
+    border-color: rgb(0, 0, 0);
+}
+
+#protanope-1:hover, #tritanope-1:hover, #deuteranope-1:hover,   /* -- Palette 1 -- */
+#protanope-2:hover, #tritanope-2:hover, #deuteranope-2:hover,   /* -- Palette 2 -- */
+#protanope-3:hover, #tritanope-3:hover, #deuteranope-3:hover,   /* -- Palette 3 -- */
+#protanope-4:hover, #tritanope-4:hover, #deuteranope-4:hover{   /* -- Palette 4 -- */
+    transform: scale(1.1);
+    /* Print Le Code Hexadécimal */
+}
+
+/* *********************************************************************************** */
+/* ------------------------------------- Simulateur image ------------------------------------- */
+/* *********************************************************************************** */
+
+#simulateurImage{
+    min-height: 100vh;
+    /* padding-top: 1%; */
+    padding-bottom: 2%;
+    background-color: black;
+    color: white;
+}
+#simulateurImage h2{
+    margin: 0;
+    padding-top: 2vh;
+    margin-bottom: 2vh;
+}
+#imgOrigine{
+    display: flex;
+    justify-content: center;
+    align-items: center;              /*Je comprend rien poto*/
+    margin: auto;
+    width: 100%;
+    height: auto;
+    background-color: darkgray;
+}
+
+/* ***************** Drag and Drop ***************** */
+.hero{
+    width: 100%; 
+    height: auto;
+    margin: auto;
+    /* background: linear-gradient(#e7baff, #c2b6d9); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#drop-area{
+    width: 60%;
+    height: auto;
+    /* padding: 30px; */
+    /* background: #fff; */
+    align-items: center;
+    border-radius: 20px;
+}
+#img-view, #img-views{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    /* border: 2px dashed #bbb5ff; */
+    /* background: #f7f8ff; */
+    background-position: center;
+    background-size: cover;
+}
+input[type="file"]{
+    position: fixed;
+    display: none;
+}
+#img-view img{
+    height: 100%;
+    height: auto;
+    border-radius: 20px;
+    padding: auto;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    /* margin-top: 25px; */
+}
+#img-view p{
+    display: block;
+    font-size: 12px;
+    color: #777;
+}
+#img-view span{
+    display: block;
+    font-size: 12px;
+    color: #777;
+}
+/* ***************** Drag and Drop ***************** */
+
+
+.btn{
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 8%;
+}
+/* #simulateurimage .btn button{
+    width: 30%;
+    height: 10vh;
+    gap: 5%;
+} */
+#btnProtanope, #btnTritanope, #btnDeutéranope{
+    width: 20%;
+    height: 5vh;
+    font-size: 30px;
+}
+.colonneImage{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 60%;
+}
+#imageDaltonnisme{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 80%;
+    height: auto;
+    background-color: darkgray;
+}
+
+
+#paragraphe{
+    /* display: inline-block;
+    animation: ; */
+    height: 100vh;
+    background-color: rgb(255, 220, 130);
+    padding: 1%;
+    margin: 0;
+}
+/* *************** footer **************** */
+
+footer{
+    background-color: rgb(36, 36, 36);
+    padding: 10px;
+    height: 10vh;
+}
+#test{
+    color: rgb(36, 36, 36);
+}
