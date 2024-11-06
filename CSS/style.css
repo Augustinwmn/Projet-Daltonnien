@@ -64,7 +64,7 @@ label{
     top: 70%;
 }
 
-/***** ETAT 2 : INLINE  ******/
+/***** ETAT 2 ******/
 
 #okbox:checked + label #burger div {
     transition: top 0.5s 0.25s, width 0.5s, transform 0.5s 0.5s;
