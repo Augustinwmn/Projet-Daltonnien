@@ -126,13 +126,14 @@ label{
     position: absolute;
     display: none;
     list-style: none;
+    transform: translate(-10%, 10%);
     /* font-family: "Regular 400" ; */
 
     margin: 0;
-    width: 300px;
+    width: 200%;
     padding: 20px;
     padding-top: 0;
-    left: -13px;
+    /* left: -13px; */
     font-size: 20px;
 }
 #okbox:checked + #label + #ancre{
