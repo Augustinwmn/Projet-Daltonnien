@@ -18,25 +18,30 @@
   <body>
     <nav class="nav" id="nav">
       <!-- Menu hamburger -->
+
       <!-- <button id="burger">
         <div></div>
         <div></div>
         <div></div>
       </button> -->
-      <input type="checkbox" id="okbox">
-      <label for="okbox">
-          
+
+      <div id="menu">
+        <input type="checkbox" id="okbox">
+
+        <label for="okbox" id="label">
+
           <div id="burger">
-              <div></div>
-              <div></div>
-              <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
           </div>
-      </label>
-      <ul>
-        <li><a href="#simulateurCouleur">Simulateur de couleur</a></li>
-        <li><a href="#simulateurImage">Simulateur d'image</a></li>
-        <li><a href="#paragraphe">À propos</a></li>
-      </ul>
+        </label>
+        <ul id="ancre">
+          <li><a href="#simulateurCouleur">Simulateur de couleur</a></li>
+          <li><a href="#simulateurImage">Simulateur d'image</a></li>
+          <li><a href="#paragraphe">À propos</a></li>
+        </ul>
+      </div>
       <!-- Menu hamburger -->
 
       <!-- Titre -->
@@ -45,21 +50,26 @@
 
       <!-- Langue -->
       <div class="langue">
-        <select name="langue" id="langue">
+        <select name="langue" id="langue" >
           <option value="fr">FR</option>
           <option value="en">EN</option>
+          <option value="de">DE</option>
+          <option value="be">BE</option>
+          <option value="es">ES</option>
+          <option value="it">IT</option>
         </select>
         <!-- <a href="">Fr / En</a> -->
       </div>
+      <!-- Langue -->
     </nav>
-    <!-- Langue -->
+    
 
     <!-- i -->
     <a href="#paragraphe">
       <div id="boite-dialogue" class="visible">
         <div id="message">
           <p>&#x2139;</p>
-          
+
         </div>
       </div>
     </a>
@@ -114,38 +124,38 @@
         <!-- Protanope -->
         <div class="Protanope">
           <h4>Protanope</h4>
-          <div class="Bandeau_Protanopie">
+          <!-- <div class="Bandeau_Protanopie"> -->
             <div class="couleur">
               <div id="protanope-1"></div>
               <div id="protanope-2"></div>
               <div id="protanope-3"></div>
               <div id="protanope-4"></div>
             </div>
-          </div>
+          <!-- </div> -->
         </div>
         <!-- Deuteranope -->
         <div class="Deuteranope">
           <h4>Deuteranope</h4>
-          <div class="Bandeau_Deuteranopie">
+          <!-- <div class="Bandeau_Deuteranopie"> -->
             <div class="couleur">
               <div id="deuteranope-1"></div>
               <div id="deuteranope-2"></div>
               <div id="deuteranope-3"></div>
               <div id="deuteranope-4"></div>
             </div>
-          </div>
+          <!-- </div> -->
         </div>
         <!-- Tritanope -->
         <div class="Tritanope">
           <h4>Tritanope</h4>
-          <div class="Bandeau_Tritanopie">
+          <!-- <div class="Bandeau_Tritanopie"> -->
             <div class="couleur">
               <div id="tritanope-1"></div>
               <div id="tritanope-2"></div>
               <div id="tritanope-3"></div>
               <div id="tritanope-4"></div>
             </div>
-          </div>
+          <!-- </div> -->
         </div>
       </div>
     </div>

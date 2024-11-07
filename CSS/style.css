@@ -1,3 +1,13 @@
+/********* FONT **********/
+@font-face{
+    font-family: "Regular 400";
+    src: 
+    local("Regular 400"),
+    url("../Font/fa-regular-400.ttf") format(ttf),
+    url('../Font/fa-regular-400.woff2') format(woff);
+}
+/****** FONT ************/
+
 html{
     width: 100%;
 }
@@ -8,7 +18,8 @@ body{
     font-size: large;
 }
 nav{
-    background-color: chocolate;
+    background-color: rgb(90, 90, 90);
+    color: rgb(255, 255, 255);
     margin: 0;
     padding: 1%;
     display: flex;
@@ -16,28 +27,24 @@ nav{
 }
 /* menu burger */
 #nav #burger{
+    
     width: 100px;
     height: 100px;
     padding: 0;
-    position: relative;
-    /* background-color: transparent;
-    border: none; */
+    /* position: relative; */
 }
-#nav ul{
-    margin: 0;
-    width: 100%;
-    display: none;
-    flex-direction: column;
-    list-style: none;
-}
+
 
 
 /* **********Menu Burger************ */
-#burger {
-    width: 800px;
-    height: 800px;
+#menu{
     position: relative;
+
 }
+/* #burger {
+    width: 100px;
+    height: 100px;
+} */
 
 label{
     display: block;
@@ -50,18 +57,18 @@ label{
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background-color: black;
+    background-color: rgb(255, 255, 255);
     width: 80%;
     height: 10%;
     transition: top 0.5s 0.5s, width 0.5s 0.75s, transform 0.5s;
 }
 
 #burger div:first-child {
-    top: 30%;
+    top: 25%;
 }
 
 #burger div:last-child {
-    top: 70%;
+    top: 75%;
 }
 
 /***** ETAT 2 ******/
@@ -91,15 +98,54 @@ label{
 #okbox{
     display: none;
 }
+#label{
+    margin: 0;
+}
 
 #burger:hover{
-    transform: scale(1.1);
+    transform: scale(1.02);
 } 
 
-/* **********Menu Burger************ */
+/* **********Menu Burger Fin************ */
 
+/* #menu{ */
+    /* height: 100px; */
+    /* width: auto; */
+    /* align-content: center; */
+    /* background-color: fuchsia; */
+    /* padding: 10px; */
+/* } */
+#menu a{
+    color: white;
+    text-decoration: none;
+    /* font-size: 22px; */
+}
+
+#ancre{
+    background-color: rgb(90, 90, 90);
+    position: absolute;
+    display: none;
+    list-style: none;
+    /* font-family: "Regular 400" ; */
+
+    margin: 0;
+    width: 300px;
+    padding: 20px;
+    padding-top: 0;
+    left: -13px;
+    font-size: 20px;
+}
+#okbox:checked + #label + #ancre{
+    display: block;
+}
+#ancre li{
+    width: 200px;
+}
+#ancre li a:hover{
+    color: blue;
+}
  
-
+/* ************************************* */
 #langue{
     display: block;
 }
@@ -110,12 +156,23 @@ label{
 select{
     background-color: transparent;
     border: 0;
+    color: white;
 }
-
-
+option{
+    color: black;
+}
+#langue option:checked{
+    color: white;
+    background-color: rgb(20, 20, 20);
+}
+#langue option:hover{
+    color: rgb(68, 199, 28);
+    background-color: rgb(199, 30, 185);
+}
 nav h1{
     margin: 0;
     display: flex;
+    /* font-family: "Regular 400" ; */
     align-items: center;
 }
 .simuCouleur{
@@ -309,13 +366,14 @@ button, input[type="text"] {
     padding: 20px;
 }
 
-.Bandeau_Protanopie ,.Bandeau_Tritanopie ,.Bandeau_Deuteranopie{
+/* .Bandeau_Protanopie ,.Bandeau_Tritanopie ,.Bandeau_Deuteranopie{
     display: flex;
     justify-content: center;
-}
+} */
 
 .Protanope, .Tritanope, .Deuteranope{
     width: 25%;
+    height: auto;
     /* background-color: darkgray; */
     border: 1px solid ;
     /* border: solid;
