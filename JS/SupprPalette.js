@@ -1,11 +1,10 @@
 let paletteCounter = 4;
-if (paletteCounter < 6){
-function addNewPalette() {
 
+function deletePalette() {
     paletteCounter++;
     const paletteContainer = document.getElementById('paletteContainer');
     const colorInputContainer = document.getElementById('colorInputContainer');
-
+    
     // Ajout des nouvelles entrées de couleur
     const newColorInput = document.createElement('input');
     newColorInput.type = 'color';
@@ -14,12 +13,11 @@ function addNewPalette() {
     newColorInput.value = '#ffffff';
     newColorInput.setAttribute('onchange', `updateColors(this.value, ${paletteCounter})`);
     newColorInput.style = `
-        width: 200px;
-        height: 100%;
+        width: 20vw;
+        height: 20vh;
         padding: 0;
-        border: none;
     `;
-
+    
     const newTextInput = document.createElement('input');
     newTextInput.type = 'text';
     newTextInput.name = 'text';
@@ -28,21 +26,20 @@ function addNewPalette() {
     newTextInput.value = '#ffffff';
     newTextInput.setAttribute('onchange', `updateColors(this.value, ${paletteCounter})`);
     newTextInput.style = `
-        max-width: 200px;
+        margin: 0;
+        width: 80%;
     `;
 
-    const newButtonDel = document.createElement('button');
-    newButtonDel
-
-
+    
+    
     paletteContainer.appendChild(newColorInput);
     colorInputContainer.appendChild(newTextInput);
-
+    
     // Ajout des carrés de daltonisme
     const protanopeContainer = document.querySelector('.Protanope .couleur');
     const deuteranopeContainer = document.querySelector('.Deuteranope .couleur');
     const tritanopeContainer = document.querySelector('.Tritanope .couleur');
-
+    
     const newProtanopeDiv = document.createElement('div');
     newProtanopeDiv.id = `protanope-${paletteCounter}`;
     newProtanopeDiv.classList.add('daltonisme');
@@ -60,7 +57,7 @@ function addNewPalette() {
         height: 100%;
         background-color: lightgray;
     `;
-
+    
     const newTritanopeDiv = document.createElement('div');
     newTritanopeDiv.id = `tritanope-${paletteCounter}`;
     newTritanopeDiv.classList.add('daltonisme');
@@ -69,7 +66,7 @@ function addNewPalette() {
         height: 100%;
         background-color: lightgray;
     `;
-
+    
     protanopeContainer.appendChild(newProtanopeDiv);
     deuteranopeContainer.appendChild(newDeuteranopeDiv);
     tritanopeContainer.appendChild(newTritanopeDiv);
@@ -77,10 +74,7 @@ function addNewPalette() {
     // Met à jour les couleurs pour appliquer le changement immédiatement
     updateColors(newColorInput.value, paletteCounter);
 }
-}
-else{
-    
-}
+
 function updateColors(hex, id) {
     if (!hex) return;
 

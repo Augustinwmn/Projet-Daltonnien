@@ -18,7 +18,7 @@ body{
     font-size: large;
 }
 nav{
-    background-color: rgb(90, 90, 90);
+    background-color: rgb(36, 36, 36);
     color: rgb(255, 255, 255);
     margin: 0;
     padding: 10px;
@@ -117,24 +117,16 @@ label{
 /* } */
 #menu a{
     color: white;
-    text-decoration: none;
-    /* font-size: 22px; */
 }
-
 #ancre{
-    background-color: rgb(90, 90, 90);
+    background-color: rgb(36, 36, 36);
     position: absolute;
     display: none;
     list-style: none;
-    /* transform: translate(-10%, 10%); */
     /* font-family: "Regular 400" ; */
-
     margin: 0;
-    width: 200%;
-    padding: 20px;
-    padding-top: 0;
-top: 110px;
-    left: -13px;
+    top: 20px;
+    left: 100px;
     font-size: 20px;
 }
 #okbox:checked + #label + #ancre{
@@ -181,9 +173,9 @@ nav h1{
     /* font-family: "Regular 400" ; */
     align-items: center;
 }
-.simuCouleur{
+/* .simuCouleur{
     margin-left: 3%;
-}
+} */
 /* ****************************** Bouton i ****************************** */
 
 #boite-dialogue{
@@ -268,7 +260,7 @@ p{
     width: 5%;
     height: 10%;
     margin-right: 3%;
-    margin-top: 5%;
+    margin-top: 8%;
     float: right;
     /* border: none; */
 }
@@ -307,9 +299,21 @@ input[type="text"]{
 }
 #palette-1, #palette-2, #palette-3, #palette-4{
     border: none;
-    width: 20vw;
-    height: 20vh;
+    width: 200px;
+    height: 100%;
     padding: 0;
+}
+.div_palette2, .div_palette{
+    display: flex;
+    justify-content: space-around;
+    width: 85vw;
+    margin: 1%;
+}
+.div_palette{
+    height: 20vh;
+}
+#couleurInput-1, #couleurInput-2, #couleurInput-3, #couleurInput-4{
+    max-width: 200px;
 }
 /***** Barre de correction *****/
 datalist {
@@ -323,10 +327,21 @@ option {
     padding: 0;
     width: 25px;
 }
-
-input[type="range"] {
+/* #myRange::-webkit-slider-runnable-track{
+    background: green;
+} */
+#myRange{
+    accent-color: rgb(0, 0, 0);
+}
+#myRange, #rangeImg{
+    background-color: black;
+    cursor: grab;
     margin: 0;   
     width: 100%;
+}
+
+#myRange:active, #rangeImg:active{
+    cursor: grabbing;
 }
 /* **************************** */
 /* .div_palette{
@@ -345,21 +360,8 @@ input[type="range"] {
     padding-top: 10px;
     padding-bottom: 0;
 } */
-.div_palette2, .div_palette{
-    display: flex;
-    justify-content: space-around;
-    gap: 5%;
-    width: 80vw;
-    margin: 1%;
-}
-.div_palette{
-    height: 20vh;
-}
-.div_palette2 #couleurInput-1, #couleurInput-2, #couleurInput-3, #couleurInput-4{
-    width: 100%;
-}
 
-button, input[type="text"] {
+input[type="text"] {
     text-align: center;
     width: 10%;
     /* border-style: none; */
@@ -377,6 +379,7 @@ button, input[type="text"] {
 .Deuteranope h4, .Tritanope h4, .Protanope h4{
     text-align: center;
     padding: 20px;
+    padding-top: 0;
 }
 
 /* .Bandeau_Protanopie ,.Bandeau_Tritanopie ,.Bandeau_Deuteranopie{
@@ -386,13 +389,38 @@ button, input[type="text"] {
 
 .Protanope, .Tritanope, .Deuteranope{
     width: 25%;
-    height: auto;
+    /* min-height: 413px; */
     /* background-color: darkgray; */
     border: 1px solid ;
     /* border: solid;
     border-color: rgb(0, 0, 0);  */
 }
 
+#iProtanope, #iDeuteranope, #iTritanope{
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 11px;
+    left: 233px;
+    position: relative;
+    /* display: flex;
+    justify-content:flex-end; */
+}
+#iProtanope p, #iDeuteranope p, #iTritanope p{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+#iProtanope{
+    background-color: red;
+}
+#iDeuteranope{
+    background-color: green;
+}
+#iTritanope{
+    background-color: blue;
+}
 .couleur{
     display: flex;
     flex-direction: column;
@@ -443,6 +471,7 @@ label{
 
 #simulateurImage{
     min-height: 100vh;
+    margin-top: 1%;
     /* padding-top: 1%; */
     padding-bottom: 2%;
     background-color: black;

@@ -39,7 +39,7 @@
         <ul id="ancre">
           <li><a href="#simulateurCouleur">Simulateur de couleur</a></li>
           <li><a href="#simulateurImage">Simulateur d'image</a></li>
-          <li><a href="#paragraphe">À propos</a></li>
+          <!-- <li><a href="#paragraphe">À propos</a></li> -->
         </ul>
       </div>
       <!-- Menu hamburger -->
@@ -50,28 +50,28 @@
 
       <!-- Langue -->
       <div class="langue">
-        <select name="langue" id="langue" >
+        <select name="langue" id="langue">
           <option value="fr"> <a href="">FR</a> </option>
           <option value="en"> <a href="">EN</a> </option>
           <option value="de"> <a href="">DE</a> </option>
-          <option value="be"> <a href="">BE</a> </option>
+          <!-- <option value="be"> <a href="">BE</a> </option>
           <option value="es"> <a href="">ES</a> </option>
-          <option value="it"> <a href="">IT</a> </option>
+          <option value="it"> <a href="">IT</a> </option> -->
         </select>
       </div>
       <!-- Langue -->
     </nav>
-    
+
 
     <!-- i -->
-    <a href="#paragraphe">
+    <!-- <a href="#paragraphe">
       <div id="boite-dialogue" class="visible">
         <div id="message">
           <p>&#x2139;</p>
 
         </div>
       </div>
-    </a>
+    </a> -->
     <!-- i -->
 
 
@@ -81,7 +81,7 @@
 
       <div id="add">
         <button onclick="addNewPalette()"><img src="./Image/ajouter-un-bouton.png"></button>
-        <button onclick="deletePalette()"><img src="./Image/2198.png"></button>
+        <!-- <button onclick="deletePalette()"><img src="./Image/2198.png"></button> -->
       </div>
 
       <div class="simuCouleur">
@@ -106,7 +106,8 @@
 
       <div class="colonne">
         <label for="range_protanopie">Force de correction</label>
-        <input type="range" id="myRange" min="0" max="1.0" step="0.01" list="marker" oninput="updateColorsFromRange()" value="1.0">
+        <input type="range" id="myRange" min="0" max="1.0" step="0.01" list="marker" oninput="updateColorsFromRange()"
+          value="1.0">
         <datalist id="marker">
           <option value="" label="0.0"></option>
           <option value="" label="0.1"></option>
@@ -122,40 +123,58 @@
         </datalist>
       </div>
       <div class="couleur_colonne">
+
         <!-- Protanope -->
         <div class="Protanope">
+          <!-- i -->
+          <div id="iProtanope">
+            <p>&#x2139;</p>
+          </div>
+          <!-- i -->
           <h4>Protanope</h4>
           <!-- <div class="Bandeau_Protanopie"> -->
-            <div class="couleur">
-              <div id="protanope-1"></div>
-              <div id="protanope-2"></div>
-              <div id="protanope-3"></div>
-              <div id="protanope-4"></div>
-            </div>
+          <div class="couleur">
+            <div id="protanope-1"></div>
+            <div id="protanope-2"></div>
+            <div id="protanope-3"></div>
+            <div id="protanope-4"></div>
+          </div>
           <!-- </div> -->
         </div>
+
         <!-- Deuteranope -->
         <div class="Deuteranope">
+          <!-- i -->
+          <div id="iDeuteranope">
+            <p>&#x2139;</p>
+          </div>
+          <!-- i -->
           <h4>Deuteranope</h4>
           <!-- <div class="Bandeau_Deuteranopie"> -->
-            <div class="couleur">
-              <div id="deuteranope-1"></div>
-              <div id="deuteranope-2"></div>
-              <div id="deuteranope-3"></div>
-              <div id="deuteranope-4"></div>
-            </div>
+          <div class="couleur">
+            <div id="deuteranope-1"></div>
+            <div id="deuteranope-2"></div>
+            <div id="deuteranope-3"></div>
+            <div id="deuteranope-4"></div>
+          </div>
           <!-- </div> -->
         </div>
+        
         <!-- Tritanope -->
         <div class="Tritanope">
+          <!-- i -->
+          <div id="iTritanope">
+            <p>&#x2139;</p>
+          </div>
+          <!-- i -->
           <h4>Tritanope</h4>
           <!-- <div class="Bandeau_Tritanopie"> -->
-            <div class="couleur">
-              <div id="tritanope-1"></div>
-              <div id="tritanope-2"></div>
-              <div id="tritanope-3"></div>
-              <div id="tritanope-4"></div>
-            </div>
+          <div class="couleur">
+            <div id="tritanope-1"></div>
+            <div id="tritanope-2"></div>
+            <div id="tritanope-3"></div>
+            <div id="tritanope-4"></div>
+          </div>
           <!-- </div> -->
         </div>
       </div>
@@ -202,10 +221,10 @@
         </datalist>
       </div>
       <div id="img-views">
-      <img src="https://picsum.photos/800/300" alt="" id="imageDaltonnisme">
+        <img src="https://picsum.photos/800/300" alt="" id="imageDaltonnisme">
+      </div>
     </div>
-    </div>
-    <div id="paragraphe">
+    <!-- <div id="paragraphe">
       <h2>Comment voit un daltonien ?</h2>
       <p>Nous voyons les couleurs différemment
         Environ 1 personne sur 20 est daltonienne d'une manière ou d'une autre. Cela signifie qu'un ou plusieurs types
@@ -229,12 +248,13 @@
         les trois autres colonnes de la manière dont une personne atteinte de protanopie, deutéranopie ou tritanopie les
         verrait, respectivement.
       </p>
-    </div>
+    </div> -->
     <footer>
       <p id="test"></p>
     </footer>
     <script src="./JS/scripttest.js"></script>
     <script src="./JS/AjoutDePalette.js"></script>
+    <script src="./JS/SupprPalette.js"></script>
     <script src="./JS/Animation.js"></script>
   </body>
 
