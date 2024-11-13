@@ -51,14 +51,13 @@
       <!-- Langue -->
       <div class="langue">
         <select name="langue" id="langue" >
-          <option value="fr">FR</option>
-          <option value="en">EN</option>
-          <option value="de">DE</option>
-          <option value="be">BE</option>
-          <option value="es">ES</option>
-          <option value="it">IT</option>
+          <option value="fr"> <a href="">FR</a> </option>
+          <option value="en"> <a href="">EN</a> </option>
+          <option value="de"> <a href="">DE</a> </option>
+          <option value="be"> <a href="">BE</a> </option>
+          <option value="es"> <a href="">ES</a> </option>
+          <option value="it"> <a href="">IT</a> </option>
         </select>
-        <!-- <a href="">Fr / En</a> -->
       </div>
       <!-- Langue -->
     </nav>
@@ -80,8 +79,8 @@
     <div id="simulateurCouleur">
       <h2>Simulateur de couleur</h2>
       <div class="add">
-        <div id="floatplus"><a href="">+</a></div>
-        <div id="floatmoin"><a href="">-</a></div>
+        <button onclick="addNewPalette()">+</button>
+        <button onclick="deletePalette()">-</button>
       </div>
       <div class="simuCouleur">
         <div class="div_palette">
@@ -231,6 +230,7 @@
       <p id="test"></p>
     </footer>
     <script src="./JS/scripttest.js"></script>
+    <script src="./JS/AjoutDePalette.js"></script>
     <script src="./JS/Animation.js"></script>
   </body>
 

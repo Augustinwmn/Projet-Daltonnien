@@ -16,7 +16,7 @@
 //     [0.011820, 0.042940, 0.968881]
 // ];
 
-
+// // Fonction de conversion
 // function hexToColorBlind(hex, conversionMatrix, intensity) {
 //     let r = parseInt(hex.slice(1, 3), 16);
 //     let g = parseInt(hex.slice(3, 5), 16);
@@ -38,37 +38,44 @@
 //     return "#" + ((1 << 24) + (newR << 16) + (newG << 8) + newB).toString(16).slice(1).toUpperCase();
 // }
 
+// // Mise à jour des couleurs
 // function updateColors(hex, index) {
 //     if (!hex) return;
 
-//     const intensity = document.getElementById("intensity").value;
-
-//     document.getElementById(`palette-${index}`).value = hex;
+//     const intensity = document.getElementById("myRange").value;
 
 //     const protanopeResult = hexToColorBlind(hex, protanopeMatrix, intensity);
 //     const tritanopeResult = hexToColorBlind(hex, tritanopeMatrix, intensity);
 //     const deuteranopeResult = hexToColorBlind(hex, deuteranopeMatrix, intensity);
     
-
 //     document.getElementById(`protanope-${index}`).style.backgroundColor = protanopeResult;
 //     document.getElementById(`tritanope-${index}`).style.backgroundColor = tritanopeResult;
 //     document.getElementById(`deuteranope-${index}`).style.backgroundColor = deuteranopeResult;
+
+//     document.getElementById(`couleurInput-${index}`).value = hex;
 // }
 
-// // Appel à updateColors à partir de la barre de défilement
+// // Mise à jour à partir de la barre de défilement
 // function updateColorsFromRange() {
 //     for (let i = 1; i <= 4; i++) {
-//         const hex = document.getElementById(`couleurInput-${i}`).value;
+//         const hex = document.getElementById(`palette-${i}`).value;
 //         updateColors(hex, i);
 //     }
 // }
 
-// // Écouteur d'événements pour les champs de couleur
+// // Écouteurs d'événements pour les nuanciers
 // for (let i = 1; i <= 4; i++) {
-//     document.getElementById(`couleurInput-${i}`).addEventListener('input', function() {
+//     document.getElementById(`palette-${i}`).addEventListener('input', function() {
 //         updateColors(this.value, i);
 //     });
+
+//      document.getElementById(`couleurInput-${i}`).addEventListener('input', function() {
+//          updateColors(this.value, i);
+//      });
 // }
+
+// // Initialisation
+// updateColorsFromRange();
 
 const protanopeMatrix = [
     [0.152286, 1.052583, -0.204868],
@@ -119,12 +126,12 @@ function updateColors(hex, index) {
     const protanopeResult = hexToColorBlind(hex, protanopeMatrix, intensity);
     const tritanopeResult = hexToColorBlind(hex, tritanopeMatrix, intensity);
     const deuteranopeResult = hexToColorBlind(hex, deuteranopeMatrix, intensity);
-    
+
+    document.getElementById(`palette-${index}`).value = hex;
+    document.getElementById(`couleurInput-${index}`).value = hex;
     document.getElementById(`protanope-${index}`).style.backgroundColor = protanopeResult;
     document.getElementById(`tritanope-${index}`).style.backgroundColor = tritanopeResult;
     document.getElementById(`deuteranope-${index}`).style.backgroundColor = deuteranopeResult;
-
-    document.getElementById(`couleurInput-${index}`).value = hex;
 }
 
 // Mise à jour à partir de la barre de défilement
@@ -135,16 +142,19 @@ function updateColorsFromRange() {
     }
 }
 
-// Écouteurs d'événements pour les nuanciers
+// Écouteurs d'événements pour les nuanciers et les champs de texte
 for (let i = 1; i <= 4; i++) {
     document.getElementById(`palette-${i}`).addEventListener('input', function() {
         updateColors(this.value, i);
     });
 
-     document.getElementById(`couleurInput-${i}`).addEventListener('input', function() {
-         updateColors(this.value, i);
-     });
+    document.getElementById(`couleurInput-${i}`).addEventListener('input', function() {
+        updateColors(this.value, i);
+    });
 }
 
 // Initialisation
 updateColorsFromRange();
+
+
+

@@ -110,27 +110,4 @@ laboiboite("Coucou");
 
 document.querySelector("#letrucla").onclick = function () { laboiboite("Ahhhh ouaiiiiiii mec !"); }
 
-/////////////////////////// Bouton Fix  Fin  ///////////////////////////
-
-// document.querySelector("#menu #okbox").checked = function(){
-//     this.nextElementSibling.classList.toggle("visible");
-// }
-// document.querySelector('#okbox').checked() = function(){
-//     document.getElementById('ancre').toggle("visible");
-// }
-
-// Récupérer la case à cocher et l'élément de menu
-const okbox = document.querySelector('#okbox');
-const ancre = document.querySelector('#ancre');
-
-// Ajouter un écouteur d'événement pour détecter le changement d'état de la case à cocher
-okbox.addEventListener('change', function() {
-  // Si la case est cochée, afficher le menu
-  if (okbox.checked) {
-    ancre.style.display = 'block';  // Affiche le menu
-  } else {
-    ancre.style.display = 'none';   // Cache le menu
-  }
-});
-
-////////////////////////////////////////////////////////////////////////
+/////////////////////////// Bouton Fix    ///////////////////////////
