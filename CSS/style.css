@@ -382,7 +382,8 @@ input[type="text"] {
 .Deuteranope h4, .Tritanope h4, .Protanope h4{
     text-align: center;
     padding: 20px;
-    padding-top: 0;
+    /* padding-top: 0; */
+    
 }
 
 /* .Bandeau_Protanopie ,.Bandeau_Tritanopie ,.Bandeau_Deuteranopie{
