@@ -78,18 +78,20 @@
     <!-- Simulateur de couleur -->
     <div id="simulateurCouleur">
       <h2>Simulateur de couleur</h2>
-      <div class="add">
-        <button onclick="addNewPalette()">+</button>
-        <button onclick="deletePalette()">-</button>
+
+      <div id="add">
+        <button onclick="addNewPalette()"><img src="./Image/ajouter-un-bouton.png"></button>
+        <button onclick="deletePalette()"><img src="./Image/2198.png"></button>
       </div>
+
       <div class="simuCouleur">
-        <div class="div_palette">
+        <div id="paletteContainer" class="div_palette">
           <input type="color" name="palette" id="palette-1" value="#000000" onchange="updateColors(this.value, 1)">
           <input type="color" name="palette" id="palette-2" value="#0000ff" onchange="updateColors(this.value, 2)">
           <input type="color" name="palette" id="palette-3" value="#00ff00" onchange="updateColors(this.value, 3)">
           <input type="color" name="palette" id="palette-4" value="#ff0000" onchange="updateColors(this.value, 4)">
         </div>
-        <div class="div_palette2">
+        <div id="colorInputContainer" class="div_palette2">
           <input type="text" name="text" id="couleurInput-1" placeholder="#000000" value="#ff0000"
             onchange="updateColors(this.value, 1)">
           <input type="text" name="text" id="couleurInput-2" placeholder="#000000" value="#00ff00"
@@ -199,7 +201,9 @@
           <option value="" label="1.0"></option>
         </datalist>
       </div>
+      <div id="img-views">
       <img src="https://picsum.photos/800/300" alt="" id="imageDaltonnisme">
+    </div>
     </div>
     <div id="paragraphe">
       <h2>Comment voit un daltonien ?</h2>

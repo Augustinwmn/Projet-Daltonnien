@@ -262,7 +262,7 @@ p{
     padding-left: 1%;
     padding-right: 1%;
 }
-.add{
+#add{
     display: flex;
     flex-direction: column;
     width: 5%;
@@ -272,15 +272,21 @@ p{
     float: right;
     /* border: none; */
 }
-#floatmoin, #floatplus{
-    text-align: center;
-    font-size: 3vw;
+
+#add button{
+    border: none;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
 }
-.add a{
+#add button img{
+    width: 100%;
+}
+#add a{
     text-decoration: none;
     color: black;
 }
-.simuCouleur .add{
+.simuCouleur #add{
     display: flex;
     justify-content: center;
 }
@@ -300,6 +306,7 @@ input[type="text"]{
     width: 100%;
 }
 #palette-1, #palette-2, #palette-3, #palette-4{
+    border: none;
     width: 20vw;
     height: 20vh;
     padding: 0;
@@ -485,7 +492,7 @@ label{
 }
 input[type="file"]{
     position: fixed;
-    /* display: none; */
+    display: none;
 }
 #img-view img{
     height: 100%;
@@ -517,7 +524,7 @@ input[type="file"]{
     padding: 0;
     display: flex;
     justify-content: center;
-    gap: 8%;
+    gap: 6%;
 }
 /* #simulateurimage .btn button{
     width: 30%;
@@ -525,9 +532,25 @@ input[type="file"]{
     gap: 5%;
 } */
 #btnProtanope, #btnTritanope, #btnDeutéranope{
-    width: 20%;
+    width: 16%;
     height: 5vh;
-    font-size: 30px;
+    font-size: 24px;
+    border: none;
+    border-radius: 5px;
+}
+#btnProtanope:active, #btnTritanope:active, #btnDeutéranope:active{
+    box-shadow:
+    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+    inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+/* #btnTritanope:active{
+
+}
+#btnDeutéranope:active{
+
+} */
+.colonneImage datalist option{
+    color: white;
 }
 .colonneImage{
     margin-left: auto;

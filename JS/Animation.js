@@ -19,14 +19,23 @@ const dropArea = document.getElementById("drop-area");
 const inputFile = document.getElementById("input-file");
 const imgView = document.getElementById("img-view");
 const imgViews = document.getElementById("img-views");
+// const imgDalto = document.getElementById("imageDaltonnisme");
+
 
 inputFile.addEventListener("change", uploadImage);
+inputFile.addEventListener("change", uploadImages);
 
 function uploadImage() {
     let imgLink = URL.createObjectURL(inputFile.files[0]);
-    imgView.style.backgroundImage = `url(${imgLink})`;
-    imgView.textContent = "";
-    imgView.style.border = 0;
+
+    imgView.querySelector("img").src = imgLink;
+    imgView.querySelector("img").style.display = "block";
+
+
+    // imgView.textContent = "";
+    // imgView.style.backgroundImage = `url(${imgLink})`;
+    // imgView.style.border = 0;
+
 }
 
 dropArea.addEventListener("dragover", function (e) {
@@ -41,9 +50,13 @@ dropArea.addEventListener("drop", function (e) {
 
 function uploadImages() {
     let imgLink = URL.createObjectURL(inputFile.files[0]);
-    imgViews.style.backgroundImage = `url(${imgLink})`;
-    imgViews.textContent = "";
-    imgViews.style.border = 0;
+
+    imgViews.querySelector("img").src = imgLink;
+    imgViews.querySelector("img").style.display = "block";
+
+    // imgViews.style.backgroundImage = `url(${imgLink})`;
+    // imgViews.textContent = "";
+    // imgViews.style.border = 0;
 }
 
 dropArea.addEventListener("dragover", function (e) {
@@ -53,7 +66,7 @@ dropArea.addEventListener("dragover", function (e) {
 dropArea.addEventListener("drop", function (e) {
     e.preventDefault();
     inputFile.files = e.dataTransfer.files;
-    uploadImage();
+    uploadImages();
 })
 //////////////////////////////////////////////////////////////////
 
