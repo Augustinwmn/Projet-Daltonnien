@@ -26,10 +26,11 @@
       </button> -->
 
       <div id="menu">
-        <input type="checkbox" id="okbox">
+        <img src="./Image/LOGO_WHITE.webp" alt="">
 
+
+        <!-- <input type="checkbox" id="okbox">
         <label for="okbox" id="label">
-
           <div id="burger">
             <div></div>
             <div></div>
@@ -40,12 +41,22 @@
           <li><a href="#simulateurCouleur">Simulateur de couleur</a></li>
           <li><a href="#simulateurImage">Simulateur d'image</a></li>
           <li><a href="#paragraphe">À propos</a></li>
-        </ul>
+        </ul> -->
+
       </div>
       <!-- Menu hamburger -->
 
       <!-- Titre -->
-      <h1>ColorAccess</h1>
+      <div class="centre">
+        <div>
+          <h1>ColorAccess</h1>
+        </div>
+        <div class="link">
+          <a href="#simulateurCouleur">Simulateur de couleur</a>
+          <a href="#simulateurImage">Simulateur d'image</a>
+          <a href="#paragraphe">À propos</a>
+        </div>
+      </div>
       <!-- Titre -->
 
       <!-- Langue -->
@@ -77,7 +88,7 @@
 
     <!-- Simulateur de couleur -->
     <div id="simulateurCouleur">
-      <h2>Simulateur de couleur</h2>
+      <h2>Simulateur de couleurs</h2>
 
       <div id="add">
         <button onclick="addNewPalette()"><img src="./Image/ajouter-un-bouton.png"></button>
@@ -85,7 +96,7 @@
       </div>
 
       <div class="simuCouleur">
-        <div id="paletteContainer" class="div_palette">
+        <!-- <div id="paletteContainer" class="div_palette">
           <input type="color" name="palette" id="palette-1" value="#000000" onchange="updateColors(this.value, 1)">
           <input type="color" name="palette" id="palette-2" value="#0000ff" onchange="updateColors(this.value, 2)">
           <input type="color" name="palette" id="palette-3" value="#00ff00" onchange="updateColors(this.value, 3)">
@@ -100,15 +111,63 @@
             onchange="updateColors(this.value, 3)">
           <input type="text" name="text" id="couleurInput-4" placeholder="#000000" value="#fffff0"
             onchange="updateColors(this.value, 4)">
+          <button onclick="deletePalette()"><img src="./Image/2198.png"></button>
+        </div> -->
 
+        <div class="couleurP">
+          <input type="color" name="palette" id="palette-1" value="#000000" onchange="updateColors(this.value, 1)">
+          <input type="text" name="text" id="couleurInput-1" placeholder="#000000" value="#ff0000"
+            onchange="updateColors(this.value, 1)">
         </div>
+        <div class="couleurP">
+          <input type="color" name="palette" id="palette-2" value="#0000ff" onchange="updateColors(this.value, 2)">
+          <input type="text" name="text" id="couleurInput-2" placeholder="#000000" value="#00ff00"
+            onchange="updateColors(this.value, 2)">
+        </div>
+        <div class="couleurP">
+          <input type="color" name="palette" id="palette-3" value="#00ff00" onchange="updateColors(this.value, 3)">
+          <input type="text" name="text" id="couleurInput-3" placeholder="#000000" value="#00ff00"
+            onchange="updateColors(this.value, 3)">
+        </div>
+        <div class="couleurP">
+          <input type="color" name="palette" id="palette-4" value="#ff0000" onchange="updateColors(this.value, 4)">
+          <input type="text" name="text" id="couleurInput-4" placeholder="#000000" value="#00ff00"
+            onchange="updateColors(this.value, 4)">
+        </div>
+
+
+
+
+
+
       </div>
 
+
+
+
+
+
+
+
+
+
       <div class="colonne">
-        <label for="range_protanopie">Force de correction</label>
-        <input type="range" id="myRange" min="0" max="1.0" step="0.01" list="marker" oninput="updateColorsFromRange()"
+
+        <p>0</p>
+        <input type="range" id="myRange" min="0" max="1.0" step="any" list="marker" oninput="updateColorsFromRange()"
           value="1.0">
-        <datalist id="marker">
+        <p>1</p>
+        <output id="test"></output>
+
+      </div>
+      <div class="colonne2">
+        <button><img src="./Image/drop-down-arrow.png" alt="" id="fleche_gauche"></button>
+        <label for="range_protanopie" id="correctionCouleur">Force de correction</label>
+        <button><img src="./Image/drop-down-arrow.png" alt="" id="fleche_droite"></button>
+
+      </div>
+      <a href="./TEST/TEST_ValueInRange/ValueInRange.html" target="_blank"></a>
+      <!-- <datalist id="marker">
           <option value="" label="0.0"></option>
           <option value="" label="0.1"></option>
           <option value="" label="0.2"></option>
@@ -120,8 +179,8 @@
           <option value="" label="0.8"></option>
           <option value="" label="0.9"></option>
           <option value="" label="1.0"></option>
-        </datalist>
-      </div>
+        </datalist> -->
+
       <div class="couleur_colonne">
 
         <!-- Protanope -->
@@ -205,7 +264,7 @@
       </div>
       <div class="colonneImage">
         <label for="range_protanopie">Force de correction</label>
-        <input type="range" id="rangeImg" min="0" max="1.0" step="0.001" list="range_img">
+        <input type="range" id="rangeImg" min="0" max="1.0" step="any" list="range_img">
         <datalist id="range_img">
           <option value="" label="0"></option>
           <option value="" label="0.1"></option>
@@ -250,7 +309,6 @@
       </p>
     </div>
     <footer>
-      <p id="test"></p>
     </footer>
     <script src="./JS/scripttest.js"></script>
     <script src="./JS/AjoutDePalette.js"></script>

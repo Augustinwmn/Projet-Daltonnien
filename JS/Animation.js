@@ -124,3 +124,28 @@ laboiboite("Coucou");
 document.querySelector("#letrucla").onclick = function () { laboiboite("Ahhhh ouaiiiiiii mec !"); }
 
 /////////////////////////// Bouton Fix    ///////////////////////////
+/////////////////////////// Range  ///////////////////////////
+
+
+const value = document.querySelector("#test");
+const input = document.querySelector("#myRange");
+value.textContent = input.value;
+input.addEventListener("input", (event) => {
+  value.textContent = event.target.value;
+});
+
+
+
+const range = document.getElementById('myRange');
+const rangeValue = document.getElementById('test');
+
+range.addEventListener('input', function() {
+    rangeValue.textContent = range.value;
+    // Mettre à jour la position de la valeur pour qu'elle suive le curseur
+    const rangeWidth = range.offsetWidth;
+    const valuePosition = (range.value - range.min) / (range.max - range.min) * rangeWidth;
+    rangeValue.style.left = `calc(${valuePosition}px + 1rem)`; // Ajoute un petit décalage à gauche pour ne pas coller à la barre
+});
+
+
+/////////////////////////// Fin Range  ///////////////////////////

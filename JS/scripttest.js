@@ -140,21 +140,23 @@ function updateColorsFromRange() {
         const hex = document.getElementById(`palette-${i}`).value;
         updateColors(hex, i);
     }
-}
+} 
 
 // Écouteurs d'événements pour les nuanciers et les champs de texte
 for (let i = 1; i <= 4; i++) {
     document.getElementById(`palette-${i}`).addEventListener('input', function() {
         updateColors(this.value, i);
-    });
 
+        document.getElementById(`palette-${i}`).style.backgroundColor = this.value;
+        
+    });
     document.getElementById(`couleurInput-${i}`).addEventListener('input', function() {
         updateColors(this.value, i);
+
+        document.getElementById(`palette-${i}`).style.backgroundColor = this.value;
+
     });
 }
 
 // Initialisation
 updateColorsFromRange();
-
-
-

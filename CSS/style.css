@@ -26,128 +26,27 @@ nav{
     justify-content: space-between;
 }
 /* menu burger */
-#nav #burger{
-    
+#nav #menu{
+/*     
     width: 100px;
-    height: 100px;
+    height: 100px; */
     padding: 0;
     /* position: relative; */
 }
-
-
-
-/* **********Menu Burger************ */
-#menu{
-    position: relative;
-
+#menu img{
+    width: 100%;
+    height: 100%;
 }
-/* #burger {
-    width: 100px;
-    height: 100px;
-} */
-
-label{
-    display: block;
-    width: fit-content;
-}
-/***** ETAT PAR DEFAULT  ******/
-
-#burger div {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgb(255, 255, 255);
-    width: 80%;
-    height: 10%;
-    transition: top 0.5s 0.5s, width 0.5s 0.75s, transform 0.5s;
-}
-
-#burger div:first-child {
-    top: 25%;
-}
-
-#burger div:last-child {
-    top: 75%;
-}
-
-/***** ETAT 2 ******/
-
-#okbox:checked + label #burger div {
-    transition: top 0.5s 0.25s, width 0.5s, transform 0.5s 0.5s;
-}
-
-
-#okbox:checked + label #burger div:first-child,
-#okbox:checked + label #burger div:last-child {
-    top: 50%;
-}
-
-#okbox:checked + label #burger div:nth-child(2) {
-    width: 0%;
-}
-
-#okbox:checked + label #burger div:first-child {
-    transform: translate(-50%, -50%) rotate(45deg);
-}
-
-#okbox:checked + label #burger div:last-child {
-    transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-#okbox{
-    display: none;
-}
-#label{
-    margin: 0;
-}
-
-#burger:hover{
-    transform: scale(1.02);
-} 
-
-/* **********Menu Burger Fin************ */
-
-/* #menu{ */
-    /* height: 100px; */
-    /* width: auto; */
-    /* align-content: center; */
-    /* background-color: fuchsia; */
-    /* padding: 10px; */
-/* } */
-#menu a{
-    color: white;
-}
-#ancre{
-    background-color: rgb(36, 36, 36);
-    position: absolute;
-    display: none;
-    list-style: none;
-    /* font-family: "Regular 400" ; */
-    margin: 0;
-    top: 20px;
-    left: 100px;
-    font-size: 20px;
-}
-#okbox:checked + #label + #ancre{
-    display: block;
-}
-#ancre li{
-    width: 220px;
-}
-#ancre li a:hover{
-    padding-left: 5px; padding-right: 5px;
-    color: black;
-    background-color: white;
-}
- 
 /* ************************************* */
+/* ******************Langue******************* */
 #langue{
     display: block;
 }
 .langue{
+    width: 94px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 select{
     background-color: transparent;
@@ -165,14 +64,34 @@ option{
     color: rgb(68, 199, 28);
     background-color: rgb(199, 30, 185);
 }
+/* ****************** Fin Langue ******************* */
 
-
-nav h1{
-    margin: 0;
+nav .centre{
+    width: 50%;
     display: flex;
-    /* font-family: "Regular 400" ; */
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    /* padding-bottom: 2%; */
 }
+nav .centre h1{
+    margin: 0;
+    text-align: center;
+}
+nav .centre .link{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+nav .centre .link a{
+    color: white;
+    text-align: center;
+}
+nav .centre .link a:hover{
+    transform: scale(1.1);
+    color: black;
+    background-color: white;
+}
+
 /* .simuCouleur{
     margin-left: 3%;
 } */
@@ -181,9 +100,6 @@ nav h1{
 #boite-dialogue{
     width: 70px;
     height: 70px;
-    /* box-shadow: 10px 10px 15px aqua; 
-    background-color: fuchsia; */
-    /* padding: 20px; */
     text-align: center;
     border-radius: 250px;
     background-color: rgb(0, 166, 237);
@@ -286,9 +202,18 @@ strong{
     font-size: large;
 }
 
-input[type="color"]{
-    /* height: 30px; */
-    margin: 0;
+
+.simuCouleur{
+    display: flex;
+    justify-content: space-around;
+}
+.couleurP{
+ display: flex;
+ flex-direction: column;
+ gap: 5px;
+ width: 200px;
+ height: 200px;
+ 
 }
 /* input[type="color"]:hover{
     Ouvrir la palette 
@@ -298,12 +223,31 @@ input[type="text"]{
     width: 100%;
 }
 #palette-1, #palette-2, #palette-3, #palette-4{
-    border: none;
+    border: 1px solid;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin: 0;
     width: 200px;
     height: 100%;
     padding: 0;
+
 }
-.div_palette2, .div_palette{
+#palette-1::-webkit-color-swatch, #palette-2::-webkit-color-swatch, #palette-3::-webkit-color-swatch, #palette-4::-webkit-color-swatch{
+  border-color: transparent;
+}
+#palette-1{
+    background-color: #000; 
+}
+#palette-2{
+    background-color: blue;
+}
+#palette-3{
+    background-color: #00ff00;
+}
+#palette-4{
+    background-color: #ff0000;
+}
+/* .div_palette2, .div_palette{
     display: flex;
     justify-content: space-around;
     width: 85vw;
@@ -311,9 +255,17 @@ input[type="text"]{
 }
 .div_palette{
     height: 20vh;
-}
+} */
 #couleurInput-1, #couleurInput-2, #couleurInput-3, #couleurInput-4{
-    max-width: 200px;
+    width: 200px;
+    border: 1px solid;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+input[type="text"] {
+    text-align: center;
+    width: 10%;
+    padding: 0;
 }
 /***** Barre de correction *****/
 datalist {
@@ -346,6 +298,53 @@ option {
 #myRange:active, #rangeImg:active{
     cursor: grabbing;
 }
+.colonne{
+    display: flex;
+    justify-content: center;
+    gap: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    /* margin-bottom: 20px; */
+    width: 80%;
+}
+.colonne p{
+    display: inline-block;
+    font-weight: bold;
+    font-size: 24px;
+}
+#test{
+    font-size: 24px;
+    color: rgb(36, 36, 36);
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.colonne2{
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+}
+.colonne2 button{
+    border: none;
+}
+.colonne2 img{
+    width: 50px;
+}
+.colonne2 #fleche_gauche{
+    transform: rotate(90deg);
+}
+.colonne2 #fleche_droite{
+    transform: rotate(-90deg);
+}
+#correctionCouleur{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
 /* **************************** */
 /* .div_palette{
     display: flex;
@@ -363,15 +362,6 @@ option {
     padding-top: 10px;
     padding-bottom: 0;
 } */
-
-input[type="text"] {
-    text-align: center;
-    width: 10%;
-    /* border-style: none; */
-    /* height: 20px; */
-    padding: 0;
-    /* padding-top: 10px; */
-}
 .couleur_colonne{
     display: flex;
     justify-content:space-around;
@@ -393,38 +383,9 @@ input[type="text"] {
 
 .Protanope, .Tritanope, .Deuteranope{
     width: 25%;
-    /* min-height: 413px; */
-    /* background-color: darkgray; */
     border: 1px solid ;
-    /* border: solid;
-    border-color: rgb(0, 0, 0);  */
 }
 
-#iProtanope, #iDeuteranope, #iTritanope{
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    border-radius: 11px;
-    left: 233px;
-    position: relative;
-    /* display: flex;
-    justify-content:flex-end; */
-}
-#iProtanope p, #iDeuteranope p, #iTritanope p{
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-#iProtanope{
-    background-color: red;
-}
-#iDeuteranope{
-    background-color: green;
-}
-#iTritanope{
-    background-color: blue;
-}
 .couleur{
     display: flex;
     flex-direction: column;
@@ -433,15 +394,10 @@ input[type="text"] {
     height: 300px;
 }
 
-.colonne{
-margin-left: auto;
-margin-right: auto;
-margin-bottom: 20px;
-width: 70%;
-}
 
-label{
-    margin-top: 20px;
+
+.colonne label{
+    /* margin-bottom: 20px; */
     display: flex;
     justify-content: center;
 }
@@ -615,7 +571,4 @@ footer{
     background-color: rgb(36, 36, 36);
     padding: 10px;
     height: 10vh;
-}
-#test{
-    color: rgb(36, 36, 36);
 }
