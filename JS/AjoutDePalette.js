@@ -41,8 +41,8 @@ if (paletteCounter < 6) {
         border-bottom-right-radius: 15px;`;
 
 
-        const newButtonDel = document.createElement('button');
-        newButtonDel
+        // const newButtonDel = document.createElement('button');
+        // newButtonDel
 
 
         paletteContainer.appendChild(newColorInput);
@@ -89,7 +89,7 @@ if (paletteCounter < 6) {
     }
 }
 else {
-
+    console.log("Palette pleine !")
 }
 function updateColors(hex, id) {
     if (!hex) return;

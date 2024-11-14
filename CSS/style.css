@@ -211,8 +211,8 @@ strong{
  display: flex;
  flex-direction: column;
  gap: 5px;
- width: 200px;
- height: 200px;
+ width: 18%;
+ height: 20vh;
  
 }
 /* input[type="color"]:hover{
@@ -227,7 +227,7 @@ input[type="text"]{
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     margin: 0;
-    width: 200px;
+    width: 100%;
     height: 100%;
     padding: 0;
 
@@ -239,13 +239,13 @@ input[type="text"]{
     background-color: #000; 
 }
 #palette-2{
-    background-color: blue;
+    background-color: #ff0000; 
 }
 #palette-3{
     background-color: #00ff00;
 }
 #palette-4{
-    background-color: #ff0000;
+    background-color: blue;
 }
 /* .div_palette2, .div_palette{
     display: flex;
@@ -257,7 +257,7 @@ input[type="text"]{
     height: 20vh;
 } */
 #couleurInput-1, #couleurInput-2, #couleurInput-3, #couleurInput-4{
-    width: 200px;
+    width: 100%;
     border: 1px solid;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -313,14 +313,40 @@ option {
     font-weight: bold;
     font-size: 24px;
 }
-#test{
+/* .colonne #test{
     font-size: 24px;
     color: rgb(36, 36, 36);
+    background-color: fuchsia;
+    width: 10px;
     position: absolute;
     top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 14%;
+    left: 14%;
+    transform: translate(-50%, -50%);
+} */
+
+
+/* ********************************* */
+.range-container {
+    position: relative;
+    width: 100%;
+    align-content: center;
 }
+
+.range-container #test {
+    position: absolute;
+    top: -20px; /* Ajuste la position au-dessus du curseur */
+    left: -50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    background-color: fuchsia;
+    pointer-events: none; /* Pour éviter l'interaction avec la valeur */
+}
+/* ********************************* */
+
+
 .colonne2{
     display: flex;
     justify-content: center;

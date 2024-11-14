@@ -124,28 +124,31 @@ laboiboite("Coucou");
 document.querySelector("#letrucla").onclick = function () { laboiboite("Ahhhh ouaiiiiiii mec !"); }
 
 /////////////////////////// Bouton Fix    ///////////////////////////
-/////////////////////////// Range  ///////////////////////////
+/////////////////////////// Range Value  ///////////////////////////
 
+    // Récupérer les éléments
+    const range = document.getElementById('myRange');
+    const rangeValue = document.getElementById('test');
+    const rangeContainer = document.querySelector('.range-container');
 
-const value = document.querySelector("#test");
-const input = document.querySelector("#myRange");
-value.textContent = input.value;
-input.addEventListener("input", (event) => {
-  value.textContent = event.target.value;
-});
+    // Mettre à jour la valeur affichée et la position
+    function updateRangeValue() {
+        const value = range.value;
+        const rangeWidth = range.offsetWidth;
+        const valuePosition = (value - range.min) / (range.max - range.min) * rangeWidth;
 
+        // Mettre à jour la valeur affichée
+        rangeValue.textContent = value;
 
+        // Positionner la valeur au-dessus du curseur
+        rangeValue.style.left = `calc(${valuePosition}px + 1rem)`; // +1rem pour éviter qu'il ne touche la barre
+    }
 
-const range = document.getElementById('myRange');
-const rangeValue = document.getElementById('test');
+    // Appel initial pour positionner la valeur
+    updateRangeValue();
 
-range.addEventListener('input', function() {
-    rangeValue.textContent = range.value;
-    // Mettre à jour la position de la valeur pour qu'elle suive le curseur
-    const rangeWidth = range.offsetWidth;
-    const valuePosition = (range.value - range.min) / (range.max - range.min) * rangeWidth;
-    rangeValue.style.left = `calc(${valuePosition}px + 1rem)`; // Ajoute un petit décalage à gauche pour ne pas coller à la barre
-});
+    // Mettre à jour la valeur lorsque le curseur se déplace
+    range.addEventListener('input', updateRangeValue);
 
 
 /////////////////////////// Fin Range  ///////////////////////////
