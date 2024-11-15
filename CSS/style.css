@@ -80,6 +80,7 @@ nav .centre h1{
 nav .centre .link{
     display: flex;
     justify-content: space-between;
+    /* gap: 5%; */
     width: 100%;
 }
 nav .centre .link a{
@@ -98,8 +99,8 @@ nav .centre .link a:hover{
 /* ****************************** Bouton i ****************************** */
 
 #boite-dialogue{
-    width: 70px;
-    height: 70px;
+    width: 45px;
+    height: 45px;
     text-align: center;
     border-radius: 250px;
     background-color: rgb(0, 166, 237);
@@ -107,7 +108,7 @@ nav .centre .link a:hover{
     /* Comportement modale */
     position: fixed;
     bottom: 1vh;
-    right: 1vw;
+    right: 0vw;
     transform: translate(-50%, -50%);
 
     
@@ -130,7 +131,7 @@ nav .centre .link a:hover{
 
 }
 #message p{
-    font-size: xx-large;
+    font-size: x-large;
     text-align: center;
     margin: 0;
     padding: 0;
