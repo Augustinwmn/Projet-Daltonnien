@@ -184,6 +184,7 @@ p{
 
 #add button{
     border: none;
+    background-color: transparent;
     width: 50px;
     height: 50px;
     margin-bottom: 10px;
@@ -212,7 +213,7 @@ strong{
  display: flex;
  flex-direction: column;
  gap: 5px;
- width: 18%;
+ width: auto;
  height: 20vh;
  
 }
@@ -575,20 +576,19 @@ input[type="file"]{
     font-weight: bold;
     font-size: 24px;
 }
-.colonneImage .colonne .range-container {
+.colonneImage .colonne .range-containerImg {
     position: relative;
     width: 80%;
     align-content: center;
 }
-
-.colonneImage .colonne .range-container #testImg {
+.colonneImage .colonne .range-containerImg #testImg {
     position: absolute;
     top: 0px; 
     /* Ajuste la position au-dessus du curseur */
-    left: 1%;
+    /* left: 1%;
     left: 5px;
     left: 99%;
-    left: 725px;
+    left: 725px; */
     transform: translateX(-50%);
     font-size: 18px;
     font-weight: bold;

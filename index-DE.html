@@ -3,9 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/style.css">
     <title>Site Allemand</title>
 </head>
 <body>
-    <h1>Guten tag</h1>
+    <nav class="nav" id="nav">
+        <!-- Menu hamburger -->  
+        <div id="menu">
+          <img src="./Image/LOGO_WHITE.webp" alt="">  
+        </div>
+        <!-- Menu hamburger -->
+  
+        <!-- Titre -->
+        <div class="centre">
+          <div>
+            <h1>ColorAccess</h1>
+          </div>
+          <div class="link">
+            <a href="#simulateurCouleur">Simulateur de couleur</a>
+            <a href="#simulateurImage">Simulateur d'image</a>
+            <a href="#paragraphe">À propos</a>
+          </div>
+        </div>
+        <!-- Titre -->
+  
+        <!-- Langue -->
+        <div class="langue">
+          <select name="langue" id="langue" onchange="location = this.value;">
+            <option value="./index-DE.html"> DE </option>
+            <option value="./index-FR.html"> FR </option>
+            <option value="./index-EN.html"> EN </option>
+            
+            <!-- <option value="be"> <a href="">BE</a> </option>
+            <option value="es"> <a href="">ES</a> </option>
+            <option value="it"> <a href="">IT</a> </option> -->
+          </select>
+        </div>
+        <!-- Langue -->
+      </nav>
+    <h1>Bald</h1>
+    <script src="./JS/scripttest.js"></script>
+    <script src="./JS/AjoutDePalette.js"></script>
+    <!-- <script src="./JS/SupprPalette.js"></script> -->
+    <script src="./JS/Animation.js"></script>
 </body>
 </html>

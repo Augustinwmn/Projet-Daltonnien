@@ -12,6 +12,7 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"></script> -->
     <!-- bootstrap -->
+    <link rel="shortcut icon" href="./Image/LOGO_WHITE.webp" type="image/x-icon">
     <title>Simulateur de couleur</title>
   </head>
 
@@ -19,30 +20,8 @@
     <nav class="nav" id="nav">
       <!-- Menu hamburger -->
 
-      <!-- <button id="burger">
-        <div></div>
-        <div></div>
-        <div></div>
-      </button> -->
-
       <div id="menu">
         <img src="./Image/LOGO_WHITE.webp" alt="">
-
-
-        <!-- <input type="checkbox" id="okbox">
-        <label for="okbox" id="label">
-          <div id="burger">
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </label>
-        <ul id="ancre">
-          <li><a href="#simulateurCouleur">Simulateur de couleur</a></li>
-          <li><a href="#simulateurImage">Simulateur d'image</a></li>
-          <li><a href="#paragraphe">À propos</a></li>
-        </ul> -->
-
       </div>
       <!-- Menu hamburger -->
 
@@ -156,27 +135,13 @@
 
       <div class="colonne2">
 
-        <button id="btnGauche"><img src="./Image/drop-down-arrow.png" alt="" id="fleche_gauche" onclick="btnGauche()"></button>
+        <button id="btnGauche" onclick="btnGauche()"><img src="./Image/drop-down-arrow.png" alt="" id="fleche_gauche"></button>
 
         <label for="range_protanopie" id="correctionCouleur">Sévérité</label>
 
-        <button id="btnDroite"><img src="./Image/drop-down-arrow.png" alt="" id="fleche_droite" onclick="btnDroit()"></button>
+        <button id="btnDroite" onclick="btnDroit()"><img src="./Image/drop-down-arrow.png" alt="" id="fleche_droite"></button>
 
       </div>
-
-      <!-- <datalist id="marker">
-          <option value="" label="0.0"></option>
-          <option value="" label=""></option>
-          <option value="" label=""></option>
-          <option value="" label=""></option>
-          <option value="" label=""></option>
-          <option value="" label=""></option>
-          <option value="" label=""></option>
-          <option value="" label=""></option>
-          <option value="" label=""></option>
-          <option value="" label=""></option>
-          <option value="" label=""></option>
-        </datalist> -->
 
       <div class="couleur_colonne">
 
@@ -259,11 +224,11 @@
 
         <div class="colonne2">
 
-          <button id="btnGaucheImg"><img src="./Image/icons8-sort-down-50.png" alt="" id="fleche_gauche_Img" onclick="btnGaucheImg()"></button>
+          <button id="btnGaucheImg" onclick="btnGaucheImg()"><img src="./Image/icons8-sort-down-50.png" alt="" id="fleche_gauche_Img"></button>
   
           <label for="range_protanopie" id="correctionImg">Sévérité</label>
   
-          <button id="btnDroiteImg"><img src="./Image/icons8-sort-down-50.png" alt="" id="fleche_droite_Img" onclick="btnDroitImg()"></button>
+          <button id="btnDroiteImg" onclick="btnDroitImg()"><img src="./Image/icons8-sort-down-50.png" alt="" id="fleche_droite_Img"></button>
   
         </div>
       <!--  -->
@@ -271,10 +236,10 @@
 
         <p>0</p>
 
-        <div class="range-container">
+        <div class="range-containerImg">
           <input type="range" id="rangeImg" min="0" max="1.0" step="any" list="marker" oninput="updateColorsFromRange()"
             value="1.0">
-          <div class="range-value" id="testImg">1</div>
+          <div class="range-value" id="testImg"></div>
         </div>
 
         <p>1</p>
@@ -282,28 +247,14 @@
       </div>
       <!--  -->
 
-
-        <!-- <datalist id="range_img">
-          <option value="" label="0"></option>
-          <option value="" label="0.1"></option>
-          <option value="" label="0.2"></option>
-          <option value="" label="0.3"></option>
-          <option value="" label="0.4"></option>
-          <option value="" label="0.5"></option>
-          <option value="" label="0.6"></option>
-          <option value="" label="0.7"></option>
-          <option value="" label="0.8"></option>
-          <option value="" label="0.9"></option>
-          <option value="" label="1.0"></option>
-        </datalist> -->
       </div>
       <div id="img-views">
         <img src="https://picsum.photos/800/300" alt="" id="imageDaltonnisme">
       </div>
       <div class="btn">
-        <button id="btnProtanope">Protanope</button>
-        <button id="btnTritanope">Tritanope</button>
-        <button id="btnDeutéranope">Deutéranope</button>
+        <button id="btnProtanope" onclick="applyFilter('btnProtanope')">Protanope</button>
+        <button id="btnTritanope" onclick="applyFilter('btnTritanope')">Tritanope</button>
+        <button id="btnDeutéranope" onclick="applyFilter('btnDeutéranope')">Deutéranope</button>
       </div>
     </div>
     <div id="paragraphe">
@@ -335,6 +286,7 @@
     </footer>
     <script src="./JS/scripttest.js"></script>
     <script src="./JS/AjoutDePalette.js"></script>
+    <script src="./JS/FiltreImage.js"></script>
     <!-- <script src="./JS/SupprPalette.js"></script> -->
     <script src="./JS/Animation.js"></script>
   </body>
