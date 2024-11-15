@@ -257,14 +257,11 @@ input[type="text"]{
     height: 20vh;
 } */
 #couleurInput-1, #couleurInput-2, #couleurInput-3, #couleurInput-4{
-    width: 100%;
+    width: 99%;
     border: 1px solid;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-}
-input[type="text"] {
     text-align: center;
-    width: 10%;
     padding: 0;
 }
 /***** Barre de correction *****/

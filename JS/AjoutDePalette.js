@@ -1,5 +1,5 @@
 let paletteCounter = 4;
-if (paletteCounter < 6) {
+// if (paletteCounter < 6) {
     function addNewPalette() {
 
         paletteCounter++;
@@ -87,10 +87,10 @@ if (paletteCounter < 6) {
         // Met à jour les couleurs pour appliquer le changement immédiatement
         updateColors(newColorInput.value, paletteCounter);
     }
-}
-else {
-    console.log("Palette pleine !")
-}
+// }
+// else {
+//     console.log("Palette pleine !")
+// }
 function updateColors(hex, id) {
     if (!hex) return;
 
