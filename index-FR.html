@@ -61,10 +61,10 @@
 
       <!-- Langue -->
       <div class="langue">
-        <select name="langue" id="langue">
-          <option value="fr"> <a href="">FR</a> </option>
-          <option value="en"> <a href="">EN</a> </option>
-          <option value="de"> <a href="">DE</a> </option>
+        <select name="langue" id="langue" onchange="location = this.value;">
+          <option value="./index-FR.html"> FR </option>
+          <option value="./index-EN.html"> EN </option>
+          <option value="./index-DE.html"> DE </option>
           <!-- <option value="be"> <a href="">BE</a> </option>
           <option value="es"> <a href="">ES</a> </option>
           <option value="it"> <a href="">IT</a> </option> -->
@@ -136,7 +136,7 @@
         </div>
 
       </div>
-      <a href="./TEST" target="_blank">Page test</a>
+      <!-- <a href="./TEST" target="_blank">Page test</a> -->
 
       <!--  -->
       <div class="colonne">
@@ -146,7 +146,7 @@
         <div class="range-container">
           <input type="range" id="myRange" min="0" max="1.0" step="any" list="marker" oninput="updateColorsFromRange()"
             value="1.0">
-          <output id="test"></output>
+          <div class="range-value" id="test">1</div>
         </div>
 
         <p>1</p>
@@ -156,15 +156,16 @@
 
       <div class="colonne2">
 
-        <button id="btnGauche"><img src="./Image/drop-down-arrow.png" alt="" id="fleche_gauche"></button>
+        <button id="btnGauche"><img src="./Image/drop-down-arrow.png" alt="" id="fleche_gauche" onclick="btnGauche()"></button>
 
         <label for="range_protanopie" id="correctionCouleur">Sévérité</label>
 
-        <button id="btnDroite"><img src="./Image/drop-down-arrow.png" alt="" id="fleche_droite"></button>
+        <button id="btnDroite"><img src="./Image/drop-down-arrow.png" alt="" id="fleche_droite" onclick="btnDroit()"></button>
 
       </div>
+
       <!-- <datalist id="marker">
-          <option value="" label=""></option>
+          <option value="" label="0.0"></option>
           <option value="" label=""></option>
           <option value="" label=""></option>
           <option value="" label=""></option>
@@ -253,15 +254,36 @@
 
       </div>
       <!-- Drag an drop -->
-      <div class="btn">
-        <button id="btnProtanope">Protanope</button>
-        <button id="btnTritanope">Tritanope</button>
-        <button id="btnDeutéranope">Deutéranope</button>
-      </div>
+
       <div class="colonneImage">
-        <label for="range_protanopie">Force de correction</label>
-        <input type="range" id="rangeImg" min="0" max="1.0" step="any" list="range_img">
-        <datalist id="range_img">
+
+        <div class="colonne2">
+
+          <button id="btnGaucheImg"><img src="./Image/icons8-sort-down-50.png" alt="" id="fleche_gauche_Img" onclick="btnGaucheImg()"></button>
+  
+          <label for="range_protanopie" id="correctionImg">Sévérité</label>
+  
+          <button id="btnDroiteImg"><img src="./Image/icons8-sort-down-50.png" alt="" id="fleche_droite_Img" onclick="btnDroitImg()"></button>
+  
+        </div>
+      <!--  -->
+      <div class="colonne">
+
+        <p>0</p>
+
+        <div class="range-container">
+          <input type="range" id="rangeImg" min="0" max="1.0" step="any" list="marker" oninput="updateColorsFromRange()"
+            value="1.0">
+          <div class="range-value" id="testImg">1</div>
+        </div>
+
+        <p>1</p>
+
+      </div>
+      <!--  -->
+
+
+        <!-- <datalist id="range_img">
           <option value="" label="0"></option>
           <option value="" label="0.1"></option>
           <option value="" label="0.2"></option>
@@ -273,10 +295,15 @@
           <option value="" label="0.8"></option>
           <option value="" label="0.9"></option>
           <option value="" label="1.0"></option>
-        </datalist>
+        </datalist> -->
       </div>
       <div id="img-views">
         <img src="https://picsum.photos/800/300" alt="" id="imageDaltonnisme">
+      </div>
+      <div class="btn">
+        <button id="btnProtanope">Protanope</button>
+        <button id="btnTritanope">Tritanope</button>
+        <button id="btnDeutéranope">Deutéranope</button>
       </div>
     </div>
     <div id="paragraphe">
@@ -308,7 +335,7 @@
     </footer>
     <script src="./JS/scripttest.js"></script>
     <script src="./JS/AjoutDePalette.js"></script>
-    <script src="./JS/SupprPalette.js"></script>
+    <!-- <script src="./JS/SupprPalette.js"></script> -->
     <script src="./JS/Animation.js"></script>
   </body>
 

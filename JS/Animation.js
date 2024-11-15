@@ -31,11 +31,6 @@ function uploadImage() {
     imgView.querySelector("img").src = imgLink;
     imgView.querySelector("img").style.display = "block";
 
-
-    // imgView.textContent = "";
-    // imgView.style.backgroundImage = `url(${imgLink})`;
-    // imgView.style.border = 0;
-
 }
 
 dropArea.addEventListener("dragover", function (e) {
@@ -53,10 +48,6 @@ function uploadImages() {
 
     imgViews.querySelector("img").src = imgLink;
     imgViews.querySelector("img").style.display = "block";
-
-    // imgViews.style.backgroundImage = `url(${imgLink})`;
-    // imgViews.textContent = "";
-    // imgViews.style.border = 0;
 }
 
 dropArea.addEventListener("dragover", function (e) {
@@ -68,87 +59,170 @@ dropArea.addEventListener("drop", function (e) {
     inputFile.files = e.dataTransfer.files;
     uploadImages();
 })
-//////////////////////////////////////////////////////////////////
-
-// const dropArea = document.getElementById("drop-area");
-// const inputFile = document.getElementById("input-file");
-// const imgView = document.getElementById("img-view");
-// const imgViews = document.getElementById("img-views");
-
-// inputFile.addEventListener("change", uploadImage);
-
-// function uploadImage() {
-//     if (inputFile.files.length > 0) {
-//         let imgLink = URL.createObjectURL(inputFile.files[0]);
-//         imgView.style.backgroundImage = url`(${imgLink})`;
-//         imgView.textContent = ""; // Supprime le texte par défaut
-//         imgView.style.border = "none"; // Enlève la bordure
-//     }
-// }
-
-// dropArea.addEventListener("dragover", function(e) {
-//     e.preventDefault(); // Empêche le comportement par défaut
-// });
-
-// dropArea.addEventListener("drop", function(e) {
-//     e.preventDefault(); // Empêche le comportement par défaut
-//     inputFile.files = e.dataTransfer.files; // Récupère les fichiers
-//     uploadImage(); // Affiche l'image
-// });
-
 /////////////////////////// Drag and Drop ///////////////////////////
-
-/////////////////////////// Bouton Fix    ///////////////////////////
-
-let dialogue = document.querySelector("#boite-dialogue");
-let dial_msg = dialogue.querySelector("#message");
-let dial_btn = dialogue.querySelector("#fix");
-
-// dial_btn.onclick = fermerboiboite;
-dial_btn.onclick =
-    function laboiboite(message) {
-        // Affichage de la boite de dialogue
-        dialogue.classList.add("visible");
-
-        // Affichage d'un message dans la boite de dialogue
-        dial_msg.textContent = message;
-    }
-
-// function fermerboiboite(){
-//     dialogue.classList.remove("visible");
-// }
-
-laboiboite("Coucou");
-
-
-document.querySelector("#letrucla").onclick = function () { laboiboite("Ahhhh ouaiiiiiii mec !"); }
-
-/////////////////////////// Bouton Fix    ///////////////////////////
 /////////////////////////// Range Value  ///////////////////////////
 
-    // Récupérer les éléments
-    const range = document.getElementById('myRange');
-    const rangeValue = document.getElementById('test');
-    const rangeContainer = document.querySelector('.range-container');
+// Récupérer les éléments
+const range = document.getElementById('myRange');
+const rangeValue = document.getElementById('test');
+const rangeContainer = document.querySelector('.range-container');
 
-    // Mettre à jour la valeur affichée et la position
-    function updateRangeValue() {
-        const value = range.value;
-        const rangeWidth = range.offsetWidth;
-        const valuePosition = (value - range.min) / (range.max - range.min) * rangeWidth;
+// Mettre à jour la valeur affichée et la position
+function RangeValue() {
+    let value = range.value;
+    const rangeWidth = range.offsetWidth;
+    const valuePosition = (value - range.min) / (range.max - range.min) * rangeWidth;
 
-        // Mettre à jour la valeur affichée
-        rangeValue.textContent = value;
+    value = Math.round(value * 10) / 10;  // Multiplie par 10, arrondit, puis divise par 10
 
-        // Positionner la valeur au-dessus du curseur
-        rangeValue.style.left = `calc(${valuePosition}px + 1rem)`; // +1rem pour éviter qu'il ne touche la barre
+    // Mettre à jour la valeur affichée
+    rangeValue.textContent = value;
+
+    // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////// Pour obtenir la taille en pixel à partir de la taille en pourcentage ///////////////////////////
+    // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // Supposons que vous avez un pourcentage et une largeur d'élément parent
+    let pourcentage = 99;  // 50% par exemple
+    let parentElement = document.querySelector('.range-container');  // Parent de l'élément
+
+    // Obtenir la largeur de l'élément parent
+    let parentWidth = parentElement.offsetWidth;
+
+    // Calculer la largeur en pixels
+    let widthInPixels = (pourcentage / 100) * parentWidth;
+
+    // console.log(widthInPixels);  
+    // Affiche la largeur en pixels
+
+    // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // //////////////////////////////// Et le Réutiliser dans la condition "if" //////////////////////////////////////////////
+    // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    // Positionner la valeur au-dessus du curseur
+    if(valuePosition == widthInPixels){
+        rangeValue.style.left = `calc(${valuePosition}px - 25)`;
+        // console.log(valuePosition);
     }
+    else if (valuePosition == 0) {
+        rangeValue.style.left = `calc(${valuePosition}px + 1%)`;
+        // console.log(valuePosition);
+    }
+    else {
+        // rangeValue.style.left = valuePosition;
+        rangeValue.style.left = `calc(${valuePosition}px)`;
+        // console.log(valuePosition);
+    }
+    // +1rem pour éviter qu'il ne touche la barre
+}
 
-    // Appel initial pour positionner la valeur
-    updateRangeValue();
+// Appel initial pour positionner la valeur
+RangeValue();
 
-    // Mettre à jour la valeur lorsque le curseur se déplace
-    range.addEventListener('input', updateRangeValue);
+// Mettre à jour la valeur lorsque le curseur se déplace
+range.addEventListener('input', RangeValue);
 
 
 /////////////////////////// Fin Range  ///////////////////////////
+/////////////////////////// Bouton + 0.1  ///////////////////////////
+
+function btnDroit() {
+    let intensity = parseFloat(document.getElementById("myRange").value);
+
+    intensity += 0.1;
+    if (intensity < 0.05) { intensity = 0.0; }
+    else if (intensity < 0.15 && intensity >= 0.05) { intensity = 0.1; }
+    else if (intensity < 0.25 && intensity >= 0.15) { intensity = 0.2; }
+    else if (intensity < 0.35 && intensity >= 0.25) { intensity = 0.3; }
+    else if (intensity < 0.45 && intensity >= 0.35) { intensity = 0.4; }
+    else if (intensity < 0.55 && intensity >= 0.45) { intensity = 0.5; }
+    else if (intensity < 0.65 && intensity >= 0.55) { intensity = 0.6; }
+    else if (intensity < 0.75 && intensity >= 0.65) { intensity = 0.7; }
+    else if (intensity < 0.85 && intensity >= 0.75) { intensity = 0.8; }
+    else if (intensity < 0.95 && intensity >= 0.85) { intensity = 0.9; }
+    else { intensity = 1.0; }
+
+    // Mettre à jour la valeur de l'élément input avec la nouvelle intensité
+    document.getElementById("myRange").value = intensity;
+
+    // Optionnel : vous pouvez également mettre à jour un affichage du "niveau" d'intensité si nécessaire
+    console.log("Nouvelle intensité:", intensity);
+}
+/////////////////////////// Bouton - 0.1  ///////////////////////////
+
+function btnGauche() {
+    let intensity = parseFloat(document.getElementById("myRange").value);
+
+    intensity -= 0.1;
+    if (intensity < 0.05) { intensity = 0.0; }
+    else if (intensity < 0.15 && intensity >= 0.05) { intensity = 0.1; }
+    else if (intensity < 0.25 && intensity >= 0.15) { intensity = 0.2; }
+    else if (intensity < 0.35 && intensity >= 0.25) { intensity = 0.3; }
+    else if (intensity < 0.45 && intensity >= 0.35) { intensity = 0.4; }
+    else if (intensity < 0.55 && intensity >= 0.45) { intensity = 0.5; }
+    else if (intensity < 0.65 && intensity >= 0.55) { intensity = 0.6; }
+    else if (intensity < 0.75 && intensity >= 0.65) { intensity = 0.7; }
+    else if (intensity < 0.85 && intensity >= 0.75) { intensity = 0.8; }
+    else if (intensity < 0.95 && intensity >= 0.85) { intensity = 0.9; }
+    else { intensity = 1.0; }
+
+    // Mettre à jour la valeur de l'élément input avec la nouvelle intensité
+    document.getElementById("myRange").value = intensity;
+
+    // Optionnel : vous pouvez également mettre à jour un affichage du "niveau" d'intensité si nécessaire
+    console.log("Nouvelle intensité:", intensity);
+}
+
+/////////////////////////// Fin Fonction  ///////////////////////////
+
+/////////////////////////// Bouton Range Image + 0.1  ///////////////////////////
+
+function btnDroitImg() {
+    let intensity = parseFloat(document.getElementById("rangeImg").value);
+
+    intensity += 0.1;
+    if (intensity < 0.05) { intensity = 0.0; }
+    else if (intensity < 0.15 && intensity >= 0.05) { intensity = 0.1; }
+    else if (intensity < 0.25 && intensity >= 0.15) { intensity = 0.2; }
+    else if (intensity < 0.35 && intensity >= 0.25) { intensity = 0.3; }
+    else if (intensity < 0.45 && intensity >= 0.35) { intensity = 0.4; }
+    else if (intensity < 0.55 && intensity >= 0.45) { intensity = 0.5; }
+    else if (intensity < 0.65 && intensity >= 0.55) { intensity = 0.6; }
+    else if (intensity < 0.75 && intensity >= 0.65) { intensity = 0.7; }
+    else if (intensity < 0.85 && intensity >= 0.75) { intensity = 0.8; }
+    else if (intensity < 0.95 && intensity >= 0.85) { intensity = 0.9; }
+    else { intensity = 1.0; }
+
+    // Mettre à jour la valeur de l'élément input avec la nouvelle intensité
+    document.getElementById("rangeImg").value = intensity;
+
+    // Optionnel : vous pouvez également mettre à jour un affichage du "niveau" d'intensité si nécessaire
+    console.log("Nouvelle intensité image:", intensity);
+}
+/////////////////////////// Bouton Range Image - 0.1  ///////////////////////////
+
+function btnGaucheImg() {
+    let intensity = parseFloat(document.getElementById("rangeImg").value);
+
+    intensity -= 0.1;
+    if (intensity < 0.05) { intensity = 0.0; }
+    else if (intensity < 0.15 && intensity >= 0.05) { intensity = 0.1; }
+    else if (intensity < 0.25 && intensity >= 0.15) { intensity = 0.2; }
+    else if (intensity < 0.35 && intensity >= 0.25) { intensity = 0.3; }
+    else if (intensity < 0.45 && intensity >= 0.35) { intensity = 0.4; }
+    else if (intensity < 0.55 && intensity >= 0.45) { intensity = 0.5; }
+    else if (intensity < 0.65 && intensity >= 0.55) { intensity = 0.6; }
+    else if (intensity < 0.75 && intensity >= 0.65) { intensity = 0.7; }
+    else if (intensity < 0.85 && intensity >= 0.75) { intensity = 0.8; }
+    else if (intensity < 0.95 && intensity >= 0.85) { intensity = 0.9; }
+    else { intensity = 1.0; }
+
+    // Mettre à jour la valeur de l'élément input avec la nouvelle intensité
+    document.getElementById("rangeImg").value = intensity;
+
+    // Optionnel : vous pouvez également mettre à jour un affichage du "niveau" d'intensité si nécessaire
+    console.log("Nouvelle intensité image:", intensity);
+}
+
+/////////////////////////// Fin Fonction  Range Image  ///////////////////////////

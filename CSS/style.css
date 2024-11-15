@@ -268,7 +268,7 @@ input[type="text"] {
     padding: 0;
 }
 /***** Barre de correction *****/
-datalist {
+/* datalist {
     display: flex;
     justify-content: space-between;
     writing-mode: horizontal-tb;
@@ -278,7 +278,7 @@ option {
     display: flex;
     padding: 0;
     width: 25px;
-}
+} */
 /* #myRange::-webkit-slider-runnable-track{
     background: green;
 } */
@@ -292,6 +292,7 @@ option {
     background-color: black;
     cursor: grab;
     margin: 0;   
+    height: 7px;
     width: 100%;
 }
 
@@ -301,50 +302,40 @@ option {
 .colonne{
     display: flex;
     justify-content: center;
-    gap: 1%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
-    /* margin-bottom: 20px; */
-    width: 80%;
+    width: 100%;
 }
 .colonne p{
     display: inline-block;
     font-weight: bold;
     font-size: 24px;
 }
-/* .colonne #test{
-    font-size: 24px;
-    color: rgb(36, 36, 36);
-    background-color: fuchsia;
-    width: 10px;
-    position: absolute;
-    top: -30px;
-    right: 14%;
-    left: 14%;
-    transform: translate(-50%, -50%);
-} */
-
-
-/* ********************************* */
-.range-container {
+.colonne .range-container {
     position: relative;
-    width: 100%;
+    width: 80%;
     align-content: center;
 }
 
-.range-container #test {
+.colonne .range-container #test {
     position: absolute;
-    top: -20px; /* Ajuste la position au-dessus du curseur */
-    left: -50%;
+    top: 0px; 
+    /* Ajuste la position au-dessus du curseur */
+    left: 1%;
+    left: 5px;
+    left: 99%;
+    left: 725px;
     transform: translateX(-50%);
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     color: #333;
-    background-color: fuchsia;
-    pointer-events: none; /* Pour éviter l'interaction avec la valeur */
+    pointer-events: none; 
+    /* Evite l'interaction avec la valeur */
+    z-index: 10; 
+    /* Assure que le texte reste au-dessus du slider */
+   
 }
-/* ********************************* */
 
 
 .colonne2{
@@ -354,6 +345,13 @@ option {
 }
 .colonne2 button{
     border: none;
+}
+.colonne2 button:active{
+    /* border: 1px solid; */
+    /* box-shadow:
+    inset -2px -2px 1px rgba(255, 255, 255, 0.6),
+    inset 2px 2px 1px rgba(0, 0, 0, 0.6); */
+    background-color: #ff0000;
 }
 .colonne2 img{
     width: 50px;
@@ -534,12 +532,13 @@ input[type="file"]{
 
 .btn{
     margin-top: 10px;
-    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
     height: 50px;
     padding: 0;
     display: flex;
-    justify-content: center;
-    gap: 6%;
+    justify-content: space-around;
 }
 /* #simulateurimage .btn button{
     width: 30%;
@@ -547,7 +546,7 @@ input[type="file"]{
     gap: 5%;
 } */
 #btnProtanope, #btnTritanope, #btnDeutéranope{
-    width: 16%;
+    width: 25%;
     height: 5vh;
     font-size: 24px;
     border: none;
@@ -558,21 +557,88 @@ input[type="file"]{
     inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
-/* #btnTritanope:active{
-
-}
-#btnDeutéranope:active{
-
-} */
-.colonneImage datalist option{
-    color: white;
-}
 .colonneImage{
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
+    margin-top: 20px;
     width: 60%;
 }
+.colonneImage .colonne{
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    width: 100%;
+}
+.colonneImage .colonne p{
+    display: inline-block;
+    font-weight: bold;
+    font-size: 24px;
+}
+.colonneImage .colonne .range-container {
+    position: relative;
+    width: 80%;
+    align-content: center;
+}
+
+.colonneImage .colonne .range-container #testImg {
+    position: absolute;
+    top: 0px; 
+    /* Ajuste la position au-dessus du curseur */
+    left: 1%;
+    left: 5px;
+    left: 99%;
+    left: 725px;
+    transform: translateX(-50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    pointer-events: none; 
+    /* Evite l'interaction avec la valeur */
+    z-index: 10; 
+    /* Assure que le texte reste au-dessus du slider */
+   
+}
+
+.colonne2{
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+}
+.colonne2 button{
+    border: none;
+    background-color: transparent;
+}
+.colonne2 button:active{
+    /* border: 1px solid; */
+    /* box-shadow:
+    inset -2px -2px 1px rgba(255, 255, 255, 0.6),
+    inset 2px 2px 1px rgba(0, 0, 0, 0.6); */
+    background-color: #ff0000;
+}
+.colonne2 button img{
+    width: 40px;
+}
+.colonne2 #fleche_gauche_Img{
+    transform: rotate(90deg);
+}
+.colonne2 #fleche_droite_Img{
+    transform: rotate(-90deg);
+}
+#correctionImg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+
+.colonneImage datalist option{
+    color: white;
+}
+
 #imageDaltonnisme{
     display: flex;
     justify-content: center;
@@ -586,7 +652,7 @@ input[type="file"]{
 #paragraphe{
     /* display: inline-block;
     animation: ; */
-    height: 100vh;
+    min-height: 100vh;
     background-color: rgb(255, 220, 130);
     padding: 1%;
     margin: 0;
