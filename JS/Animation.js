@@ -83,7 +83,7 @@ function RangeValue() {
 
     // Positionner la valeur au-dessus du curseur
     if(valuePosition == widthInPixels){
-        rangeValue.style.left = `calc(${valuePosition}px - 25)`;
+        rangeValue.style.left = `calc(${valuePosition}px - 1%)`;
         // console.log(valuePosition);
     }
     else if (valuePosition == 0) {
