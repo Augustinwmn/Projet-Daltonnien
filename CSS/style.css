@@ -10,6 +10,7 @@
 
 html{
     width: 100%;
+    scroll-behavior: smooth;
 }
 body{
     width: 100%;
@@ -373,22 +374,7 @@ option {
 }
 
 /* **************************** */
-/* .div_palette{
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    padding: 20px;
-    padding-bottom: 0;
-}
-.div_palette2{
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    padding: 20px;
-    padding-top: 10px;
-    padding-bottom: 0;
-} */
+
 .couleur_colonne{
     display: flex;
     justify-content:space-around;
