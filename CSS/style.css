@@ -722,7 +722,7 @@ footer{
     padding: 10px;
     height: 10vh;
 }
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 480px) {
     nav, #nav, .nav{
         padding: 5px;
         padding-bottom: 0;
