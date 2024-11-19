@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    /* .colonne {
+    display: flex;
+    justify-content: center;
+    gap: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 80%;
+}
+
+.colonne p {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.colonne .range-container {
+    position: relative;
+    width: 100%;
+    align-content: center;
+}
+
+.colonne .range-container #test {
+    position: absolute;
+    top: -30px; Ajuste la position au-dessus du curseur
+    left: 50%;
+    transform: translate(-50%, 50%); Centre horizontalement
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff; Texte blanc pour meilleure lisibilité
+    background-color: #FF00FF; Couleur de fond fuchsia
+    padding: 5px 10px; Un peu d'espace autour du texte
+    border-radius: 8px; Bords arrondis
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); Ombre légère
+    pointer-events: none; Evite l'interaction avec la valeur
+    z-index: 10; Assure que le texte reste au-dessus du slider
+}
+
+.colonne .range-container input[type="range"] {
+    width: 100%;
+    background: #ddd;
+    height: 5px;
+    border-radius: 5px;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.colonne .range-container input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #FF00FF;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.colonne .range-container input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background-color: #FF00FF;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+} */
+#myRange{
+    accent-color: rgb(0, 0, 0);
+}
+#rangeImg{
+    accent-color: white;
+}
+#myRange, #rangeImg{
+    background-color: black;
+    cursor: grab;
+    margin: 0;   
+    height: 7px;
+    width: 100%;
+}
+
+#myRange:active, #rangeImg:active{
+    cursor: grabbing;
+}
+.colonne{
+    display: flex;
+    justify-content: center;
+    gap: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 80%;
+}
+.colonne p{
+    display: inline-block;
+    font-weight: bold;
+    font-size: 24px;
+}
+.colonne .range-container {
+    position: relative;
+    width: 100%;
+    align-content: center;
+}
+
+.colonne .range-container #test {
+    position: absolute;
+    top: 0px; 
+    /* Ajuste la position au-dessus du curseur */
+    left: 1%;
+    left: 5px;
+    left: 99%;
+    left: 725px;
+    transform: translateX(-50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: #333; 
+    /* background-color: fuchsia; */
+    pointer-events: none; 
+    /* Evite l'interaction avec la valeur */
+    z-index: 10; 
+    /* Assure que le texte reste au-dessus du slider */
+   
+}
+</style>
+
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="colonne">
+
+        <p>0</p>
+
+        <div class="range-container">
+          <input type="range" id="myRange" min="0" max="1.0" step="any" list="marker" oninput="updateColorsFromRange()"
+            value="1.0">
+          <div class="range-value" id="test"></div>
+        </div>
+
+        <p>1</p>
+
+      </div>
+<script>
+    // Récupérer les éléments
+    const range = document.getElementById('myRange');
+    const rangeValue = document.getElementById('test');
+    const rangeContainer = document.querySelector('.range-container');
+
+    // Mettre à jour la valeur affichée et la position
+    function RangeValue() {
+        const value = range.value;
+        const rangeWidth = range.offsetWidth;
+        const valuePosition = (value - range.min) / (range.max - range.min) * rangeWidth;
+
+        // Mettre à jour la valeur affichée
+        rangeValue.textContent = value;
+
+        // Positionner la valeur au-dessus du curseur
+        
+        if(valuePosition == 639){
+            rangeValue.style.left = `calc(${valuePosition}px - 1%)`;
+            console.log(valuePosition);
+        }
+        else if(valuePosition == 0){
+            rangeValue.style.left = `calc(${valuePosition}px + 1%)`;
+            console.log(valuePosition);
+        }
+        else{
+            rangeValue.style.left = `calc(${valuePosition}px)`; 
+            console.log(valuePosition);
+        }
+        // +1rem pour éviter qu'il ne touche la barre
+
+    }
+
+    // Appel initial pour positionner la valeur
+    RangeValue();
+
+    // Mettre à jour la valeur lorsque le curseur se déplace
+    range.addEventListener('input', RangeValue);
+</script>
+
+</body>
+</html>

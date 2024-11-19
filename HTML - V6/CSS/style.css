@@ -1,0 +1,792 @@
+/********* FONT **********/
+@font-face{
+    font-family: "Regular 400";
+    src: 
+    local("Regular 400"),
+    url("../Font/fa-regular-400.ttf") format(ttf),
+    url('../Font/fa-regular-400.woff2') format(woff);
+}
+
+@font-face {
+    font-family: "Geo";
+    src: local("Geo"),
+    url("../Font/Geo/Geo-Regular.ttf");
+}
+@font-face {
+    font-family: "iceland";
+    src:local("iceland"),
+    url("../Font/Iceland/Iceland-Regular.ttf");
+}
+/****** FONT ************/
+
+
+html{
+    width: 100%;
+    scroll-behavior: smooth;
+}
+body{
+    width: 100%;
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: large;
+}
+nav{
+    background-color: rgb(36, 36, 36);
+    color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 10px;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+}
+/* menu burger */
+#nav #menu{
+/*     
+    width: 100px;
+    height: 100px; */
+    margin-bottom: 10px;
+    padding: 0;
+    /* position: relative; */
+}
+#menu img{
+    width: 100%;
+    height: 100%;
+}
+/* ************************************* */
+/* ******************Langue******************* */
+#langue{
+    display: block;
+}
+.langue{
+    width: 94px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+select{
+    background-color: transparent;
+    border: 0;
+    color: white;
+}
+option{
+    color: black;
+}
+#langue option:checked{
+    color: white;
+    background-color: rgb(20, 20, 20);
+}
+#langue option a:hover{
+    color: rgb(68, 199, 28);
+    background-color: rgb(199, 30, 185);
+}
+/* ****************** Fin Langue ******************* */
+
+nav .centre{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* padding-bottom: 2%; */
+}
+nav .centre h1{
+    margin: 0;
+    text-align: center;
+    /* font-family: "Geo"; */
+    font-family: "iceland";
+    font-size: 100px;
+}
+nav .centre .link{
+    display: flex;
+    justify-content: space-between;
+    flex: end;
+    /* gap: 5%; */
+    width: 100%;
+}
+nav .centre .link a{
+    color: white;
+    padding-top: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 5px;
+    /* border: 1px solid white; */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    text-align: center;
+}
+nav .centre .link a:hover{
+    /* transform: scale(1.1); */
+    color: black;
+    background-color: white;
+
+}
+
+/* .simuCouleur{
+    margin-left: 3%;
+} */
+/* ****************************** Bouton i ****************************** */
+
+#boite-dialogue{
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    border-radius: 250px;
+    background-color: rgb(0, 166, 237);
+
+    /* Comportement modale */
+    position: fixed;
+    bottom: 1vh;
+    right: 0vw;
+    transform: translate(-50%, -50%);
+
+    
+    /* display: none; */
+    /* opacity: 0; */
+    margin-top: 20px;
+}
+
+#boite-dialogue.visible{
+    /* display: block; */
+    /* opacity: 1; */
+    margin-top: 0;
+}
+#message{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#message p{
+    font-size: x-large;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    color: rgb(255, 255, 255);
+    /* content: "\002139"; */
+}
+#message i{
+    display: flex;
+    justify-content: center;
+}
+nav a{
+    text-decoration: none;
+    color: black;
+}
+
+/* #fix{
+    margin: 1%;
+    width: 50%;
+    background-color: yellow;
+    box-shadow: 5px 5px 2px yellowgreen;
+
+ } */
+
+/******************************* Bouton i *******************************/
+#simulateurCouleur{
+    min-height: 100vh;
+    margin: 0;
+}
+h1, h2{
+    text-align: center;
+}
+#simulateurCouleur h2{
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+p{
+    padding-left: 1%;
+    padding-right: 1%;
+}
+#add{
+    display: flex;
+    flex-direction: column;
+    width: 5%;
+    height: 10%;
+    margin-right: 3%;
+    margin-top: 8%;
+    float: right;
+    /* border: none; */
+}
+
+#add button{
+    border: none;
+    background-color: transparent;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+#add button img{
+    width: 100%;
+}
+#add a{
+    text-decoration: none;
+    color: black;
+}
+.simuCouleur #add{
+    display: flex;
+    justify-content: center;
+}
+strong{
+    font-size: large;
+}
+
+
+.simuCouleur{
+    display: flex;
+    justify-content: space-around;
+}
+.couleurP{
+ display: flex;
+ flex-direction: column;
+ gap: 5px;
+ width: 139px;
+ height: 20vh;
+ 
+}
+/* input[type="color"]:hover{
+    Ouvrir la palette 
+} */
+input[type="text"]{
+    margin: 0;
+    width: 100%;
+}
+#palette-1, #palette-2, #palette-3, #palette-4{
+    border: 1px solid;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin: 0;
+    width: 100%;
+    height: 117.5px;
+    padding: 0;
+
+}
+
+.daltonisme{
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid ; */
+    border-color: rgb(0, 0, 0);
+}
+
+.daltonisme:hover{
+    transform: scale(1.1);
+}
+
+
+
+#palette-1::-webkit-color-swatch, #palette-2::-webkit-color-swatch, #palette-3::-webkit-color-swatch, #palette-4::-webkit-color-swatch,
+#palette-5::-webkit-color-swatch, #palette-6::-webkit-color-swatch{
+  border-color: transparent;
+  
+}
+#palette-1{
+    background-color: #FF00FF; 
+}
+#palette-2{
+    background-color: #ff0000; 
+}
+#palette-3{
+    background-color: #00ff00;
+}
+#palette-4{
+    background-color: blue;
+}
+/* .div_palette2, .div_palette{
+    display: flex;
+    justify-content: space-around;
+    width: 85vw;
+    margin: 1%;
+}
+.div_palette{
+    height: 20vh;
+} */
+#couleurInput-1, #couleurInput-2, #couleurInput-3, #couleurInput-4{
+    width: 99%;
+    border: 1px solid;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    text-align: center;
+    padding: 0;
+}
+/***** Barre de correction *****/
+/* datalist {
+    display: flex;
+    justify-content: space-between;
+    writing-mode: horizontal-tb;
+    width: 100%;
+}
+option {
+    display: flex;
+    padding: 0;
+    width: 25px;
+} */
+/* #myRange::-webkit-slider-runnable-track{
+    background: green;
+} */
+#myRange{
+    accent-color: rgb(0, 0, 0);
+}
+#rangeImg{
+    accent-color: white;
+}
+#myRange, #rangeImg{
+    background-color: black;
+    /* cursor:ew-resize; */
+    cursor: grab;
+    margin: 0;   
+    height: 7px;
+    width: 100%;
+}
+
+#myRange:active, #rangeImg:active{
+    cursor: grabbing;
+}
+.colonne{
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 100%;
+}
+.colonne p{
+    display: inline-block;
+    font-weight: bold;
+    font-size: 24px;
+}
+.colonne .range-container {
+    position: relative;
+    width: 80%;
+    align-content: center;
+}
+
+.colonne .range-container #test {
+    position: absolute;
+    top: 0px; 
+    /* Ajuste la position au-dessus du curseur */
+    /* left: 1%;
+    left: 5px;
+    left: 99%;
+    left: 725px; */
+    transform: translateX(-50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    pointer-events: none; 
+    /* Evite l'interaction avec la valeur */
+    z-index: 10; 
+    /* Assure que le texte reste au-dessus du slider */
+   
+}
+
+
+.colonne2{
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+}
+.colonne2 button{
+    border: none;
+}
+.colonne2 button:active{
+    /* border: 1px solid; */
+    /* box-shadow:
+    inset -2px -2px 1px rgba(255, 255, 255, 0.6),
+    inset 2px 2px 1px rgba(0, 0, 0, 0.6); */
+    background-color: #ff0000;
+}
+.colonne2 img{
+    width: 50px;
+}
+.colonne2 #fleche_gauche{
+    transform: rotate(90deg);
+}
+.colonne2 #fleche_droite{
+    transform: rotate(-90deg);
+}
+#correctionCouleur{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+/* **************************** */
+/* .div_palette{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    padding-bottom: 0;
+}
+.div_palette2{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 0;
+} */
+.couleur_colonne{
+    display: flex;
+    justify-content:space-around;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    height: auto;
+    
+}
+.Deuteranope .h4, .Tritanope .h4, .Protanope .h4{
+    display: flex;
+    justify-content: center;
+}
+/* .Deuteranope h4, .Tritanope h4, .Protanope h4{
+    text-align: center;
+    padding: 20px;
+    
+} */
+
+/* .Bandeau_Protanopie ,.Bandeau_Tritanopie ,.Bandeau_Deuteranopie{
+    display: flex;
+    justify-content: center;
+} */
+
+.Protanope, .Tritanope, .Deuteranope{
+    width: 25%;
+    border: 1px solid ;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+/* .Protanope:last-child, .Tritanope:last-child, .Deuteranope:last-child{
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+} */
+
+.couleur{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 300px;
+}
+
+
+
+.colonne label{
+    /* margin-bottom: 20px; */
+    display: flex;
+    justify-content: center;
+}
+
+
+/* *********************************************************************************** */
+/* ------------------------------------- Couleur ------------------------------------- */
+/* *********************************************************************************** */
+
+#protanope-1, #tritanope-1, #deuteranope-1, /* -- Palette 1 -- */
+#protanope-2, #tritanope-2, #deuteranope-2, /* -- Palette 2 -- */
+#protanope-3, #tritanope-3, #deuteranope-3, /* -- Palette 3 -- */
+#protanope-4, #tritanope-4, #deuteranope-4{ /* -- Palette 4 -- */
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid ; */
+    border-color: rgb(0, 0, 0);
+}
+
+#protanope-1:hover, #tritanope-1:hover, #deuteranope-1:hover,   /* -- Palette 1 -- */
+#protanope-2:hover, #tritanope-2:hover, #deuteranope-2:hover,   /* -- Palette 2 -- */
+#protanope-3:hover, #tritanope-3:hover, #deuteranope-3:hover,   /* -- Palette 3 -- */
+#protanope-4:hover, #tritanope-4:hover, #deuteranope-4:hover{   /* -- Palette 4 -- */
+    transform: scale(1.1);
+    /* Print Le Code Hexadécimal */
+}
+
+/* *********************************************************************************** */
+/* ------------------------------------- Simulateur image ------------------------------------- */
+/* *********************************************************************************** */
+
+#simulateurImage{
+    min-height: 100vh;
+    margin-top: 1%;
+    /* padding-top: 1%; */
+    padding-bottom: 2%;
+    background-color: black;
+    color: white;
+}
+#simulateurImage h2{
+    margin: 0;
+    padding-top: 2vh;
+    margin-bottom: 2vh;
+}
+#imgOrigine{
+    display: flex;
+    justify-content: center;
+    align-items: center;              /*Je comprend rien poto*/
+    margin: auto;
+    width: 100%;
+    height: auto;
+    background-color: darkgray;
+}
+
+/* ***************** Drag and Drop ***************** */
+.hero{
+    width: 100%; 
+    height: auto;
+    margin: auto;
+    /* background: linear-gradient(#e7baff, #c2b6d9); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#drop-area{
+    width: 60%;
+    height: auto;
+    /* padding: 30px; */
+    /* background: #fff; */
+    align-items: center;
+    border-radius: 20px;
+}
+#img-view, #img-views{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    /* border: 2px dashed #bbb5ff; */
+    /* background: #f7f8ff; */
+    background-position: center;
+    background-size: cover;
+}
+input[type="file"]{
+    position: fixed;
+    display: none;
+}
+#img-view img{
+    height: 100%;
+    height: auto;
+    border-radius: 20px;
+    padding: auto;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    /* margin-top: 25px; */
+}
+#img-view p{
+    display: block;
+    font-size: 12px;
+    color: #777;
+}
+#img-view span{
+    display: block;
+    font-size: 12px;
+    color: #777;
+}
+/* ***************** Drag and Drop ***************** */
+
+
+.btn{
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: 50px;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+/* #simulateurimage .btn button{
+    width: 30%;
+    height: 10vh;
+    gap: 5%;
+} */
+#btnProtanope, #btnTritanope, #btnDeutéranope{
+    width: 25%;
+    height: 5vh;
+    font-size: 24px;
+    border: none;
+    border-radius: 5px;
+}
+#btnProtanope:active, #btnTritanope:active, #btnDeutéranope:active{
+    box-shadow:
+    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+    inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+.colonneImage{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 60%;
+}
+.colonneImage .colonne{
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    width: 100%;
+}
+.colonneImage .colonne p{
+    display: inline-block;
+    font-weight: bold;
+    font-size: 24px;
+}
+.colonneImage .colonne .range-containerImg {
+    position: relative;
+    width: 80%;
+    align-content: center;
+}
+.colonneImage .colonne .range-containerImg #testImg {
+    position: absolute;
+    top: 0px; 
+    /* Ajuste la position au-dessus du curseur */
+    /* left: 1%;
+    left: 5px;
+    left: 99%;
+    left: 725px; */
+    transform: translateX(-50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    pointer-events: none; 
+    /* Evite l'interaction avec la valeur */
+    z-index: 10; 
+    /* Assure que le texte reste au-dessus du slider */
+   
+}
+
+.colonne2{
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+}
+.colonne2 button{
+    border: none;
+    background-color: transparent;
+}
+.colonne2 button:active{
+    /* border: 1px solid; */
+    /* box-shadow:
+    inset -2px -2px 1px rgba(255, 255, 255, 0.6),
+    inset 2px 2px 1px rgba(0, 0, 0, 0.6); */
+    background-color: #ff0000;
+}
+.colonne2 button img{
+    width: 40px;
+}
+.colonne2 #fleche_gauche_Img{
+    transform: rotate(90deg);
+}
+.colonne2 #fleche_droite_Img{
+    transform: rotate(-90deg);
+}
+#correctionImg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+
+.colonneImage datalist option{
+    color: white;
+}
+
+#imageDaltonnisme{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 80%;
+    height: auto;
+    background-color: darkgray;
+}
+
+
+#paragraphe{
+    /* display: inline-block;
+    animation: ; */
+    min-height: 100vh;
+    background-color: rgb(255, 220, 130);
+    padding: 1%;
+    margin: 0;
+}
+/* *************** footer **************** */
+
+footer{
+    background-color: rgb(36, 36, 36);
+    padding: 10px;
+    height: 10vh;
+}
+@media screen and (max-width: 430px) {
+    nav, #nav, .nav{
+        padding: 5px;
+        padding-bottom: 0;
+    }
+    nav .centre{
+        width: 65%;
+    }
+    nav .centre h1{
+        font-size: 40px;
+        align-content: center;
+    }
+    /* #menu{
+        width: 50px;
+        margin-bottom: 5px;
+    } */
+    nav #menu, 
+    nav .langue{
+        width: 50px;
+        margin-bottom: 5px;
+
+    }
+    /* .langue{
+        width: 50px;
+
+    } */
+    a{
+        font-size: 9px;
+    }
+    nav .langue #langue {
+        font-size: 10px;
+        /* width: 30px; */
+    }
+    .simuCouleur{
+        justify-content: space-between;
+        margin-left: 5px;
+        width: 90%;
+        height: 15vh;
+    }
+    #add{
+        margin-right: 5px;
+        width: 25px;
+    }
+    #add button{
+        padding: 0;
+    }
+    #add button img, #add button{
+        height: 25px;
+        width: 25px;
+    }
+    h4{
+        font-size: 10px;
+    }
+    .couleurP{
+        width: 60px;
+        height: 80px;
+    }
+    #palette-1, #palette-2, #palette-3, #palette-4, #palette-5, #palette-6{
+        height: 80%;
+    }
+    #couleurInput-1, #couleurInput-2, #couleurInput-3, #couleurInput-4{
+        width: 58px;
+    }
+    .simuCouleur .couleurP .delete-btn{
+        padding: auto;
+        text-align: center;
+        font-size: 9px;
+    }
+    .btn #btnProtanope, .btn #btnTritanope, .btn #btnDeutéranope{
+        height: 30px;
+        font-size: 12px;
+    }
+}
