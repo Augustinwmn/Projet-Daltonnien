@@ -70,11 +70,13 @@
       <h2>Simulateur de couleurs</h2>
 
       <div id="add">
-        <button onclick="addNewPalette()"><img src="./Image/ajouter-un-bouton.png"></button>
+        <button onclick="addPalette()"><img src="./Image/ajouter-un-bouton.png"></button>
         <!-- <button onclick="deletePalette()"><img src="./Image/2198.png"></button> -->
       </div>
 
+
       <div class="simuCouleur">
+        
         <!-- <div id="paletteContainer" class="div_palette">
           <input type="color" name="palette" id="palette-1" value="#000000" onchange="updateColors(this.value, 1)">
           <input type="color" name="palette" id="palette-2" value="#0000ff" onchange="updateColors(this.value, 2)">
@@ -94,7 +96,7 @@
         </div> -->
 
         <div class="couleurP">
-          <input type="color" name="palette" id="palette-1" value="#000000" onchange="updateColors(this.value, 1)">
+          <input type="color" name="palette" id="palette-1" value="#ff00ff" onchange="updateColors(this.value, 1)">
           <input type="text" name="text" id="couleurInput-1" placeholder="#000000" value="#ff0000"
             onchange="updateColors(this.value, 1)">
         </div>
@@ -118,13 +120,15 @@
       <!-- <a href="./TEST" target="_blank">Page test</a> -->
 
       <!--  -->
+      <label for="range_protanopie" id="correctionCouleur">Sévérité de l'anomalie</label>
+
       <div class="colonne">
 
         <p>0</p>
 
         <div class="range-container">
           <input type="range" id="myRange" min="0" max="1.0" step="any" list="marker" oninput="updateColorsFromRange()"
-            value="1.0">
+            value="0.5">
           <div class="range-value" id="test">1</div>
         </div>
 
@@ -135,11 +139,10 @@
 
       <div class="colonne2">
 
-        <button id="btnGauche" onclick="btnGauche()"><img src="./Image/drop-down-arrow.png" alt="" id="fleche_gauche"></button>
+        <!-- <button id="btnGauche" onclick="btnGauche()"><img src="./Image/drop-down-arrow.png" alt="" id="fleche_gauche"></button> -->
 
-        <label for="range_protanopie" id="correctionCouleur">Sévérité</label>
 
-        <button id="btnDroite" onclick="btnDroit()"><img src="./Image/drop-down-arrow.png" alt="" id="fleche_droite"></button>
+        <!-- <button id="btnDroite" onclick="btnDroit()"><img src="./Image/drop-down-arrow.png" alt="" id="fleche_droite"></button> -->
 
       </div>
 
@@ -147,12 +150,9 @@
 
         <!-- Protanope -->
         <div class="Protanope">
-          <!-- i -->
-          <!-- <div id="iProtanope">
-            <p>&#x2139;</p>
-          </div> -->
-          <!-- i -->
+           <div class="h4">
           <h4>Protanope</h4>
+        </div>
           <!-- <div class="Bandeau_Protanopie"> -->
           <div class="couleur">
             <div id="protanope-1"></div>
@@ -165,12 +165,9 @@
 
         <!-- Deuteranope -->
         <div class="Deuteranope">
-          <!-- i -->
-          <!-- <div id="iDeuteranope">
-            <p>&#x2139;</p>
-          </div> -->
-          <!-- i -->
+          <div class="h4">
           <h4>Deuteranope</h4>
+          </div>
           <!-- <div class="Bandeau_Deuteranopie"> -->
           <div class="couleur">
             <div id="deuteranope-1"></div>
@@ -183,12 +180,9 @@
 
         <!-- Tritanope -->
         <div class="Tritanope">
-          <!-- i -->
-          <!-- <div id="iTritanope">
-            <p>&#x2139;</p>
-          </div> -->
-          <!-- i -->
+          <div class="h4">
           <h4>Tritanope</h4>
+          </div>
           <!-- <div class="Bandeau_Tritanopie"> -->
           <div class="couleur">
             <div id="tritanope-1"></div>
@@ -224,11 +218,11 @@
 
         <div class="colonne2">
 
-          <button id="btnGaucheImg" onclick="btnGaucheImg()"><img src="./Image/icons8-sort-down-50.png" alt="" id="fleche_gauche_Img"></button>
+          <!-- <button id="btnGaucheImg" onclick="btnGaucheImg()"><img src="./Image/icons8-sort-down-50.png" alt="" id="fleche_gauche_Img"></button> -->
   
           <label for="range_protanopie" id="correctionImg">Sévérité</label>
   
-          <button id="btnDroiteImg" onclick="btnDroitImg()"><img src="./Image/icons8-sort-down-50.png" alt="" id="fleche_droite_Img"></button>
+          <!-- <button id="btnDroiteImg" onclick="btnDroitImg()"><img src="./Image/icons8-sort-down-50.png" alt="" id="fleche_droite_Img"></button> -->
   
         </div>
       <!--  -->
@@ -238,7 +232,7 @@
 
         <div class="range-containerImg">
           <input type="range" id="rangeImg" min="0" max="1.0" step="any" list="marker" oninput="updateColorsFromRange()"
-            value="1.0">
+            value="0.5">
           <div class="range-value" id="testImg"></div>
         </div>
 

@@ -6,7 +6,19 @@
     url("../Font/fa-regular-400.ttf") format(ttf),
     url('../Font/fa-regular-400.woff2') format(woff);
 }
+
+@font-face {
+    font-family: "Geo";
+    src: local("Geo"),
+    url("../Font/Geo/Geo-Regular.ttf");
+}
+@font-face {
+    font-family: "iceland";
+    src:local("iceland"),
+    url("../Font/Iceland/Iceland-Regular.ttf");
+}
 /****** FONT ************/
+
 
 html{
     width: 100%;
@@ -23,6 +35,7 @@ nav{
     color: rgb(255, 255, 255);
     margin: 0;
     padding: 10px;
+    padding-bottom: 0;
     display: flex;
     justify-content: space-between;
 }
@@ -31,6 +44,7 @@ nav{
 /*     
     width: 100px;
     height: 100px; */
+    margin-bottom: 10px;
     padding: 0;
     /* position: relative; */
 }
@@ -48,6 +62,7 @@ nav{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 10px;
 }
 select{
     background-color: transparent;
@@ -71,27 +86,39 @@ nav .centre{
     width: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     /* padding-bottom: 2%; */
 }
 nav .centre h1{
     margin: 0;
     text-align: center;
+    /* font-family: "Geo"; */
+    font-family: "iceland";
+    font-size: 100px;
 }
 nav .centre .link{
     display: flex;
     justify-content: space-between;
+    flex: end;
     /* gap: 5%; */
     width: 100%;
 }
 nav .centre .link a{
     color: white;
+    padding-top: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 5px;
+    /* border: 1px solid white; */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
     text-align: center;
 }
 nav .centre .link a:hover{
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
     color: black;
     background-color: white;
+
 }
 
 /* .simuCouleur{
@@ -214,7 +241,7 @@ strong{
  display: flex;
  flex-direction: column;
  gap: 5px;
- width: auto;
+ width: 139px;
  height: 20vh;
  
 }
@@ -229,19 +256,33 @@ input[type="text"]{
     border: 1px solid;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
     margin: 0;
     width: 100%;
-    height: 100%;
+    height: 117.5px;
     padding: 0;
 
 }
-#palette-1::-webkit-color-swatch, #palette-2::-webkit-color-swatch, #palette-3::-webkit-color-swatch, #palette-4::-webkit-color-swatch{
+
+.daltonisme{
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid ; */
+    border-color: rgb(0, 0, 0);
+}
+
+.daltonisme:hover{
+    transform: scale(1.1);
+}
+
+
+
+#palette-1::-webkit-color-swatch, #palette-2::-webkit-color-swatch, #palette-3::-webkit-color-swatch, #palette-4::-webkit-color-swatch,
+#palette-5::-webkit-color-swatch, #palette-6::-webkit-color-swatch{
   border-color: transparent;
+  
 }
 #palette-1{
-    background-color: #000; 
+    background-color: #FF00FF; 
 }
 #palette-2{
     background-color: #ff0000; 
@@ -266,8 +307,6 @@ input[type="text"]{
     border: 1px solid;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
     text-align: center;
     padding: 0;
 }
@@ -294,6 +333,7 @@ option {
 }
 #myRange, #rangeImg{
     background-color: black;
+    /* cursor:ew-resize; */
     cursor: grab;
     margin: 0;   
     height: 7px;
@@ -326,10 +366,10 @@ option {
     position: absolute;
     top: 0px; 
     /* Ajuste la position au-dessus du curseur */
-    left: 1%;
+    /* left: 1%;
     left: 5px;
     left: 99%;
-    left: 725px;
+    left: 725px; */
     transform: translateX(-50%);
     font-size: 18px;
     font-weight: bold;
@@ -374,20 +414,39 @@ option {
 }
 
 /* **************************** */
-
+/* .div_palette{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    padding-bottom: 0;
+}
+.div_palette2{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 0;
+} */
 .couleur_colonne{
     display: flex;
     justify-content:space-around;
     margin-top: 5%;
     margin-bottom: 5%;
+    height: auto;
     
 }
-.Deuteranope h4, .Tritanope h4, .Protanope h4{
+.Deuteranope .h4, .Tritanope .h4, .Protanope .h4{
+    display: flex;
+    justify-content: center;
+}
+/* .Deuteranope h4, .Tritanope h4, .Protanope h4{
     text-align: center;
     padding: 20px;
-    /* padding-top: 0; */
     
-}
+} */
 
 /* .Bandeau_Protanopie ,.Bandeau_Tritanopie ,.Bandeau_Deuteranopie{
     display: flex;
@@ -397,14 +456,20 @@ option {
 .Protanope, .Tritanope, .Deuteranope{
     width: 25%;
     border: 1px solid ;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
 }
+/* .Protanope:last-child, .Tritanope:last-child, .Deuteranope:last-child{
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+} */
 
 .couleur{
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    height: 30vh;
+    height: 300px;
 }
 
 
@@ -446,6 +511,7 @@ option {
     min-height: 100vh;
     margin-top: 1%;
     /* padding-top: 1%; */
+    padding-bottom: 2%;
     background-color: black;
     color: white;
 }
@@ -524,9 +590,9 @@ input[type="file"]{
     margin-right: auto;
     width: 80%;
     height: 50px;
-    padding: 2%;
+    padding: 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 /* #simulateurimage .btn button{
     width: 30%;
@@ -650,4 +716,77 @@ footer{
     background-color: rgb(36, 36, 36);
     padding: 10px;
     height: 10vh;
+}
+@media screen and (max-width: 430px) {
+    nav, #nav, .nav{
+        padding: 5px;
+        padding-bottom: 0;
+    }
+    nav .centre{
+        width: 65%;
+    }
+    nav .centre h1{
+        font-size: 40px;
+        align-content: center;
+    }
+    /* #menu{
+        width: 50px;
+        margin-bottom: 5px;
+    } */
+    nav #menu, 
+    nav .langue{
+        width: 50px;
+        margin-bottom: 5px;
+
+    }
+    /* .langue{
+        width: 50px;
+
+    } */
+    a{
+        font-size: 9px;
+    }
+    nav .langue #langue {
+        font-size: 10px;
+        /* width: 30px; */
+    }
+    .simuCouleur{
+        justify-content: space-between;
+        margin-left: 5px;
+        width: 90%;
+        height: 15vh;
+    }
+    #add{
+        margin-right: 5px;
+        width: 25px;
+    }
+    #add button{
+        padding: 0;
+    }
+    #add button img, #add button{
+        height: 25px;
+        width: 25px;
+    }
+    h4{
+        font-size: 10px;
+    }
+    .couleurP{
+        width: 60px;
+        height: 80px;
+    }
+    #palette-1, #palette-2, #palette-3, #palette-4, #palette-5, #palette-6{
+        height: 80%;
+    }
+    #couleurInput-1, #couleurInput-2, #couleurInput-3, #couleurInput-4{
+        width: 58px;
+    }
+    .simuCouleur .couleurP .delete-btn{
+        padding: auto;
+        text-align: center;
+        font-size: 9px;
+    }
+    .btn #btnProtanope, .btn #btnTritanope, .btn #btnDeutéranope{
+        height: 30px;
+        font-size: 12px;
+    }
 }
