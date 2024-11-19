@@ -327,6 +327,9 @@ option {
 /* #myRange::-webkit-slider-runnable-track{
     background: green;
 } */
+#correctionCouleur{
+    margin: 20px;
+}
 #myRange{
     accent-color: rgb(0, 0, 0);
 }
