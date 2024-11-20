@@ -791,6 +791,10 @@ footer{
         text-align: center;
         font-size: 9px;
     }
+    /* ********************Image******************** */
+    /* #simulateurImage img{
+        src: "https://picsum.photos/300/800";
+    } */
     .btn #btnProtanope, .btn #btnTritanope, .btn #btnDeutéranope{
         height: 30px;
         font-size: 12px;
