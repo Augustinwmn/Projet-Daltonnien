@@ -136,7 +136,7 @@ function RangeValueImg() {
     
     valueImg = Math.round(valueImg * 10) / 10;  // Multiplie par 10, arrondit, puis divise par 10
     console.log('Rounded value:', valueImg);
-    console.log('Updated textContent:', rangeValueImg.textConten);
+    console.log('Updated textContent:', rangeValueImg.textContent);
     
     // Mettre à jour la valeur affichée
     rangeValueImg.textContent = valueImg;
