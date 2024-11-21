@@ -113,11 +113,11 @@ range.addEventListener('input', RangeValue);
 
 /////////////////////////// Fin Range  ///////////////////////////
 
-// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                            /////////////////////////// Range Value Img ///////////////////////////
-// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////// Range Value Img ///////////////////////////
+// //////////////////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////////////////
 // Récupérer les éléments
 const rangeImg = document.getElementById('rangeImg');
 const rangeValueImg = document.getElementById('testTmg');
@@ -125,18 +125,27 @@ const rangeContainerImg = document.querySelector('.range-containerImg');
 
 // Mettre à jour la valeur affichée et la position
 function RangeValueImg() {
-    let value = rangeImg.value;
+    let valueImg = rangeImg.value;
+    console.log('Initial value:', valueImg);
+    
     const rangeWidthImg = rangeImg.offsetWidth;
-    const valuePositionImg = (value - rangeImg.min) / (rangeImg.max - rangeImg.min) * rangeWidthImg;
-
-    value = Math.round(value * 10) / 10;  // Multiplie par 10, arrondit, puis divise par 10
-
+    console.log('Range width:', rangeWidthImg);
+    
+    const valuePositionImg = (valueImg - rangeImg.min) / (rangeImg.max - rangeImg.min) * rangeWidthImg;
+    console.log('Value position:', valuePositionImg);
+    
+    valueImg = Math.round(valueImg * 10) / 10;  // Multiplie par 10, arrondit, puis divise par 10
+    console.log('Rounded value:', valueImg);
+    console.log('Updated textContent:', rangeValueImg.textConten);
+    
     // Mettre à jour la valeur affichée
-    rangeValueImg.textContent = value;
+    rangeValueImg.textContent = valueImg;
+    console.log('Updated textContent:', rangeValueImg.textContent);
 
-    // //////////////////////////////////////////////////////////////////////////////////////
-    // ////////////////////// Pour obtenir la taille en pixel à partir de la taille en pourcentage ///////////////////////////
-    // //////////////////////////////////////////////////////////////////////////////////////
+
+    // //////////////////////////////////////////////////////////////////////////////
+    // ///// Pour obtenir la taille en pixel à partir de la taille en pourcentage ///
+    // //////////////////////////////////////////////////////////////////////////////
 
     // Supposons que vous avez un pourcentage et une largeur d'élément parent
     let pourcentage = 99;  // 50% par exemple
@@ -145,138 +154,38 @@ function RangeValueImg() {
     let parentWidth = parentElement.offsetWidth;
     // Calculer la largeur en pixels
     let widthInPixels = (pourcentage / 100) * parentWidth;
-    // console.log(widthInPixels);  
+    console.log('Width in pixels:', widthInPixels);
     // Affiche la largeur en pixels
 
-    // //////////////////////////////////////////////////////////////////////////////////////
-    // //////////////////////////////// Et le Ré utiliser dans la condition "if" //////////////////////////////////////////////
-    // //////////////////////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////////////////
+    // ///////////////// Et le Ré utiliser dans la condition "if" //////////////////
+    // //////////////////////////////////////////////////////////////////////////////
 
     // Positionner la valeur au-dessus du curseur
     if(Math.abs(valuePositionImg - widthInPixels) < 1){
         rangeValueImg.style.left = `calc(${valuePositionImg}px - 25px)`;
-        // console.log(valuePosition);
+        console.log('Condition 1:', valuePositionImg);
     }
     else if (valuePositionImg == 0) {
         rangeValueImg.style.left = `calc(${valuePositionImg}px + 1%)`;
-        // console.log(valuePosition);
+        console.log('Condition 2:', valuePositionImg);
     }
     else {
-        // rangeValue.style.left = valuePosition;
         rangeValueImg.style.left = `calc(${valuePositionImg}px)`;
-        // console.log(valuePosition);
+        console.log('Condition 3:', valuePositionImg);
     }
     // +1rem pour éviter qu'il ne touche la barre
 }
+
 // Appel initial pour positionner la valeur
 RangeValueImg();
+
 // Mettre à jour la valeur lorsque le curseur se déplace
 rangeImg.addEventListener('input', RangeValueImg);
 
-// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        /////////////////////////// Fin Range Img ///////////////////////////
-// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/////////////////////////// Bouton + 0.1  ///////////////////////////
-
-function btnDroit() {
-    let intensity = parseFloat(document.getElementById("myRange").value);
-
-    intensity += 0.1;
-    if (intensity < 0.05) { intensity = 0.0; }
-    else if (intensity < 0.15 && intensity >= 0.05) { intensity = 0.1; }
-    else if (intensity < 0.25 && intensity >= 0.15) { intensity = 0.2; }
-    else if (intensity < 0.35 && intensity >= 0.25) { intensity = 0.3; }
-    else if (intensity < 0.45 && intensity >= 0.35) { intensity = 0.4; }
-    else if (intensity < 0.55 && intensity >= 0.45) { intensity = 0.5; }
-    else if (intensity < 0.65 && intensity >= 0.55) { intensity = 0.6; }
-    else if (intensity < 0.75 && intensity >= 0.65) { intensity = 0.7; }
-    else if (intensity < 0.85 && intensity >= 0.75) { intensity = 0.8; }
-    else if (intensity < 0.95 && intensity >= 0.85) { intensity = 0.9; }
-    else { intensity = 1.0; }
-
-    // Mettre à jour la valeur de l'élément input avec la nouvelle intensité
-    document.getElementById("myRange").value = intensity;
-
-    // Optionnel : vous pouvez également mettre à jour un affichage du "niveau" d'intensité si nécessaire
-    console.log("Nouvelle intensité:", intensity);
-}
-/////////////////////////// Bouton - 0.1  ///////////////////////////
-
-function btnGauche() {
-    let intensity = parseFloat(document.getElementById("myRange").value);
-
-    intensity -= 0.1;
-    if (intensity < 0.05) { intensity = 0.0; }
-    else if (intensity < 0.15 && intensity >= 0.05) { intensity = 0.1; }
-    else if (intensity < 0.25 && intensity >= 0.15) { intensity = 0.2; }
-    else if (intensity < 0.35 && intensity >= 0.25) { intensity = 0.3; }
-    else if (intensity < 0.45 && intensity >= 0.35) { intensity = 0.4; }
-    else if (intensity < 0.55 && intensity >= 0.45) { intensity = 0.5; }
-    else if (intensity < 0.65 && intensity >= 0.55) { intensity = 0.6; }
-    else if (intensity < 0.75 && intensity >= 0.65) { intensity = 0.7; }
-    else if (intensity < 0.85 && intensity >= 0.75) { intensity = 0.8; }
-    else if (intensity < 0.95 && intensity >= 0.85) { intensity = 0.9; }
-    else { intensity = 1.0; }
-
-    // Mettre à jour la valeur de l'élément input avec la nouvelle intensité
-    document.getElementById("myRange").value = intensity;
-
-    // Optionnel : vous pouvez également mettre à jour un affichage du "niveau" d'intensité si nécessaire
-    console.log("Nouvelle intensité:", intensity);
-}
-
-/////////////////////////// Fin Fonction  ///////////////////////////
-
-/////////////////////////// Bouton Range Image + 0.1  ///////////////////////////
-
-function btnDroitImg() {
-    let intensity = parseFloat(document.getElementById("rangeImg").value);
-
-    intensity += 0.1;
-    if (intensity < 0.05) { intensity = 0.0; }
-    else if (intensity < 0.15 && intensity >= 0.05) { intensity = 0.1; }
-    else if (intensity < 0.25 && intensity >= 0.15) { intensity = 0.2; }
-    else if (intensity < 0.35 && intensity >= 0.25) { intensity = 0.3; }
-    else if (intensity < 0.45 && intensity >= 0.35) { intensity = 0.4; }
-    else if (intensity < 0.55 && intensity >= 0.45) { intensity = 0.5; }
-    else if (intensity < 0.65 && intensity >= 0.55) { intensity = 0.6; }
-    else if (intensity < 0.75 && intensity >= 0.65) { intensity = 0.7; }
-    else if (intensity < 0.85 && intensity >= 0.75) { intensity = 0.8; }
-    else if (intensity < 0.95 && intensity >= 0.85) { intensity = 0.9; }
-    else { intensity = 1.0; }
-
-    // Mettre à jour la valeur de l'élément input avec la nouvelle intensité
-    document.getElementById("rangeImg").value = intensity;
-
-    // Optionnel : vous pouvez également mettre à jour un affichage du "niveau" d'intensité si nécessaire
-    console.log("Nouvelle intensité image:", intensity);
-}
-/////////////////////////// Bouton Range Image - 0.1  ///////////////////////////
-
-function btnGaucheImg() {
-    let intensity = parseFloat(document.getElementById("rangeImg").value);
-
-    intensity -= 0.1;
-    if (intensity < 0.05) { intensity = 0.0; }
-    else if (intensity < 0.15 && intensity >= 0.05) { intensity = 0.1; }
-    else if (intensity < 0.25 && intensity >= 0.15) { intensity = 0.2; }
-    else if (intensity < 0.35 && intensity >= 0.25) { intensity = 0.3; }
-    else if (intensity < 0.45 && intensity >= 0.35) { intensity = 0.4; }
-    else if (intensity < 0.55 && intensity >= 0.45) { intensity = 0.5; }
-    else if (intensity < 0.65 && intensity >= 0.55) { intensity = 0.6; }
-    else if (intensity < 0.75 && intensity >= 0.65) { intensity = 0.7; }
-    else if (intensity < 0.85 && intensity >= 0.75) { intensity = 0.8; }
-    else if (intensity < 0.95 && intensity >= 0.85) { intensity = 0.9; }
-    else { intensity = 1.0; }
-
-    // Mettre à jour la valeur de l'élément input avec la nouvelle intensité
-    document.getElementById("rangeImg").value = intensity;
-
-    // Optionnel : vous pouvez également mettre à jour un affichage du "niveau" d'intensité si nécessaire
-    console.log("Nouvelle intensité image:", intensity);
-}
-
-/////////////////////////// Fin Fonction  Range Image  ///////////////////////////
+// //////////////////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////// Fin Range Img ///////////////////////////
+// //////////////////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////////////////

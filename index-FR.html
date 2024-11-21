@@ -129,7 +129,7 @@
         <div class="range-container">
           <input type="range" id="myRange" min="0" max="1.0" step="any" list="marker" oninput="updateColorsFromRange()"
             value="0.5">
-          <div class="range-value" id="test">1</div>
+          <div class="range-value" id="test"></div>
         </div>
 
         <p>1</p>
@@ -203,7 +203,7 @@
 
       <div class="hero">
         <label for="input-file" id="drop-area">
-          <input type="file" accept="image/*" id="input-file">
+          <input type="file" id="input-file">
           <div id="img-view">
 
             <!-- canvas -->
@@ -236,9 +236,8 @@
           <p>0</p>
 
           <div class="range-containerImg">
-            <input type="range" id="rangeImg" min="0" max="1.0" step="any" list="marker"
-              oninput="updateColorsFromRange()" value="0.5">
-            <div class="range-value" id="testImg"></div>
+            <input type="range" id="rangeImg" min="0" max="1.0" step="any" list="marker" value="0.5">
+            <span class="range-value" id="testImg">0.0</span>
           </div>
 
           <p>1</p>
