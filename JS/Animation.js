@@ -12,8 +12,11 @@ inputFile.addEventListener("change", uploadImages);
 function uploadImage() {
     let imgLink = URL.createObjectURL(inputFile.files[0]);
 
-    imgView.querySelector("img").src = imgLink;
-    imgView.querySelector("img").style.display = "block";
+    imgView.querySelector("canvas").src = imgLink;
+    imgView.querySelector("canvas").style.display = "block";
+
+    // imgViews.querySelector("img").src = imgLink;
+    // imgViews.querySelector("img").style.display = "block";
 
 }
 
@@ -26,12 +29,15 @@ dropArea.addEventListener("drop", function (e) {
     inputFile.files = e.dataTransfer.files;
     uploadImage();
 })
-
+// /////////////////////////////
 function uploadImages() {
     let imgLink = URL.createObjectURL(inputFile.files[0]);
 
-    imgViews.querySelector("img").src = imgLink;
-    imgViews.querySelector("img").style.display = "block";
+    imgViews.querySelector("canvas").src = imgLink;
+    imgViews.querySelector("canvas").style.display = "block";
+
+    // imgViews.querySelector("img").src = imgLink;
+    // imgViews.querySelector("img").style.display = "block";
 }
 
 dropArea.addEventListener("dragover", function (e) {
@@ -120,8 +126,8 @@ const rangeContainerImg = document.querySelector('.range-containerImg');
 // Mettre à jour la valeur affichée et la position
 function RangeValueImg() {
     let value = rangeImg.value;
-    const rangeWidth = rangeImg.offsetWidth;
-    const valuePosition = (value - rangeImg.min) / (rangeImg.max - rangeImg.min) * rangeWidth;
+    const rangeWidthImg = rangeImg.offsetWidth;
+    const valuePositionImg = (value - rangeImg.min) / (rangeImg.max - rangeImg.min) * rangeWidthImg;
 
     value = Math.round(value * 10) / 10;  // Multiplie par 10, arrondit, puis divise par 10
 
@@ -133,7 +139,7 @@ function RangeValueImg() {
     // //////////////////////////////////////////////////////////////////////////////////////
 
     // Supposons que vous avez un pourcentage et une largeur d'élément parent
-    let pourcentage = valuePosition;  // 50% par exemple
+    let pourcentage = 99;  // 50% par exemple
     let parentElement = document.querySelector('.range-containerImg');  // Parent de l'élément
     // Obtenir la largeur de l'élément parent
     let parentWidth = parentElement.offsetWidth;
@@ -147,17 +153,17 @@ function RangeValueImg() {
     // //////////////////////////////////////////////////////////////////////////////////////
 
     // Positionner la valeur au-dessus du curseur
-    if(Math.abs(valuePosition - widthInPixels) < 1){
-        rangeValueImg.style.left = `calc(${valuePosition}px - 25px)`;
+    if(Math.abs(valuePositionImg - widthInPixels) < 1){
+        rangeValueImg.style.left = `calc(${valuePositionImg}px - 25px)`;
         // console.log(valuePosition);
     }
-    else if (valuePosition == 0) {
-        rangeValueImg.style.left = `calc(${valuePosition}px + 1%)`;
+    else if (valuePositionImg == 0) {
+        rangeValueImg.style.left = `calc(${valuePositionImg}px + 1%)`;
         // console.log(valuePosition);
     }
     else {
         // rangeValue.style.left = valuePosition;
-        rangeValueImg.style.left = `calc(${valuePosition}px)`;
+        rangeValueImg.style.left = `calc(${valuePositionImg}px)`;
         // console.log(valuePosition);
     }
     // +1rem pour éviter qu'il ne touche la barre

@@ -6,7 +6,6 @@
     url("../Font/fa-regular-400.ttf") format(ttf),
     url('../Font/fa-regular-400.woff2') format(woff);
 }
-
 @font-face {
     font-family: "Geo";
     src: local("Geo"),
@@ -185,7 +184,7 @@ nav a{
 
 /******************************* Bouton i *******************************/
 #simulateurCouleur{
-    min-height: 100vh;
+    min-height: 85vh;
     margin: 0;
 }
 h1, h2{
@@ -256,8 +255,6 @@ input[type="text"]{
     border: 1px solid;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
     margin: 0;
     width: 100%;
     height: 117.5px;
@@ -327,9 +324,6 @@ option {
 /* #myRange::-webkit-slider-runnable-track{
     background: green;
 } */
-#correctionCouleur{
-    margin: 20px;
-}
 #myRange{
     accent-color: rgb(0, 0, 0);
 }
@@ -513,7 +507,7 @@ option {
 /* *********************************************************************************** */
 
 #simulateurImage{
-    min-height: 100vh;
+    min-height: 60vh;
     margin-top: 1%;
     /* padding-top: 1%; */
     padding-bottom: 2%;
@@ -566,7 +560,7 @@ input[type="file"]{
     position: fixed;
     display: none;
 }
-#img-view img{
+#img-view img, #img-view canvas{
     height: 100%;
     height: auto;
     border-radius: 20px;
@@ -711,7 +705,7 @@ input[type="file"]{
     /* display: inline-block;
     animation: ; */
     min-height: 100vh;
-    background-color: rgb(255, 220, 130);
+    background-color: rgb(221, 221, 221);
     padding: 1%;
     margin: 0;
 }
@@ -722,7 +716,7 @@ footer{
     padding: 10px;
     height: 10vh;
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 430px) {
     nav, #nav, .nav{
         padding: 5px;
         padding-bottom: 0;
@@ -753,13 +747,14 @@ footer{
     }
     nav .langue #langue {
         font-size: 10px;
-        /* width: 30px; */
     }
     .simuCouleur{
-        justify-content: space-between;
-        margin-left: 5px;
-        width: 90%;
+        justify-content: space-around;
+        width: 100%;
         height: 15vh;
+    }
+    #add{
+        display: none;
     }
     #add{
         margin-right: 5px;
@@ -781,7 +776,6 @@ footer{
     }
     #palette-1, #palette-2, #palette-3, #palette-4, #palette-5, #palette-6{
         height: 80%;
-
     }
     #couleurInput-1, #couleurInput-2, #couleurInput-3, #couleurInput-4{
         width: 58px;
@@ -791,10 +785,6 @@ footer{
         text-align: center;
         font-size: 9px;
     }
-    /* ********************Image******************** */
-    /* #simulateurImage img{
-        src: "https://picsum.photos/300/800";
-    } */
     .btn #btnProtanope, .btn #btnTritanope, .btn #btnDeutéranope{
         height: 30px;
         font-size: 12px;

@@ -76,7 +76,7 @@
 
 
       <div class="simuCouleur">
-        
+
         <!-- <div id="paletteContainer" class="div_palette">
           <input type="color" name="palette" id="palette-1" value="#000000" onchange="updateColors(this.value, 1)">
           <input type="color" name="palette" id="palette-2" value="#0000ff" onchange="updateColors(this.value, 2)">
@@ -150,9 +150,9 @@
 
         <!-- Protanope -->
         <div class="Protanope">
-           <div class="h4">
-          <h4>Protanope</h4>
-        </div>
+          <div class="h4">
+            <h4>Protanope</h4>
+          </div>
           <!-- <div class="Bandeau_Protanopie"> -->
           <div class="couleur">
             <div id="protanope-1"></div>
@@ -166,7 +166,7 @@
         <!-- Deuteranope -->
         <div class="Deuteranope">
           <div class="h4">
-          <h4>Deuteranope</h4>
+            <h4>Deuteranope</h4>
           </div>
           <!-- <div class="Bandeau_Deuteranopie"> -->
           <div class="couleur">
@@ -181,7 +181,7 @@
         <!-- Tritanope -->
         <div class="Tritanope">
           <div class="h4">
-          <h4>Tritanope</h4>
+            <h4>Tritanope</h4>
           </div>
           <!-- <div class="Bandeau_Tritanopie"> -->
           <div class="couleur">
@@ -205,7 +205,12 @@
         <label for="input-file" id="drop-area">
           <input type="file" accept="image/*" id="input-file">
           <div id="img-view">
-            <img src="https://picsum.photos/800/300" alt="" id="imgOrigine">
+
+            <!-- canvas -->
+            <!-- <img src="https://picsum.photos/800/300" alt="" id="imgOrigine"> -->
+            <canvas src="https://picsum.photos/800/300" alt="" id="imgOrigine"></canvas>
+            <!-- canvas -->
+
             <!-- <p>Drag an drop or click here<br>to upload image</p> -->
             <!-- <span>Upload any image from desktop</span> -->
           </div>
@@ -219,31 +224,34 @@
         <div class="colonne2">
 
           <!-- <button id="btnGaucheImg" onclick="btnGaucheImg()"><img src="./Image/icons8-sort-down-50.png" alt="" id="fleche_gauche_Img"></button> -->
-  
+
           <label for="range_protanopie" id="correctionImg">Sévérité</label>
-  
+
           <!-- <button id="btnDroiteImg" onclick="btnDroitImg()"><img src="./Image/icons8-sort-down-50.png" alt="" id="fleche_droite_Img"></button> -->
-  
+
         </div>
-      <!--  -->
-      <div class="colonne">
+        <!--  -->
+        <div class="colonne">
 
-        <p>0</p>
+          <p>0</p>
 
-        <div class="range-containerImg">
-          <input type="range" id="rangeImg" min="0" max="1.0" step="any" list="marker" oninput="updateColorsFromRange()"
-            value="0.5">
-          <div class="range-value" id="testImg"></div>
+          <div class="range-containerImg">
+            <input type="range" id="rangeImg" min="0" max="1.0" step="any" list="marker"
+              oninput="updateColorsFromRange()" value="0.5">
+            <div class="range-value" id="testImg"></div>
+          </div>
+
+          <p>1</p>
+
         </div>
-
-        <p>1</p>
-
-      </div>
-      <!--  -->
+        <!--  -->
 
       </div>
       <div id="img-views">
-        <img src="https://picsum.photos/800/300" alt="" id="imageDaltonnisme">
+        <!-- canvas -->
+        <!-- <img src="https://picsum.photos/800/300" alt="" id="imageDaltonnisme"> -->
+        <canvas src="https://picsum.photos/800/300" alt="" id="imageDaltonnisme"></canvas>
+        <!-- canvas -->
       </div>
       <div class="btn">
         <button id="btnProtanope" onclick="applyFilter('btnProtanope')">Protanope</button>
