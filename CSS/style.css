@@ -519,10 +519,13 @@ option {
     padding-top: 2vh;
     margin-bottom: 2vh;
 }
+#ImgDl{
+    width: 10%;
+}
 #imgOrigine{
     display: flex;
     justify-content: center;
-    align-items: center;              /*Je comprend rien poto*/
+    align-items: center;
     margin: auto;
     width: 100%;
     height: auto;
