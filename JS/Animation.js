@@ -1,4 +1,5 @@
-/////////////////////////// Drag and Drop ///////////////////////////
+// /////////////////////////// Drag and Drop ///////////////////////////
+// Déclaration des variables nécessaires
 const dropArea = document.getElementById("drop-area");
 const inputFile = document.getElementById("input-file");
 const imgView = document.getElementById("img-view");
@@ -8,23 +9,24 @@ const imgViews = document.getElementById("img-views");
 let originalImg1 = null;
 let originalImg2 = null;
 
-// Déclarer une variable pour l'intensité
+// Déclarer une variable pour l'intensité du filtre
 let intensity = 0.5; // Valeur par défaut à 0.5
+let currentFilter = null;
 
-// Charger une image aléatoire de base
+// Charger une image aléatoire de base à l'ouverture de la page
 window.onload = function () {
-    loadRandomImage(); // Appeler la fonction de chargement d'une image aléatoire
+    loadRandomImage(); // Charger l'image aléatoire
 };
 
 // Fonction pour charger une image aléatoire
 function loadRandomImage() {
     const imgLink = "https://picsum.photos/800/300"; // URL pour une image aléatoire de taille 800x300
 
-    // Créer une image et l'afficher dans le premier canvas
+    // Créer l'image et l'afficher dans le premier canvas
     const img = new Image();
     img.onload = function () {
         originalImg1 = img; // Sauvegarder l'image originale
-        loadImageToCanvas(img, imgView);
+        loadImageToCanvas(img, imgView);  // Charger l'image sur le premier canvas
     };
     img.src = imgLink;
 
@@ -32,7 +34,7 @@ function loadRandomImage() {
     const img2 = new Image();
     img2.onload = function () {
         originalImg2 = img2; // Sauvegarder l'image originale
-        loadImageToCanvas(img2, imgViews);
+        loadImageToCanvas(img2, imgViews);  // Charger l'image sur le deuxième canvas
     };
     img2.src = imgLink;
 }
@@ -47,52 +49,31 @@ function loadImageToCanvas(img, container) {
     canvas.style.display = "block";  // Afficher le canvas
 }
 
-// Charger l'image à partir du fichier sélectionné
-inputFile.addEventListener("change", uploadImage);
-inputFile.addEventListener("change", uploadImages);
+// Appliquer un filtre sur l'image du canvas
+function updateColorsFromRange() {
+    intensity = parseFloat(document.getElementById("rangeImg").value); // Récupérer la valeur du curseur
+    document.getElementById("chiffre").innerText = intensity.toFixed(2); // Afficher la valeur dans la div
 
-function uploadImage() {
-    const file = inputFile.files[0];
-    if (file) {
-        let imgLink = URL.createObjectURL(file);
-        const img = new Image();
-        img.onload = function () {
-            originalImg1 = img; // Sauvegarder l'image originale
-            loadImageToCanvas(img, imgView);
-        };
-        img.src = imgLink;
+    // Appliquer le filtre actuellement sélectionné avec la nouvelle intensité
+    if (originalImg1 && originalImg2) {
+        
+        applyFilterToCanvas(imgViews, originalImg2, currentFilter);
     }
 }
 
-function uploadImages() {
-    const file = inputFile.files[0];
-    if (file) {
-        let imgLink = URL.createObjectURL(file);
-        const img = new Image();
-        img.onload = function () {
-            originalImg2 = img; // Sauvegarder l'image originale
-            loadImageToCanvas(img, imgViews);
-        };
-        img.src = imgLink;
-    }
+// Fonction pour appliquer un filtre spécifique au canvas d'une image
+function applyFilterToCanvas(container, img, filter) {
+    const canvas = container.querySelector("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = img.width;
+    canvas.height = img.height;
+    ctx.drawImage(img, 0, 0);
+    
+    // Appliquer le filtre à l'image avec l'intensité actuelle
+    applyFilter(canvas, filter);
 }
 
-// Drag and drop pour charger une image
-dropArea.addEventListener("dragover", function (e) {
-    e.preventDefault();
-});
-
-dropArea.addEventListener("drop", function (e) {
-    e.preventDefault();
-    const files = e.dataTransfer.files;
-    if (files.length > 0) {
-        inputFile.files = files;
-        uploadImage();  // Charger l'image dans la première zone
-        uploadImages(); // Charger l'image dans la deuxième zone
-    }
-});
-
-// Fonction pour appliquer les filtres de daltonisme avec intensité ajustée
+// Fonction pour appliquer un filtre de daltonisme
 function applyFilter(canvas, filter) {
     const ctx = canvas.getContext("2d");
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -122,57 +103,92 @@ function applyFilter(canvas, filter) {
     ctx.putImageData(imageData, 0, 0); // Redessiner l'image avec les nouvelles données
 }
 
-// Mettre à jour l'intensité du filtre en fonction de la valeur de la barre
-function updateColorsFromRange() {
-    intensity = parseFloat(document.getElementById("rangeImg").value); // Récupérer la valeur du curseur
-    document.getElementById("chiffre").innerText = intensity.toFixed(2); // Afficher la valeur dans la div
-
-    // Appliquer les filtres sur les deux canaux d'images avec la nouvelle intensité
-    const canvas1 = imgView.querySelector("canvas");
-    const canvas2 = imgViews.querySelector("canvas");
-
-    // Vérifier si les images sont chargées
-    if (originalImg1 && originalImg2) {
-        resetCanvasAndApplyFilter(canvas1, originalImg1, 'btnProtanope');
-        resetCanvasAndApplyFilter(canvas2, originalImg2, 'btnProtanope');
-        
-    }
-}
-
-// Réinitialiser et appliquer le filtre
-function resetCanvasAndApplyFilter(canvas, originalImg, filter) {
-    const ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, canvas.width, canvas.height);  // Effacer le canvas
-    ctx.drawImage(originalImg, 0, 0);  // Redessiner l'image d'origine
-    applyFilter(canvas, filter);  // Appliquer le filtre après la réinitialisation
-}
+// Ajouter les événements pour changer l'intensité
+document.getElementById("rangeImg").addEventListener("input", updateColorsFromRange);
 
 // Ajouter les événements pour appliquer les filtres
 document.getElementById('btnProtanope').addEventListener('click', () => {
-    const canvas1 = imgView.querySelector("canvas");
-    const canvas2 = imgViews.querySelector("canvas");
-
-        resetCanvasAndApplyFilter(canvas1, originalImg1, 'btnProtanope');
-        resetCanvasAndApplyFilter(canvas2, originalImg2, 'btnProtanope');
-    
+    setActiveFilter('btnProtanope');
+    if (originalImg1 && originalImg2) {
+        
+        applyFilterToCanvas(imgViews, originalImg2, 'btnProtanope');
+    }
 });
 
 document.getElementById('btnDeutéranope').addEventListener('click', () => {
-    const canvas1 = imgView.querySelector("canvas");
-    const canvas2 = imgViews.querySelector("canvas");
-
-    resetCanvasAndApplyFilter(canvas1, originalImg1, 'btnDeutéranope');
-    resetCanvasAndApplyFilter(canvas2, originalImg2, 'btnDeutéranope');
+    setActiveFilter('btnDeutéranope');
+    if (originalImg1 && originalImg2) {
+        
+        applyFilterToCanvas(imgViews, originalImg2, 'btnDeutéranope');
+    }
 });
 
 document.getElementById('btnTritanope').addEventListener('click', () => {
-    const canvas1 = imgView.querySelector("canvas");
-    const canvas2 = imgViews.querySelector("canvas");
-
-    resetCanvasAndApplyFilter(canvas1, originalImg1, 'btnTritanope');
-    resetCanvasAndApplyFilter(canvas2, originalImg2, 'btnTritanope');
+    setActiveFilter('btnTritanope');
+    if (originalImg1 && originalImg2) {
+        
+        applyFilterToCanvas(imgViews, originalImg2, 'btnTritanope');
+    }
 });
 
+// Fonction pour marquer un bouton comme actif (et donc le filtre associé comme actif)
+function setActiveFilter(filterId) {
+    // Retirer la classe active des autres boutons
+    document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active-filter'));
+    
+    // Ajouter la classe active au bouton cliqué
+    document.getElementById(filterId).classList.add('active-filter');
+    
+    // Garder une trace du filtre actif
+    currentFilter = filterId;
+}
+
+// Drag and drop pour charger une image
+dropArea.addEventListener("dragover", function (e) {
+    e.preventDefault();
+});
+
+dropArea.addEventListener("drop", function (e) {
+    e.preventDefault();
+    const files = e.dataTransfer.files;
+    if (files.length > 0) {
+        inputFile.files = files;
+        uploadImage();  // Charger l'image dans la première zone
+        uploadImages(); // Charger l'image dans la deuxième zone
+    }
+});
+
+// Charger l'image à partir du fichier sélectionné
+inputFile.addEventListener("change", uploadImage);
+inputFile.addEventListener("change", uploadImages);
+
+function uploadImage() {
+    const file = inputFile.files[0];
+    if (file) {
+        let imgLink = URL.createObjectURL(file);
+        const img = new Image();
+        img.onload = function () {
+            originalImg1 = img; // Sauvegarder l'image originale
+            loadImageToCanvas(img, imgView);
+            applyFilterToCanvas(imgView, img, 'btnProtanope');  // Appliquer un filtre par défaut
+        };
+        img.src = imgLink;
+    }
+}
+
+function uploadImages() {
+    const file = inputFile.files[0];
+    if (file) {
+        let imgLink = URL.createObjectURL(file);
+        const img = new Image();
+        img.onload = function () {
+            originalImg2 = img; // Sauvegarder l'image originale
+            loadImageToCanvas(img, imgViews);
+            applyFilterToCanvas(imgViews, img, 'btnProtanope');  // Appliquer un filtre par défaut
+        };
+        img.src = imgLink;
+    }
+}
 
 /////////////////////////// Drag and Drop ///////////////////////////
 
