@@ -3,52 +3,177 @@ const dropArea = document.getElementById("drop-area");
 const inputFile = document.getElementById("input-file");
 const imgView = document.getElementById("img-view");
 const imgViews = document.getElementById("img-views");
-// const imgDalto = document.getElementById("imageDaltonnisme");
 
+// Déclarer les variables pour stocker les images originales
+let originalImg1 = null;
+let originalImg2 = null;
 
+// Déclarer une variable pour l'intensité
+let intensity = 0.5; // Valeur par défaut à 0.5
+
+// Charger une image aléatoire de base
+window.onload = function () {
+    loadRandomImage(); // Appeler la fonction de chargement d'une image aléatoire
+};
+
+// Fonction pour charger une image aléatoire
+function loadRandomImage() {
+    const imgLink = "https://picsum.photos/800/300"; // URL pour une image aléatoire de taille 800x300
+
+    // Créer une image et l'afficher dans le premier canvas
+    const img = new Image();
+    img.onload = function () {
+        originalImg1 = img; // Sauvegarder l'image originale
+        loadImageToCanvas(img, imgView);
+    };
+    img.src = imgLink;
+
+    // Charger l'image dans le deuxième canvas
+    const img2 = new Image();
+    img2.onload = function () {
+        originalImg2 = img2; // Sauvegarder l'image originale
+        loadImageToCanvas(img2, imgViews);
+    };
+    img2.src = imgLink;
+}
+
+// Fonction de chargement d'une image dans un canvas spécifique
+function loadImageToCanvas(img, container) {
+    const canvas = container.querySelector("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = img.width;
+    canvas.height = img.height;
+    ctx.drawImage(img, 0, 0);
+    canvas.style.display = "block";  // Afficher le canvas
+}
+
+// Charger l'image à partir du fichier sélectionné
 inputFile.addEventListener("change", uploadImage);
 inputFile.addEventListener("change", uploadImages);
 
 function uploadImage() {
-    let imgLink = URL.createObjectURL(inputFile.files[0]);
-
-    imgView.querySelector("canvas").src = imgLink;
-    imgView.querySelector("canvas").style.display = "block";
-
-    // imgViews.querySelector("img").src = imgLink;
-    // imgViews.querySelector("img").style.display = "block";
-
+    const file = inputFile.files[0];
+    if (file) {
+        let imgLink = URL.createObjectURL(file);
+        const img = new Image();
+        img.onload = function () {
+            originalImg1 = img; // Sauvegarder l'image originale
+            loadImageToCanvas(img, imgView);
+        };
+        img.src = imgLink;
+    }
 }
 
-dropArea.addEventListener("dragover", function (e) {
-    e.preventDefault();
-
-})
-dropArea.addEventListener("drop", function (e) {
-    e.preventDefault();
-    inputFile.files = e.dataTransfer.files;
-    uploadImage();
-})
-// /////////////////////////////
 function uploadImages() {
-    let imgLink = URL.createObjectURL(inputFile.files[0]);
-
-    imgViews.querySelector("canvas").src = imgLink;
-    imgViews.querySelector("canvas").style.display = "block";
-
-    // imgViews.querySelector("img").src = imgLink;
-    // imgViews.querySelector("img").style.display = "block";
+    const file = inputFile.files[0];
+    if (file) {
+        let imgLink = URL.createObjectURL(file);
+        const img = new Image();
+        img.onload = function () {
+            originalImg2 = img; // Sauvegarder l'image originale
+            loadImageToCanvas(img, imgViews);
+        };
+        img.src = imgLink;
+    }
 }
 
+// Drag and drop pour charger une image
 dropArea.addEventListener("dragover", function (e) {
     e.preventDefault();
+});
 
-})
 dropArea.addEventListener("drop", function (e) {
     e.preventDefault();
-    inputFile.files = e.dataTransfer.files;
-    uploadImages();
-})
+    const files = e.dataTransfer.files;
+    if (files.length > 0) {
+        inputFile.files = files;
+        uploadImage();  // Charger l'image dans la première zone
+        uploadImages(); // Charger l'image dans la deuxième zone
+    }
+});
+
+// Fonction pour appliquer les filtres de daltonisme avec intensité ajustée
+function applyFilter(canvas, filter) {
+    const ctx = canvas.getContext("2d");
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const data = imageData.data;
+
+    for (let i = 0; i < data.length; i += 4) {
+        const r = data[i];     // Rouge
+        const g = data[i + 1]; // Vert
+        const b = data[i + 2]; // Bleu
+
+        // Application des filtres avec intensité ajustée
+        if (filter === 'btnProtanope') {
+            data[i] = (1 - intensity) * r + intensity * (0.152286 * r + 1.052583 * g + -0.204868 * b);          // R
+            data[i + 1] = (1 - intensity) * g + intensity * (0.114503 * r + 0.786281 * g + 0.099216 * b);       // G
+            data[i + 2] = (1 - intensity) * b + intensity * (-0.003882 * r + -0.048116 * g + 1.051998 * b);     // B
+        } else if (filter === 'btnDeutéranope') {
+            data[i] = (1 - intensity) * r + intensity * (0.367322 * r + 0.860646 * g + -0.227968 * b);          // R
+            data[i + 1] = (1 - intensity) * g + intensity * (0.280085 * r + 0.672501 * g + 0.047413 * b);       // G
+            data[i + 2] = (1 - intensity) * b + intensity * (0.011820 * r + 0.042940 * g + 0.968881 * b);       // B
+        } else if (filter === 'btnTritanope') {
+            data[i] = (1 - intensity) * r + intensity * (1.255528 * r + -0.076749 * g + -0.178779 * b);         // R
+            data[i + 1] = (1 - intensity) * g + intensity * (-0.078411 * r + 0.930809 * g + 0.147602 * b);      // G
+            data[i + 2] = (1 - intensity) * b + intensity * (0.004733 * r + 0.691367 * g + 0.303900 * b);       // B
+        }
+    }
+
+    ctx.putImageData(imageData, 0, 0); // Redessiner l'image avec les nouvelles données
+}
+
+// Mettre à jour l'intensité du filtre en fonction de la valeur de la barre
+function updateColorsFromRange() {
+    intensity = parseFloat(document.getElementById("rangeImg").value); // Récupérer la valeur du curseur
+    document.getElementById("chiffre").innerText = intensity.toFixed(2); // Afficher la valeur dans la div
+
+    // Appliquer les filtres sur les deux canaux d'images avec la nouvelle intensité
+    const canvas1 = imgView.querySelector("canvas");
+    const canvas2 = imgViews.querySelector("canvas");
+
+    // Vérifier si les images sont chargées
+    if (originalImg1 && originalImg2) {
+        resetCanvasAndApplyFilter(canvas1, originalImg1, 'btnProtanope');
+        resetCanvasAndApplyFilter(canvas2, originalImg2, 'btnProtanope');
+        
+    }
+}
+
+// Réinitialiser et appliquer le filtre
+function resetCanvasAndApplyFilter(canvas, originalImg, filter) {
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);  // Effacer le canvas
+    ctx.drawImage(originalImg, 0, 0);  // Redessiner l'image d'origine
+    applyFilter(canvas, filter);  // Appliquer le filtre après la réinitialisation
+}
+
+// Ajouter les événements pour appliquer les filtres
+document.getElementById('btnProtanope').addEventListener('click', () => {
+    const canvas1 = imgView.querySelector("canvas");
+    const canvas2 = imgViews.querySelector("canvas");
+
+        resetCanvasAndApplyFilter(canvas1, originalImg1, 'btnProtanope');
+        resetCanvasAndApplyFilter(canvas2, originalImg2, 'btnProtanope');
+    
+});
+
+document.getElementById('btnDeutéranope').addEventListener('click', () => {
+    const canvas1 = imgView.querySelector("canvas");
+    const canvas2 = imgViews.querySelector("canvas");
+
+    resetCanvasAndApplyFilter(canvas1, originalImg1, 'btnDeutéranope');
+    resetCanvasAndApplyFilter(canvas2, originalImg2, 'btnDeutéranope');
+});
+
+document.getElementById('btnTritanope').addEventListener('click', () => {
+    const canvas1 = imgView.querySelector("canvas");
+    const canvas2 = imgViews.querySelector("canvas");
+
+    resetCanvasAndApplyFilter(canvas1, originalImg1, 'btnTritanope');
+    resetCanvasAndApplyFilter(canvas2, originalImg2, 'btnTritanope');
+});
+
+
 /////////////////////////// Drag and Drop ///////////////////////////
 
 /////////////////////////// Range Value  ///////////////////////////
@@ -120,29 +245,30 @@ range.addEventListener('input', RangeValue);
 // //////////////////////////////////////////////////////////////////////////////////
 // Récupérer les éléments
 const rangeImg = document.getElementById('rangeImg');
-const rangeValueImg = document.getElementById('testTmg');
+const rangeValueImg = document.getElementById('chiffre');
 const rangeContainerImg = document.querySelector('.range-containerImg');
 
 // Mettre à jour la valeur affichée et la position
 function RangeValueImg() {
     let valueImg = rangeImg.value;
-    console.log('Initial value:', valueImg);
+    // console.log('Initial value:', valueImg);
     
     const rangeWidthImg = rangeImg.offsetWidth;
-    console.log('Range width:', rangeWidthImg);
+    // console.log('Range width:', rangeWidthImg);
     
     const valuePositionImg = (valueImg - rangeImg.min) / (rangeImg.max - rangeImg.min) * rangeWidthImg;
-    console.log('Value position:', valuePositionImg);
+    // console.log('Value position:', valuePositionImg);
     
     valueImg = Math.round(valueImg * 10) / 10;  // Multiplie par 10, arrondit, puis divise par 10
-    console.log('Rounded value:', valueImg);
+    // console.log('Rounded value:', valueImg);
    
     
     // Mettre à jour la valeur affichée 
-    console.log('Updated textContent:', rangeValueImg);
-    // if (rangeValueImg) {
+    // if (rangeValueImg) {  // Assure-toi que rangeValueImg existe
         rangeValueImg.textContent = valueImg;
-        console.log('Updated textContent:', rangeValueImg.textContent);
+        // console.log('Updated textContent:', rangeValueImg.textContent);
+    // } else {
+    //     console.error('Element with id "testTmg" not found!');
     // }
 
 
@@ -157,7 +283,7 @@ function RangeValueImg() {
     let parentWidth = parentElement.offsetWidth;
     // Calculer la largeur en pixels
     let widthInPixels = (pourcentage / 100) * parentWidth;
-    console.log('Width in pixels:', widthInPixels);
+    // console.log('Width in pixels:', widthInPixels);
     // Affiche la largeur en pixels
 
     // //////////////////////////////////////////////////////////////////////////////
@@ -167,15 +293,15 @@ function RangeValueImg() {
     // Positionner la valeur au-dessus du curseur
     if(Math.abs(valuePositionImg - widthInPixels) < 1){
         rangeValueImg.style.left = `calc(${valuePositionImg}px - 25px)`;
-        console.log('Condition 1:', valuePositionImg);
+        // console.log('Condition 1:', valuePositionImg);
     }
     else if (valuePositionImg == 0) {
         rangeValueImg.style.left = `calc(${valuePositionImg}px + 1%)`;
-        console.log('Condition 2:', valuePositionImg);
+        // console.log('Condition 2:', valuePositionImg);
     }
     else {
         rangeValueImg.style.left = `calc(${valuePositionImg}px)`;
-        console.log('Condition 3:', valuePositionImg);
+        // console.log('Condition 3:', valuePositionImg);
     }
     // +1rem pour éviter qu'il ne touche la barre
 }
