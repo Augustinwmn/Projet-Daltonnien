@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/style.css">
+    <title>Color Simulator</title>
+</head>
+<body>
+    
+  <nav class="nav" id="nav">
+    <!-- Hamburger Menu -->
+
+    <div id="menu">
+      <img src="./Image/LOGO_WHITE.webp" alt="">
+    </div>
+    <!-- Hamburger Menu -->
+
+    <!-- Title -->
+    <div class="centre">
+      <div>
+        <h1>ColorAccess</h1>
+      </div>
+      <div class="link">
+        <a href="#simulateurCouleur">Color Simulator</a>
+        <a href="#simulateurImage">Image Simulator</a>
+        <a href="#paragraphe">About</a>
+      </div>
+    </div>
+    <!-- Title -->
+
+    <!-- Language -->
+    <div class="langue">
+      <select name="langue" id="langue" onchange="location = this.value;">
+        <option value="./index-EN.html"> EN </option>
+        <option value="./index-FR.html"> FR </option>
+        <option value="./index-ES.html"> ES </option>
+        <option value="./index-DE.html"> DE </option>
+      </select>
+    </div>
+    <!-- Language -->
+  </nav>
+
+
+  <!-- Info -->
+  <a href="#paragraphe">
+    <div id="boite-dialogue" class="visible">
+      <div id="message">
+        <img src="./Image/icons8-information-50.png" alt="">
+      </div>
+    </div>
+  </a>
+  <!-- Info -->
+
+
+  <!-- Color Simulator -->
+  <div id="simulateurCouleur">
+    <h2>Color Simulator</h2>
+
+    <div id="add">
+      <button onclick="addPalette()"><img src="./Image/ajouter-un-bouton.png"></button>
+      <!-- <button onclick="deletePalette()"><img src="./Image/2198.png"></button> -->
+    </div>
+
+
+    <div class="simuCouleur">
+
+      <div class="couleurP">
+        <input type="color" name="palette" id="palette-1" value="#ff00ff" onchange="updateColors(this.value, 1)">
+        <input type="text" name="text" id="couleurInput-1" placeholder="#000000" value="#ff0000"
+          onchange="updateColors(this.value, 1)">
+      </div>
+      <div class="couleurP">
+        <input type="color" name="palette" id="palette-2" value="#ff0000" onchange="updateColors(this.value, 2)">
+        <input type="text" name="text" id="couleurInput-2" placeholder="#000000" value="#00ff00"
+          onchange="updateColors(this.value, 2)">
+      </div>
+      <div class="couleurP">
+        <input type="color" name="palette" id="palette-3" value="#00ff00" onchange="updateColors(this.value, 3)">
+        <input type="text" name="text" id="couleurInput-3" placeholder="#000000" value="#00ff00"
+          onchange="updateColors(this.value, 3)">
+      </div>
+      <div class="couleurP">
+        <input type="color" name="palette" id="palette-4" value="#0000ff" onchange="updateColors(this.value, 4)">
+        <input type="text" name="text" id="couleurInput-4" placeholder="#000000" value="#00ff00"
+          onchange="updateColors(this.value, 4)">
+      </div>
+
+    </div>
+
+    <!--  -->
+    <label for="range_protanopie" id="correctionCouleur">Severity of the anomaly</label>
+
+    <div class="colonne">
+
+      <p>0</p>
+
+      <div class="range-container">
+        <input type="range" id="myRange" min="0" max="1.0" step="any" list="marker" oninput="updateColorsFromRange()"
+          value="0.5">
+        <div class="range-value" id="test">1</div>
+      </div>
+
+      <p>1</p>
+
+    </div>
+
+    <div class="colonne2"></div>
+
+    <div class="couleur_colonne">
+
+      <!-- Protanope -->
+      <div class="Protanope">
+        <div class="h4">
+          <h4>Protanope</h4>
+        </div>
+        <div class="couleur">
+          <div id="protanope-1"></div>
+          <div id="protanope-2"></div>
+          <div id="protanope-3"></div>
+          <div id="protanope-4"></div>
+        </div>
+      </div>
+
+      <!-- Deuteranope -->
+      <div class="Deuteranope">
+        <div class="h4">
+          <h4>Deuteranope</h4>
+        </div>
+        <div class="couleur">
+          <div id="deuteranope-1"></div>
+          <div id="deuteranope-2"></div>
+          <div id="deuteranope-3"></div>
+          <div id="deuteranope-4"></div>
+        </div>
+      </div>
+
+      <!-- Tritanope -->
+      <div class="Tritanope">
+        <div class="h4">
+          <h4>Tritanope</h4>
+        </div>
+        <div class="couleur">
+          <div id="tritanope-1"></div>
+          <div id="tritanope-2"></div>
+          <div id="tritanope-3"></div>
+          <div id="tritanope-4"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!------------ Image Simulator ------------------>
+  <div id="simulateurImage">
+    <h2>Image Simulator</h2>
+
+    <div class="hero">
+      <label for="input-file" id="drop-area">
+          <input type="file" accept="image/*" id="input-file">
+          <div id="img-view">
+              <canvas id="imgOrigine"></canvas>
+          </div>
+      </label>
+  </div>
+  
+  <div class="colonneImage">
+      <div class="colonne2">
+          <label for="range_protanopie" id="correctionImg">Severity of the anomaly</label>
+      </div>
+  
+      <div class="colonne">
+          <p>0</p>
+          <div class="range-containerImg">
+              <input type="range" id="rangeImg" min="0" max="1.0" step="any" list="marker" oninput="updateColorsFromRange()" value="0.5">
+              <div class="range-value" id="chiffre">0.5</div>
+          </div>
+          <p>1</p>
+      </div>
+  </div>
+
+  <div class="btn">
+    <button id="btnProtanope">Protanope</button>
+    <button id="btnTritanope">Tritanope</button>
+    <button id="btnDeutéranope">Deuteranope</button>
+</div>
+  
+  <div id="img-views">
+      <canvas id="imageDaltonnisme"></canvas>
+  </div>
+  
+  
+  </div>
+  <div id="paragraphe">
+    <h2>How does a colorblind person see?</h2>
+    <p>We see colors differently.
+      About 1 in 20 people is colorblind in some way. This means that one or more types
+      of cone cells in their eyes - the cells we use to detect colors - do not
+      function normally. As a result, a colorblind person sees a reduced color space; two
+      colors that appear distinct to a person with normal color vision may look identical
+      to a <strong>colorblind</strong> person. This phenomenon is not random. Mathematically, there are
+      lines across the color space - called "confusion lines" - such that every color on a
+      confusion line appears identical to all other colors on the same confusion line for a
+      colorblind person.</p>
+
+    <p>This means that we can, to some extent, <strong>simulate colorblindness</strong>. By
+      mathematically reproducing the confusion line phenomenon, we can replace the colors of an
+      image so that if two original colors are on the same confusion line, they are both replaced
+      by the same new color. If done correctly, a person with normal color vision can experience
+      a sort of colorblindness.</p>
+
+    <p>This website is aimed at people with normal or near-normal color vision. The goal of
+      this site is to simulate for you what the color palette you have chosen looks like to
+      colorblind people. The colors in the leftmost column are the "true" colors; they are displayed in
+      the other three columns as they would appear to someone with protanopia, deuteranopia, or tritanopia,
+      respectively.
+    </p>
+  </div>
+  <footer>
+  </footer>
+  <script src="./JS/scripttest.js"></script>
+  <script src="./JS/AjoutDePalette_EN.js"></script>
+  <script src="./JS/Animation.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Range Input avec Valeur au-dessus</title>
+        <style>
+
+            .range-container {
+                margin: 50px;
+                position: relative;
+                width: 100% - 50px;
+                /* max-width: 400px; */
+                /* margin: auto; */
+            }
+
+            input[type="range"] {
+                width: 100%;
+            }
+
+            .range-value {
+                position: absolute;
+                top: -20px;
+                /* Ajuste la position au-dessus du curseur */
+                left: -50%;
+                transform: translateX(-50%);
+                font-size: 16px;
+                font-weight: bold;
+                /* background-color: fuchsia; */
+                color: #333;
+                pointer-events: none;
+                /* Pour éviter l'interaction avec la valeur */
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="range-container">
+            <input type="range" id="range" min="0" max="100" value="50">
+            <div class="range-value" id="range-value">50</div>
+        </div>
+
+        <script>
+            // Récupérer les éléments
+            const range = document.getElementById('range');// Nom du "input[type='range']" 
+            const rangeValue = document.getElementById('range-value');// Nom pour afficher la valeur
+            const rangeContainer = document.querySelector('.range-container');// Nom de la div
+
+            // Mettre à jour la valeur affichée et la position
+            function updateRangeValue() {
+                const value = range.value;
+                const rangeWidth = range.offsetWidth;
+                const valuePosition = (value - range.min) / (range.max - range.min) * rangeWidth;
+
+                // Mettre à jour la valeur affichée
+                rangeValue.textContent = value;
+
+                // Positionner la valeur au-dessus du curseur
+                rangeValue.style.left = `calc(${valuePosition}px + 1rem)`; // +1rem pour éviter qu'il ne touche la barre
+            }
+
+            // Appel initial pour positionner la valeur
+            updateRangeValue();
+
+            // Mettre à jour la valeur lorsque le curseur se déplace
+            range.addEventListener('input', updateRangeValue);
+        </script>
+
+    </body>
+
+</html>
