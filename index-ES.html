@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/style.css">
+    <title>Simulador de colores</title>
+</head>
+<body>
+    
+    <nav class="nav" id="nav">
+      <!-- Menú hamburguesa -->
+
+      <div id="menu">
+        <img src="./Image/LOGO_WHITE.webp" alt="">
+      </div>
+      <!-- Menú hamburguesa -->
+
+      <!-- Título -->
+      <div class="centre">
+        <div>
+          <h1>ColorAccess</h1>
+        </div>
+        <div class="link">
+          <a href="#simulateurCouleur">Simulador de colores</a>
+          <a href="#simulateurImage">Simulador de imágenes</a>
+          <a href="#paragraphe">Acerca de</a>
+        </div>
+      </div>
+      <!-- Título -->
+
+      <!-- Idioma -->
+      <div class="langue">
+        <select name="langue" id="langue" onchange="location = this.value;">
+          <option value="./index-ES.html"> ES </option>
+          <option value="./index-FR.html"> FR </option>
+          <option value="./index-EN.html"> EN </option>
+          <option value="./index-DE.html"> DE </option>
+        </select>
+      </div>
+      <!-- Idioma -->
+    </nav>
+
+
+    <!-- Información -->
+    <a href="#paragraphe">
+      <div id="boite-dialogue" class="visible">
+        <div id="message">
+          <img src="./Image/icons8-information-50.png" alt="">
+        </div>
+      </div>
+    </a>
+    <!-- Información -->
+
+
+    <!-- Simulador de colores -->
+    <div id="simulateurCouleur">
+      <h2>Simulador de colores</h2>
+
+      <div id="add">
+        <button onclick="addPalette()"><img src="./Image/ajouter-un-bouton.png"></button>
+      </div>
+
+
+      <div class="simuCouleur">
+
+        <div class="couleurP">
+          <input type="color" name="palette" id="palette-1" value="#ff00ff" onchange="updateColors(this.value, 1)">
+          <input type="text" name="text" id="couleurInput-1" placeholder="#000000" value="#ff0000"
+            onchange="updateColors(this.value, 1)">
+        </div>
+        <div class="couleurP">
+          <input type="color" name="palette" id="palette-2" value="#ff0000" onchange="updateColors(this.value, 2)">
+          <input type="text" name="text" id="couleurInput-2" placeholder="#000000" value="#00ff00"
+            onchange="updateColors(this.value, 2)">
+        </div>
+        <div class="couleurP">
+          <input type="color" name="palette" id="palette-3" value="#00ff00" onchange="updateColors(this.value, 3)">
+          <input type="text" name="text" id="couleurInput-3" placeholder="#000000" value="#00ff00"
+            onchange="updateColors(this.value, 3)">
+        </div>
+        <div class="couleurP">
+          <input type="color" name="palette" id="palette-4" value="#0000ff" onchange="updateColors(this.value, 4)">
+          <input type="text" name="text" id="couleurInput-4" placeholder="#000000" value="#00ff00"
+            onchange="updateColors(this.value, 4)">
+        </div>
+
+      </div>
+
+      <label for="range_protanopie" id="correctionCouleur">Severidad de la anomalía</label>
+
+      <div class="colonne">
+
+        <p>0</p>
+
+        <div class="range-container">
+          <input type="range" id="myRange" min="0" max="1.0" step="any" list="marker" oninput="updateColorsFromRange()"
+            value="0.5">
+          <div class="range-value" id="test">1</div>
+        </div>
+
+        <p>1</p>
+
+      </div>
+
+      <div class="couleur_colonne">
+
+        <!-- Protanope -->
+        <div class="Protanope">
+          <div class="h4">
+            <h4>Protanopia</h4>
+          </div>
+          <div class="couleur">
+            <div id="protanope-1"></div>
+            <div id="protanope-2"></div>
+            <div id="protanope-3"></div>
+            <div id="protanope-4"></div>
+          </div>
+        </div>
+
+        <!-- Deuteranope -->
+        <div class="Deuteranope">
+          <div class="h4">
+            <h4>Deuteranopia</h4>
+          </div>
+          <div class="couleur">
+            <div id="deuteranope-1"></div>
+            <div id="deuteranope-2"></div>
+            <div id="deuteranope-3"></div>
+            <div id="deuteranope-4"></div>
+          </div>
+        </div>
+
+        <!-- Tritanope -->
+        <div class="Tritanope">
+          <div class="h4">
+            <h4>Tritanopia</h4>
+          </div>
+          <div class="couleur">
+            <div id="tritanope-1"></div>
+            <div id="tritanope-2"></div>
+            <div id="tritanope-3"></div>
+            <div id="tritanope-4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!------------ Simulador de imágenes ------------------>
+    <div id="simulateurImage">
+      <h2>Simulador de imágenes</h2>
+
+      <div class="hero">
+        <label for="input-file" id="drop-area">
+            <input type="file" accept="image/*" id="input-file">
+            <div id="img-view">
+                <canvas id="imgOrigine"></canvas>
+            </div>
+        </label>
+    </div>
+    
+    <div class="colonneImage">
+        <div class="colonne2">
+            <label for="range_protanopie" id="correctionImg">Severidad de la anomalía</label>
+        </div>
+    
+        <div class="colonne">
+            <p>0</p>
+            <div class="range-containerImg">
+                <input type="range" id="rangeImg" min="0" max="1.0" step="any" list="marker" oninput="updateColorsFromRange()" value="0.5">
+                <div class="range-value" id="chiffre">0.5</div>
+            </div>
+            <p>1</p>
+        </div>
+    </div>
+
+    <div class="btn">
+      <button id="btnProtanope">Protanopia</button>
+      <button id="btnTritanope">Tritanopia</button>
+      <button id="btnDeutéranope">Deuteranopia</button>
+    </div>
+    
+    <div id="img-views">
+        <canvas id="imageDaltonnisme"></canvas>
+    </div>
+    
+    
+    </div>
+    <div id="paragraphe">
+      <h2>¿Cómo ve una persona daltónica?</h2>
+      <p>Vemos los colores de manera diferente. Aproximadamente 1 de cada 20 personas es daltónica de alguna manera. Esto significa que uno o más tipos de células cónicas en sus ojos —las células que usamos para detectar colores— no funcionan normalmente. Por lo tanto, una persona daltónica ve un espacio de colores reducido; dos colores que parecen distintos a alguien con visión normal pueden parecer idénticos a una persona <strong>daltónica</strong>. Este fenómeno no es aleatorio. Matemáticamente, existen líneas a través del espacio de color —llamadas «líneas de confusión»— donde cada color en una línea parece idéntico a los demás en la misma línea para una persona daltónica.</p>
+
+      <p>Esto significa que podemos, en cierto modo, <strong>simular el daltonismo</strong>. Reproduciendo matemáticamente el fenómeno de la línea de confusión, podemos reemplazar los colores de una imagen de manera que si dos colores originales están en la misma línea de confusión, ambos son reemplazados por el mismo nuevo color. Si lo hacemos correctamente, una persona con visión normal puede experimentar algo similar al daltonismo.</p>
+
+      <p>Este sitio está dirigido a personas con visión de colores normal o casi normal. El objetivo de este sitio es simular cómo se vería la paleta de colores elegida para los daltónicos. Los colores en la columna más a la izquierda son los «colores reales»; se muestran en las tres columnas siguientes como serían vistos por una persona con protanopia, deuteranopia o tritanopia, respectivamente.</p>
+    </div>
+    <footer>
+    </footer>
+    <script src="./JS/scripttest.js"></script>
+    <script src="./JS/AjoutDePalette_ES.js"></script>
+    <script src="./JS/Animation.js"></script>
+  </body>
+
+</html>

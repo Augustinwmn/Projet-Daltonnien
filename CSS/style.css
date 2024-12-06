@@ -38,14 +38,9 @@ nav{
     display: flex;
     justify-content: space-between;
 }
-/* menu burger */
 #nav #menu{
-/*     
-    width: 100px;
-    height: 100px; */
     margin-bottom: 10px;
     padding: 0;
-    /* position: relative; */
 }
 #menu img{
     width: 100%;
@@ -86,7 +81,6 @@ nav .centre{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* padding-bottom: 2%; */
 }
 nav .centre h1{
     margin: 0;
@@ -99,7 +93,6 @@ nav .centre .link{
     display: flex;
     justify-content: space-between;
     flex: end;
-    /* gap: 5%; */
     width: 100%;
 }
 nav .centre .link a{
@@ -108,29 +101,22 @@ nav .centre .link a{
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 5px;
-    /* border: 1px solid white; */
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     text-align: center;
 }
 nav .centre .link a:hover{
-    /* transform: scale(1.1); */
     color: black;
     background-color: white;
 
 }
-
-/* .simuCouleur{
-    margin-left: 3%;
-} */
 /* ****************************** Bouton i ****************************** */
-
 #boite-dialogue{
     width: 45px;
     height: 45px;
     text-align: center;
     border-radius: 250px;
-    background-color: rgb(0, 166, 237);
+    background-color: rgb(36, 36, 36);
 
     /* Comportement modale */
     position: fixed;
@@ -138,15 +124,9 @@ nav .centre .link a:hover{
     right: 0vw;
     transform: translate(-50%, -50%);
 
-    
-    /* display: none; */
-    /* opacity: 0; */
     margin-top: 20px;
 }
-
 #boite-dialogue.visible{
-    /* display: block; */
-    /* opacity: 1; */
     margin-top: 0;
 }
 #message{
@@ -163,7 +143,6 @@ nav .centre .link a:hover{
     margin: 0;
     padding: 0;
     color: rgb(255, 255, 255);
-    /* content: "\002139"; */
 }
 #message img{
     width: 25px;
@@ -176,15 +155,6 @@ nav a{
     text-decoration: none;
     color: black;
 }
-
-/* #fix{
-    margin: 1%;
-    width: 50%;
-    background-color: yellow;
-    box-shadow: 5px 5px 2px yellowgreen;
-
- } */
-
 /******************************* Bouton i *******************************/
 #simulateurCouleur{
     min-height: 85vh;
@@ -209,9 +179,7 @@ p{
     margin-right: 30px;
     margin-top: 80px;
     float: right;
-    /* border: none; */
 }
-
 #add button{
     border: none;
     background-color: transparent;
@@ -233,8 +201,6 @@ p{
 strong{
     font-size: large;
 }
-
-
 .simuCouleur{
     display: flex;
     justify-content: space-around;
@@ -244,11 +210,14 @@ strong{
  flex-direction: column;
  gap: 5px;
  width: 139px;
- height: 20vh;
- 
+ height: 15vh;
+}
+.btnsuppr{
+    height: 25vh;
+    width: 139px;
 }
 /* input[type="color"]:hover{
-    Ouvrir la palette 
+
 } */
 input[type="text"]{
     margin: 0;
@@ -264,24 +233,17 @@ input[type="text"]{
     padding: 0;
 
 }
-
 .daltonisme{
     width: 100%;
     height: 100%;
-    /* border: 1px solid ; */
     border-color: rgb(0, 0, 0);
 }
-
 .daltonisme:hover{
     transform: scale(1.1);
 }
-
-
-
 #palette-1::-webkit-color-swatch, #palette-2::-webkit-color-swatch, #palette-3::-webkit-color-swatch, #palette-4::-webkit-color-swatch,
 #palette-5::-webkit-color-swatch, #palette-6::-webkit-color-swatch{
   border-color: transparent;
-  
 }
 #palette-1{
     background-color: #FF00FF; 
@@ -295,15 +257,6 @@ input[type="text"]{
 #palette-4{
     background-color: blue;
 }
-/* .div_palette2, .div_palette{
-    display: flex;
-    justify-content: space-around;
-    width: 85vw;
-    margin: 1%;
-}
-.div_palette{
-    height: 20vh;
-} */
 #couleurInput-1, #couleurInput-2, #couleurInput-3, #couleurInput-4{
     width: 99%;
     border: 1px solid;
@@ -312,21 +265,7 @@ input[type="text"]{
     text-align: center;
     padding: 0;
 }
-/***** Barre de correction *****/
-/* datalist {
-    display: flex;
-    justify-content: space-between;
-    writing-mode: horizontal-tb;
-    width: 100%;
-}
-option {
-    display: flex;
-    padding: 0;
-    width: 25px;
-} */
-/* #myRange::-webkit-slider-runnable-track{
-    background: green;
-} */
+
 #myRange{
     accent-color: rgb(0, 0, 0);
 }
@@ -335,13 +274,11 @@ option {
 }
 #myRange, #rangeImg{
     background-color: black;
-    /* cursor:ew-resize; */
     cursor: grab;
     margin: 0;   
     height: 7px;
     width: 100%;
 }
-
 #myRange:active, #rangeImg:active{
     cursor: grabbing;
 }
@@ -363,27 +300,17 @@ option {
     width: 80%;
     align-content: center;
 }
-
 .colonne .range-container #test {
     position: absolute;
-    top: 0px; 
-    /* Ajuste la position au-dessus du curseur */
-    /* left: 1%;
-    left: 5px;
-    left: 99%;
-    left: 725px; */
+    top: 0px;
     transform: translateX(-50%);
     font-size: 18px;
     font-weight: bold;
     color: #333;
     pointer-events: none; 
     /* Evite l'interaction avec la valeur */
-    z-index: 10; 
-    /* Assure que le texte reste au-dessus du slider */
-   
+    z-index: 10;
 }
-
-
 .colonne2{
     display: flex;
     justify-content: center;
@@ -393,10 +320,6 @@ option {
     border: none;
 }
 .colonne2 button:active{
-    /* border: 1px solid; */
-    /* box-shadow:
-    inset -2px -2px 1px rgba(255, 255, 255, 0.6),
-    inset 2px 2px 1px rgba(0, 0, 0, 0.6); */
     background-color: #ff0000;
 }
 .colonne2 img{
@@ -416,22 +339,6 @@ option {
 }
 
 /* **************************** */
-/* .div_palette{
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    padding: 20px;
-    padding-bottom: 0;
-}
-.div_palette2{
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    padding: 20px;
-    padding-top: 10px;
-    padding-bottom: 0;
-} */
 .couleur_colonne{
     display: flex;
     justify-content:space-around;
@@ -444,28 +351,12 @@ option {
     display: flex;
     justify-content: center;
 }
-/* .Deuteranope h4, .Tritanope h4, .Protanope h4{
-    text-align: center;
-    padding: 20px;
-    
-} */
-
-/* .Bandeau_Protanopie ,.Bandeau_Tritanopie ,.Bandeau_Deuteranopie{
-    display: flex;
-    justify-content: center;
-} */
-
 .Protanope, .Tritanope, .Deuteranope{
     width: 25%;
     border: 1px solid ;
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
 }
-/* .Protanope:last-child, .Tritanope:last-child, .Deuteranope:last-child{
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-} */
-
 .couleur{
     display: flex;
     flex-direction: column;
@@ -473,16 +364,10 @@ option {
     width: 100%;
     height: 300px;
 }
-
-
-
 .colonne label{
-    /* margin-bottom: 20px; */
     display: flex;
     justify-content: center;
 }
-
-
 /* *********************************************************************************** */
 /* ------------------------------------- Couleur ------------------------------------- */
 /* *********************************************************************************** */
@@ -493,7 +378,6 @@ option {
 #protanope-4, #tritanope-4, #deuteranope-4{ /* -- Palette 4 -- */
     width: 100%;
     height: 100%;
-    /* border: 1px solid ; */
     border-color: rgb(0, 0, 0);
 }
 
@@ -502,7 +386,6 @@ option {
 #protanope-3:hover, #tritanope-3:hover, #deuteranope-3:hover,   /* -- Palette 3 -- */
 #protanope-4:hover, #tritanope-4:hover, #deuteranope-4:hover{   /* -- Palette 4 -- */
     transform: scale(1.1);
-    /* Print Le Code Hexadécimal */
 }
 
 /* *********************************************************************************** */
@@ -512,7 +395,6 @@ option {
 #simulateurImage{
     min-height: 50vh;
     margin-top: 1%;
-    /* padding-top: 1%; */
     padding-bottom: 2%;
     background-color: black;
     color: white;
@@ -540,7 +422,6 @@ option {
     width: 100%; 
     height: auto;
     margin: auto;
-    /* background: linear-gradient(#e7baff, #c2b6d9); */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -548,8 +429,6 @@ option {
 #drop-area{
     width: 60%;
     height: auto;
-    /* padding: 30px; */
-    /* background: #fff; */
     align-items: center;
     border-radius: 20px;
 }
@@ -557,15 +436,12 @@ option {
     width: 100%;
     height: 100%;
     border-radius: 20px;
-    /* border: 2px dashed #bbb5ff; */
-    /* background: #f7f8ff; */
     background-position: center;
     background-size: cover;
 }
 input[type="file"]{
     position: fixed;
     display: none;
-    /* background-image: url('../Image/deposer.png'); */
 }
 #img-view img, #img-view canvas{
     height: 100%;
@@ -573,9 +449,7 @@ input[type="file"]{
     border-radius: 20px;
     padding: auto;
     display: flex;
-    /* align-items: center; */
     justify-content: center;
-    /* margin-top: 25px; */
 }
 #img-view p{
     display: block;
@@ -588,23 +462,17 @@ input[type="file"]{
     color: #777;
 }
 /* ***************** Drag and Drop ***************** */
-
-
 .btn{
     margin-top: 1vh;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 1vh;
     width: 80%;
     height: 5vh;
     padding: 0;
     display: flex;
     justify-content: space-between;
 }
-/* #simulateurimage .btn button{
-    width: 30%;
-    height: 10vh;
-    gap: 5%;
-} */
 #btnProtanope, #btnTritanope, #btnDeutéranope{
     width: 25%;
     height: 5vh;
@@ -644,23 +512,15 @@ input[type="file"]{
 }
 .colonneImage .colonne .range-containerImg #chiffre {
     position: absolute;
-    top: 0px; 
-    /* Ajuste la position au-dessus du curseur */
-    /* left: 1%;
-    left: 5px;
-    left: 99%;
-    left: 725px; */
+    top: 0px;
     transform: translateX(-50%);
     font-size: 18px;
     font-weight: bold;
     color: #ffffff;
     pointer-events: none; 
     /* Evite l'interaction avec la valeur */
-    z-index: 10; 
-    /* Assure que le texte reste au-dessus du slider */
-   
+    z-index: 10;
 }
-
 .colonne2{
     display: flex;
     justify-content: center;
@@ -671,10 +531,6 @@ input[type="file"]{
     background-color: transparent;
 }
 .colonne2 button:active{
-    /* border: 1px solid; */
-    /* box-shadow:
-    inset -2px -2px 1px rgba(255, 255, 255, 0.6),
-    inset 2px 2px 1px rgba(0, 0, 0, 0.6); */
     background-color: #ff0000;
 }
 .colonne2 button img{
@@ -692,12 +548,9 @@ input[type="file"]{
     align-items: center;
     font-size: 24px;
 }
-
-
 .colonneImage datalist option{
     color: white;
 }
-
 #imageDaltonnisme{
     display: flex;
     justify-content: center;
@@ -706,18 +559,13 @@ input[type="file"]{
     height: auto;
     background-color: darkgray;
 }
-
-
 #paragraphe{
-    /* display: inline-block;
-    animation: ; */
     min-height: 40vh;
     background-color: rgb(221, 221, 221);
     padding: 1%;
     margin: 0;
 }
 /* *************** footer **************** */
-
 footer{
     background-color: rgb(36, 36, 36);
     padding: 10px;
@@ -736,7 +584,6 @@ footer{
         display: none;
     }
     .btn #btnProtanope, .btn #btnTritanope, .btn #btnDeutéranope{
-        /* height: 30px; */
         font-size: 16px;
     }
 }
@@ -772,20 +619,12 @@ footer{
         font-size: 40px;
         align-content: center;
     }
-    /* #menu{
-        width: 50px;
-        margin-bottom: 5px;
-    } */
     nav #menu, 
     nav .langue{
         width: 50px;
         margin-bottom: 5px;
 
     }
-    /* .langue{
-        width: 50px;
-
-    } */
     a{
         font-size: 9px;
     }

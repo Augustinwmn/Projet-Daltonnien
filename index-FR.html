@@ -38,6 +38,7 @@
         <select name="langue" id="langue" onchange="location = this.value;">
           <option value="./index-FR.html"> FR </option>
           <option value="./index-EN.html"> EN </option>
+          <option value="./index-ES.html"> ES </option>
           <option value="./index-DE.html"> DE </option>
         </select>
       </div>
@@ -70,12 +71,12 @@
 
         <div class="couleurP">
           <input type="color" name="palette" id="palette-1" value="#ff00ff" onchange="updateColors(this.value, 1)">
-          <input type="text" name="text" id="couleurInput-1" placeholder="#000000" value="#ff0000"
+          <input type="text" name="text" id="couleurInput-1" placeholder="#000000" value="#ff00ff"
             onchange="updateColors(this.value, 1)">
         </div>
         <div class="couleurP">
           <input type="color" name="palette" id="palette-2" value="#ff0000" onchange="updateColors(this.value, 2)">
-          <input type="text" name="text" id="couleurInput-2" placeholder="#000000" value="#00ff00"
+          <input type="text" name="text" id="couleurInput-2" placeholder="#000000" value="#ff0000"
             onchange="updateColors(this.value, 2)">
         </div>
         <div class="couleurP">
@@ -85,15 +86,15 @@
         </div>
         <div class="couleurP">
           <input type="color" name="palette" id="palette-4" value="#0000ff" onchange="updateColors(this.value, 4)">
-          <input type="text" name="text" id="couleurInput-4" placeholder="#000000" value="#00ff00"
-            onchange="updateColors(this.value, 4)">
+          <input type="text" name="text" id="couleurInput-4" placeholder="#000000" contenteditable="false" value="#0000ff"
+            onchange="updateColors(this.value, 4)" >
         </div>
 
       </div>
       <!-- <a href="./TEST" target="_blank">Page test</a> -->
 
       <!--  -->
-      <label for="range_protanopie" id="correctionCouleur">Sévérité de l'anomalie</label>
+      <label id="correctionCouleur">Sévérité de l'anomalie</label>
 
       <div class="colonne">
 
@@ -102,7 +103,7 @@
         <div class="range-container">
           <input type="range" id="myRange" min="0" max="1.0" step="any" list="marker" oninput="updateColorsFromRange()"
             value="0.5">
-          <div class="range-value" id="test">1</div>
+          <div class="range-value" id="test">0.5</div>
         </div>
 
         <p>1</p>
@@ -187,7 +188,7 @@
     
     <div class="colonneImage">
         <div class="colonne2">
-            <label for="range_protanopie" id="correctionImg">Sévérité</label>
+            <label id="correctionImg">Sévérité</label>
         </div>
     
         <div class="colonne">
@@ -199,16 +200,18 @@
             <p>1</p>
         </div>
     </div>
+
+    <div class="btn">
+      <button id="btnProtanope">Protanope</button>
+      <button id="btnTritanope">Tritanope</button>
+      <button id="btnDeutéranope">Deutéranope</button>
+    </div>
     
     <div id="img-views">
         <canvas id="imageDaltonnisme"></canvas> <!-- Le canvas vide qui sera rempli par l'image -->
     </div>
     
-    <div class="btn">
-        <button id="btnProtanope">Protanope</button>
-        <button id="btnTritanope">Tritanope</button>
-        <button id="btnDeutéranope">Deutéranope</button>
-    </div>
+    
     </div>
     <div id="paragraphe">
       <h2>Comment voit un daltonien ?</h2>

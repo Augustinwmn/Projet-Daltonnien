@@ -4,18 +4,15 @@ const maxPalettes = 6;
 function addPalette() {
 
     if (paletteCounter >= maxPalettes) {
-        alert("Le nombre maximum de palettes a été atteint.");
+        alert("Die maximale Anzahl an Paletten wurde erreicht.");
         return; // Empêche l'ajout de palettes supplémentaires
     }
+
     // Incrémenter le compteur de palettes
     paletteCounter++;
 
     // Cibler l'élément parent où les palettes doivent être ajoutées
     const paletteParent = document.querySelector('.simuCouleur'); // Cela cible le premier conteneur .couleurP
-
-    const btnsupprDiv = document.createElement('div');
-    btnsupprDiv.classList.add('btnsuppr');
-    btnsupprDiv.id = `btnsuppr-${paletteCounter}`; // Ajouter un ID unique à la div
 
     // Créer les nouveaux éléments de palette
     const newPaletteDiv = document.createElement('div');
@@ -32,7 +29,7 @@ function addPalette() {
                             border-top-right-radius: 15px;
                             margin: 0;
                             width: 100%;
-                            height: 117.5px;
+                            height: 100%;
                             padding: 0;`;
 
     // L'événement onchange pour appeler la fonction de mise à jour des couleurs
@@ -54,9 +51,9 @@ function addPalette() {
 
     // Créer le bouton de suppression
     const deleteButton = document.createElement('button');
-    deleteButton.textContent = 'Supprimer';
+    deleteButton.textContent = 'Löschen';
     deleteButton.classList.add('delete-btn');
-    deleteButton.style = 'margin-top: 10px; background-color: gray; color: white; border: none; padding: 5px 10px; border-radius: 5px; width: 100%;';
+    deleteButton.style = 'margin-top: 10px; background-color: gray; color: white; border: none; padding: 5px 10px; border-radius: 5px;';
     
     // Ajouter un événement au bouton de suppression
     deleteButton.addEventListener('click', function() {
@@ -66,12 +63,10 @@ function addPalette() {
     // Ajouter les inputs et le bouton à la div de la palette
     newPaletteDiv.appendChild(newColorInput);
     newPaletteDiv.appendChild(newTextInput);
-    // newPaletteDiv.appendChild(deleteButton);
+    newPaletteDiv.appendChild(deleteButton);
 
-    btnsupprDiv.appendChild(newPaletteDiv);
-    btnsupprDiv.appendChild(deleteButton);
     // Ajouter la nouvelle palette au conteneur existant
-    paletteParent.appendChild(btnsupprDiv);
+    paletteParent.appendChild(newPaletteDiv);
 
     // Créer les divs pour les effets de daltonisme
     const protanopeContainer = document.querySelector('.Protanope .couleur');
@@ -141,10 +136,10 @@ function removePalette(id) {
     paletteCounter --;
     // Supprimer la palette de couleur
     const paletteDiv = document.getElementById(`couleurP-${id}`);
-    const btnsupprDiv = document.getElementById(`btnsuppr-${id}`);
-    if (btnsupprDiv) {btnsupprDiv.remove();}
-    if (paletteDiv) {paletteDiv.remove();}
-    
+    if (paletteDiv) {
+        paletteDiv.remove();
+    }
+
     // Supprimer les divs de daltonisme associées
     const protanopeDiv = document.getElementById(`protanope-${id}`);
     const deuteranopeDiv = document.getElementById(`deuteranope-${id}`);
@@ -165,6 +160,3 @@ function updateAllColors() {
 
 // Ajouter un écouteur d'événement pour la mise à jour des couleurs globalement
 document.getElementById("myRange").addEventListener("input", updateAllColors);
-
-
-
