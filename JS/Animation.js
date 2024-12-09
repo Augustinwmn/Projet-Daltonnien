@@ -21,7 +21,7 @@ window.onload = function () {
 // Fonction pour charger une image aléatoire
 function loadRandomImage() {
     const imgLink = "https://picsum.photos/800/300"; // URL pour une image aléatoire de taille 800x300
-
+// https://cdn.pixabay.com/photo/2024/03/03/20/44/cat-8611246_1280.jpg
     // Créer l'image et l'afficher dans le premier canvas
     const img = new Image();
     img.onload = function () {
@@ -75,6 +75,10 @@ function applyFilterToCanvas(container, img, filter) {
 
 // Fonction pour appliquer un filtre de daltonisme
 function applyFilter(canvas, filter) {
+    // const canvas = container.querySelector("canvas");
+    // if (!canvas) {
+    //     console.error('Le canevas n\'existe pas dans le DOM');
+    // }
     const ctx = canvas.getContext("2d");
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     const data = imageData.data;
@@ -160,7 +164,7 @@ dropArea.addEventListener("drop", function (e) {
 
 // Charger l'image à partir du fichier sélectionné
 inputFile.addEventListener("change", uploadImage);
-inputFile.addEventListener("change", uploadImages);
+// inputFile.addEventListener("change", uploadImages);
 
 function uploadImage() {
     const file = inputFile.files[0];
@@ -169,22 +173,11 @@ function uploadImage() {
         const img = new Image();
         img.onload = function () {
             originalImg1 = img; // Sauvegarder l'image originale
-            loadImageToCanvas(img, imgView);
+            originalImg2 = img; // Sauvegarder aussi pour l'autre canevas
+            loadImageToCanvas(img, imgView); // Charger l'image sur le premier canevas
+            loadImageToCanvas(img, imgViews); // Charger l'image sur le deuxième canevas
             applyFilterToCanvas(imgView, img, 'btnProtanope');  // Appliquer un filtre par défaut
-        };
-        img.src = imgLink;
-    }
-}
-
-function uploadImages() {
-    const file = inputFile.files[0];
-    if (file) {
-        let imgLink = URL.createObjectURL(file);
-        const img = new Image();
-        img.onload = function () {
-            originalImg2 = img; // Sauvegarder l'image originale
-            loadImageToCanvas(img, imgViews);
-            applyFilterToCanvas(imgViews, img, 'btnProtanope');  // Appliquer un filtre par défaut
+            applyFilterToCanvas(imgViews, img, 'btnProtanope');  // Appliquer un filtre par défaut sur le deuxième
         };
         img.src = imgLink;
     }
@@ -213,7 +206,7 @@ function RangeValue() {
     // ////////////////////// Pour obtenir la taille en pixel à partir de la taille en pourcentage ///////////////////////////
 
     // Supposons que vous avez un pourcentage et une largeur d'élément parent
-    let pourcentage = 99;  // 50% par exemple
+    let pourcentage = 100;  // 50% par exemple
     let parentElement = document.querySelector('.range-container');  // Parent de l'élément
 
     // Obtenir la largeur de l'élément parent
@@ -230,7 +223,7 @@ function RangeValue() {
 
     // Positionner la valeur au-dessus du curseur
     if(valuePosition == widthInPixels){
-        rangeValue.style.left = `calc(${valuePosition}px - 25)`;
+        rangeValue.style.left = `calc(${valuePosition}px - 1%)`;
         // console.log(valuePosition);
     }
     else if (valuePosition == 0) {
@@ -278,14 +271,8 @@ function RangeValueImg() {
     valueImg = Math.round(valueImg * 10) / 10;  // Multiplie par 10, arrondit, puis divise par 10
     // console.log('Rounded value:', valueImg);
    
-    
     // Mettre à jour la valeur affichée 
-    // if (rangeValueImg) {  // Assure-toi que rangeValueImg existe
-        rangeValueImg.textContent = valueImg;
-        // console.log('Updated textContent:', rangeValueImg.textContent);
-    // } else {
-    //     console.error('Element with id "testTmg" not found!');
-    // }
+    rangeValueImg.textContent = valueImg;
 
 
     // //////////////////////////////////////////////////////////////////////////////
@@ -293,7 +280,7 @@ function RangeValueImg() {
     // //////////////////////////////////////////////////////////////////////////////
 
     // Supposons que vous avez un pourcentage et une largeur d'élément parent
-    let pourcentage = 99;  // 50% par exemple
+    let pourcentage = 100;  // 50% par exemple
     let parentElement = document.querySelector('.range-containerImg');  // Parent de l'élément
     // Obtenir la largeur de l'élément parent
     let parentWidth = parentElement.offsetWidth;
@@ -308,7 +295,7 @@ function RangeValueImg() {
 
     // Positionner la valeur au-dessus du curseur
     if(Math.abs(valuePositionImg - widthInPixels) < 1){
-        rangeValueImg.style.left = `calc(${valuePositionImg}px - 25px)`;
+        rangeValueImg.style.left = `calc(${valuePositionImg}px - 1%)`;
         // console.log('Condition 1:', valuePositionImg);
     }
     else if (valuePositionImg == 0) {
