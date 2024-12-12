@@ -1,1 +1,1 @@
- https://augustinwmn.github.io/Projet-Daltonnien/
+ https://augustinwmn.github.io/Projet-Daltonnien/index-FR.html
