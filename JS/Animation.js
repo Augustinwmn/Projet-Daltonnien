@@ -24,10 +24,12 @@ function loadRandomImage() {
 // https://cdn.pixabay.com/photo/2024/03/03/20/44/cat-8611246_1280.jpg
     // Créer l'image et l'afficher dans le premier canvas
     const img = new Image();
+    
     img.onload = function () {
         originalImg1 = img; // Sauvegarder l'image originale
         loadImageToCanvas(img, imgView);  // Charger l'image sur le premier canvas
     };
+    img.setAttribute('crossOrigin', '');
     img.src = imgLink;
 
     // Charger l'image dans le deuxième canvas
@@ -36,6 +38,7 @@ function loadRandomImage() {
         originalImg2 = img2; // Sauvegarder l'image originale
         loadImageToCanvas(img2, imgViews);  // Charger l'image sur le deuxième canvas
     };
+    img2.setAttribute('crossOrigin', '');
     img2.src = imgLink;
 }
 
@@ -158,7 +161,7 @@ dropArea.addEventListener("drop", function (e) {
     if (files.length > 0) {
         inputFile.files = files;
         uploadImage();  // Charger l'image dans la première zone
-        uploadImages(); // Charger l'image dans la deuxième zone
+        //uploadImages(); // Charger l'image dans la deuxième zone
     }
 });
 
@@ -170,6 +173,7 @@ function uploadImage() {
     const file = inputFile.files[0];
     if (file) {
         let imgLink = URL.createObjectURL(file);
+        console.log(imgLink);
         const img = new Image();
         img.onload = function () {
             originalImg1 = img; // Sauvegarder l'image originale
