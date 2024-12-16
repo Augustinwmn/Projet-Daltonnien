@@ -1,1 +1,1 @@
-https://LucasKunstler.github.io/Dalto_V6/index-FR.html
+ https://augustinwmn.github.io/Projet-Daltonnien/index-FR.html
