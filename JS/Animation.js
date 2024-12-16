@@ -243,7 +243,7 @@ function RangeValue() {
 }
 
 // Appel initial pour positionner la valeur
-RangeValue();
+ RangeValue();
 
 // Mettre à jour la valeur lorsque le curseur se déplace
 range.addEventListener('input', RangeValue);
