@@ -473,6 +473,15 @@ input[type="file"]{
     inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
+#btnProtanope:hover{
+    color: #ff0000;
+}
+#btnTritanope:hover{
+    color: #00ff00;
+}
+#btnDeutéranope:hover{
+    color: #0000ff;
+}
 .btnActif{
     color: white;
     background-color: rgb(36, 36, 36);

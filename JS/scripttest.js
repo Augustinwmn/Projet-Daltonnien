@@ -40,25 +40,32 @@ function hexToColorBlind(hex, conversionMatrix, intensity) {
 
 // Mise à jour des couleurs
 function updateColors(hex, index) {
+    hex = hex.trim();
+    console.log(hex);
 
     if (!hex) {
         // Si aucune couleur n'est fournie, on utilise une couleur par défaut
         hex = '#FF0000';  // Rouge par défaut
         console.log('if '+ hex);
     }
-
+    
     // Si l'utilisateur n'a pas fourni un code hex valide, on ajoute automatiquement le #
     if (hex.charAt(0) !== '#') {
         hex = '#' + hex;
         console.log("if2 "+ hex);
     }
+    var hexPattern = /^#[0-9A-Fa-f]{6}$/;
 
     // Vérification si la couleur est valide, sinon on met une couleur par défaut
-    if (!/^#[0-9A-Fa-f]{6}$/.test(hex)) {
+    if (!hexPattern.test(hex)) {
         hex = '#FF0000';  // Rouge par défaut si la couleur n'est pas valide
         console.log('if3 '+ hex);
+
     }
-    
+
+    if (hex.length === 4) {
+        hex = hex[0] + hex[1] + hex[1] + hex[2] + hex[2] + hex[3] + hex[3]; // Ex: #f00 devient #ff0000
+    }
     
     // if (!hex) return;
     // console.log("juste "+ hex);
@@ -71,6 +78,7 @@ function updateColors(hex, index) {
     const deuteranopeResult = hexToColorBlind(hex, deuteranopeMatrix, intensity);
 
     document.getElementById(`palette-${index}`).value = hex;
+    document.getElementById(`palette-${index}`).style.backgroundColor = hex;
     document.getElementById(`couleurInput-${index}`).value = hex;
     document.getElementById(`protanope-${index}`).style.backgroundColor = protanopeResult;
     document.getElementById(`tritanope-${index}`).style.backgroundColor = tritanopeResult;
@@ -88,16 +96,18 @@ function updateColorsFromRange() {
 // Écouteurs d'événements pour les nuanciers et les champs de texte
 for (let i = 1; i <= 4; i++) {
     document.getElementById(`palette-${i}`).addEventListener('input', function() {
-
         updateColors(this.value, i);
-        document.getElementById(`palette-${i}`).style.backgroundColor = this.value;
+        // document.getElementById(`palette-${i}`).style.backgroundColor = this.value;
+        // document.getElementById(`palette-${i}`).value = this.value;
+        // document.getElementById(`couleurInput-${i}`).value = this.value;
         
     });
     document.getElementById(`couleurInput-${i}`).addEventListener('input', function() {
 
         updateColors(this.value, i);
-        document.getElementById(`palette-${i}`).style.backgroundColor = this.value;
-
+        // document.getElementById(`palette-${i}`).style.backgroundColor = this.value;
+        // document.getElementById(`palette-${i}`).value = this.value;
+        // document.getElementById(`couleurInput-${i}`).value = this.value;
     });
 }
 
