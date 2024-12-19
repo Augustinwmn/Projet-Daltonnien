@@ -477,10 +477,10 @@ input[type="file"]{
     color: #ff0000;
 }
 #btnTritanope:hover{
-    color: #00ff00;
+    color: #0000ff;
 }
 #btnDeutéranope:hover{
-    color: #0000ff;
+    color: #00ff00;
 }
 .btnActif{
     color: white;

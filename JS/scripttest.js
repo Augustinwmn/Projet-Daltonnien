@@ -46,7 +46,7 @@ function updateColors(hex, index) {
     if (!hex) {
         // Si aucune couleur n'est fournie, on utilise une couleur par défaut
         hex = '#FF0000';  // Rouge par défaut
-        console.log('if '+ hex);
+        console.log('if1 '+ hex);
     }
     
     // Si l'utilisateur n'a pas fourni un code hex valide, on ajoute automatiquement le #
@@ -60,9 +60,9 @@ function updateColors(hex, index) {
     if (!hexPattern.test(hex)) {
         hex = '#FF0000';  // Rouge par défaut si la couleur n'est pas valide
         console.log('if3 '+ hex);
-
     }
-
+        console.log(hex.length);
+        
     if (hex.length === 4) {
         hex = hex[0] + hex[1] + hex[1] + hex[2] + hex[2] + hex[3] + hex[3]; // Ex: #f00 devient #ff0000
     }
@@ -85,6 +85,23 @@ function updateColors(hex, index) {
     document.getElementById(`deuteranope-${index}`).style.backgroundColor = deuteranopeResult;
 }
 
+// Écouteurs d'événements pour les nuanciers et les champs de texte
+for (let i = 1; i <= 4; i++) {
+    document.getElementById(`palette-${i}`).addEventListener('input', function() {
+        updateColors(this.value, i);
+        document.getElementById(`palette-${i}`).style.backgroundColor = this.value;
+        document.getElementById(`palette-${i}`).value = this.value;
+        document.getElementById(`couleurInput-${i}`).value = this.value;
+        
+    });
+    document.getElementById(`couleurInput-${i}`).addEventListener('input', function() {
+
+        updateColors(this.value, i);
+        document.getElementById(`palette-${i}`).style.backgroundColor = this.value;
+        document.getElementById(`palette-${i}`).value = this.value;
+        document.getElementById(`couleurInput-${i}`).value = this.value;
+    });
+}
 // Mise à jour à partir de la barre de défilement
 function updateColorsFromRange() {
     for (let i = 1; i <= 4; i++) {
@@ -92,24 +109,6 @@ function updateColorsFromRange() {
         updateColors(hex, i);
     }
 } 
-
-// Écouteurs d'événements pour les nuanciers et les champs de texte
-for (let i = 1; i <= 4; i++) {
-    document.getElementById(`palette-${i}`).addEventListener('input', function() {
-        updateColors(this.value, i);
-        // document.getElementById(`palette-${i}`).style.backgroundColor = this.value;
-        // document.getElementById(`palette-${i}`).value = this.value;
-        // document.getElementById(`couleurInput-${i}`).value = this.value;
-        
-    });
-    document.getElementById(`couleurInput-${i}`).addEventListener('input', function() {
-
-        updateColors(this.value, i);
-        // document.getElementById(`palette-${i}`).style.backgroundColor = this.value;
-        // document.getElementById(`palette-${i}`).value = this.value;
-        // document.getElementById(`couleurInput-${i}`).value = this.value;
-    });
-}
 
 // Initialisation
 updateColorsFromRange();

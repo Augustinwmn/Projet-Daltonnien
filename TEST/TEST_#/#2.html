@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="colorInput">
+
+    <script>
+        // Fonction pour vérifier et normaliser un code hexadécimal
+function normalizeHex(hex) {
+    hex = hex.trim();  // Enlève les espaces avant et après
+
+    // Si le code hexadécimal ne commence pas par un '#', on l'ajoute
+    if (hex.charAt(0) !== '#') {
+        hex = '#' + hex;
+    }
+
+    // Normalisation des codes hexadécimaux courts (par exemple, #f00 => #ff0000)
+    if (hex.length === 4) {
+        hex = hex[0] + hex[1] + hex[1] + hex[2] + hex[2] + hex[3] + hex[3];  // Exemple : #f00 => #ff0000
+    }
+
+    // Vérification si le code est valide (ex : #RRGGBB ou #RGB)
+    if (!/^#[0-9A-Fa-f]{6}$/.test(hex)) {
+        console.log('Code hex invalide');
+        hex = '#ffff00';  // Valeur par défaut si le code est invalide
+    }
+
+    return hex;
+}
+
+// Écouteur d'événement pour le champ de texte
+document.getElementById('colorInput').addEventListener('input', function() {
+    let hex = this.value;
+
+    // Normalisation et validation du code hexadécimal
+    hex = normalizeHex(hex);
+
+    // Mise à jour du champ avec la couleur validée et normalisée
+    this.value = hex;
+
+    // Mise à jour de l'élément ou d'une autre partie de l'interface (par exemple, une div de couleur)
+    document.body.style.backgroundColor = hex;  // Pour afficher la couleur en fond, par exemple
+});
+
+    </script>
+</body>
+</html>
