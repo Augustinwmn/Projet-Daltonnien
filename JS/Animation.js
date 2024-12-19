@@ -116,7 +116,7 @@ document.getElementById('btnProtanope').addEventListener('click', () => {
         applyFilterToCanvas(imgViews, originalImg2, 'btnProtanope');
         
         document.getElementById('btnTritanope').classList.remove("btnActif");
-        document.getElementById('btnProtanope').classList.remove("btnActif");
+        // document.getElementById('btnProtanope').classList.remove("btnActif");
         document.getElementById('btnDeutéranope').classList.remove("btnActif");
 
         document.getElementById('btnProtanope').classList.add("btnActif");
@@ -132,7 +132,7 @@ document.getElementById('btnDeutéranope').addEventListener('click', () => {
 
         document.getElementById('btnTritanope').classList.remove("btnActif");
         document.getElementById('btnProtanope').classList.remove("btnActif");
-        document.getElementById('btnDeutéranope').classList.remove("btnActif");
+        // document.getElementById('btnDeutéranope').classList.remove("btnActif");
 
         document.getElementById('btnDeutéranope').classList.add("btnActif");
     }
@@ -144,7 +144,7 @@ document.getElementById('btnTritanope').addEventListener('click', () => {
         
         applyFilterToCanvas(imgViews, originalImg2, 'btnTritanope');
 
-        document.getElementById('btnTritanope').classList.remove("btnActif");
+        // document.getElementById('btnTritanope').classList.remove("btnActif");
         document.getElementById('btnProtanope').classList.remove("btnActif");
         document.getElementById('btnDeutéranope').classList.remove("btnActif");
 
