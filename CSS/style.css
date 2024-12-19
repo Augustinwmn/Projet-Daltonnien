@@ -22,7 +22,6 @@
 }
 ::-webkit-scrollbar-thumb {
     background-color: #242424;
-    border-radius: 10px;
 }
 ::-webkit-scrollbar-track {
     background-color: #dddddd;
@@ -308,7 +307,7 @@ input[type="text"]{
 .colonne .range-container #test {
     position: absolute;
     top: 0px;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     font-size: 18px;
     font-weight: bold;
     color: #333;
@@ -320,21 +319,6 @@ input[type="text"]{
     display: flex;
     justify-content: center;
     gap: 10%;
-}
-.colonne2 button{
-    border: none;
-}
-.colonne2 button:active{
-    background-color: #ff0000;
-}
-.colonne2 img{
-    width: 50px;
-}
-.colonne2 #fleche_gauche{
-    transform: rotate(90deg);
-}
-.colonne2 #fleche_droite{
-    transform: rotate(-90deg);
 }
 #correctionCouleur{
     display: flex;
@@ -350,7 +334,6 @@ input[type="text"]{
     margin-top: 5%;
     margin-bottom: 5%;
     height: auto;
-    
 }
 .Deuteranope .h4, .Tritanope .h4, .Protanope .h4{
     display: flex;

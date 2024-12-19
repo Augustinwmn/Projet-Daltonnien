@@ -40,7 +40,29 @@ function hexToColorBlind(hex, conversionMatrix, intensity) {
 
 // Mise à jour des couleurs
 function updateColors(hex, index) {
-    if (!hex) return;
+
+    if (!hex) {
+        // Si aucune couleur n'est fournie, on utilise une couleur par défaut
+        hex = '#FF0000';  // Rouge par défaut
+        console.log('if '+ hex);
+    }
+
+    // Si l'utilisateur n'a pas fourni un code hex valide, on ajoute automatiquement le #
+    if (hex.charAt(0) !== '#') {
+        hex = '#' + hex;
+        console.log("if2 "+ hex);
+    }
+
+    // Vérification si la couleur est valide, sinon on met une couleur par défaut
+    if (!/^#[0-9A-Fa-f]{6}$/.test(hex)) {
+        hex = '#FF0000';  // Rouge par défaut si la couleur n'est pas valide
+        console.log('if3 '+ hex);
+    }
+    
+    
+    // if (!hex) return;
+    // console.log("juste "+ hex);
+    
 
     const intensity = document.getElementById("myRange").value;
 
@@ -66,14 +88,14 @@ function updateColorsFromRange() {
 // Écouteurs d'événements pour les nuanciers et les champs de texte
 for (let i = 1; i <= 4; i++) {
     document.getElementById(`palette-${i}`).addEventListener('input', function() {
-        updateColors(this.value, i);
 
+        updateColors(this.value, i);
         document.getElementById(`palette-${i}`).style.backgroundColor = this.value;
         
     });
     document.getElementById(`couleurInput-${i}`).addEventListener('input', function() {
-        updateColors(this.value, i);
 
+        updateColors(this.value, i);
         document.getElementById(`palette-${i}`).style.backgroundColor = this.value;
 
     });

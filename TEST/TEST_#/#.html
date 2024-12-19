@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vérification du Code Hexadécimal</title>
+</head>
+<body>
+    <h1>Entrez un code hexadécimal de couleur</h1>
+    
+    <label for="colorInput">Code Hexadécimal (ex : FF5733 ou #FF5733): </label>
+    <input type="text" id="colorInput" placeholder="RRGGBB" />
+    
+    <button onclick="checkHexCode()">Vérifier</button>
+    
+    <p id="resultMessage"></p>
+
+    <script>
+        function checkHexCode() {
+            // Récupère la valeur de l'input et enlève les espaces avant et après
+            var hexCode = document.getElementById("colorInput").value.trim();
+            
+            // Si le code ne commence pas par '#', on l'ajoute
+            if (hexCode.charAt(0) !== '#') {
+                hexCode = '#' + hexCode;
+            }
+
+            // Expression régulière pour valider un code hexadécimal de 7 caractères (# suivi de 6 chiffres/lettres hexadécimaux)
+            var hexPattern = /^#[0-9A-Fa-f]{6}$/;
+
+            // Réinitialisation du message de résultat
+            var resultMessage = document.getElementById("resultMessage");
+
+            // Vérification de la correspondance avec le format hexadécimal
+            if (hexPattern.test(hexCode)) {
+                // Si le format est valide
+                resultMessage.style.color = "green";
+                resultMessage.textContent = "Code hexadécimal valide !";
+                document.body.style.backgroundColor = hexCode; // Change la couleur de fond selon le code hexadécimal
+            } else {
+                // Si le format est invalide
+                resultMessage.style.color = "red";
+                resultMessage.textContent = "Erreur : Le code hexadécimal est invalide. Veuillez entrer un code valide de type RRGGBB ou #RRGGBB.";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -237,10 +237,10 @@ function RangeValue() {
 
     // Positionner la valeur au-dessus du curseur
     if(valuePosition == widthInPixels){
-        rangeValue.style.left = `calc(${valuePosition}px - 1%)`;
+        rangeValue.style.left = `calc(${valuePosition}px)`;
     }
     else if (valuePosition == 0) {
-        rangeValue.style.left = `calc(${valuePosition}px + 1%)`;
+        rangeValue.style.left = `calc(${valuePosition}px)`;
     }    
     else {
         // rangeValue.style.left = valuePosition;
@@ -299,10 +299,10 @@ function RangeValueImg() {
 
     // Positionner la valeur au-dessus du curseur
     if(Math.abs(valuePositionImg - widthInPixels) < 1){
-        rangeValueImg.style.left = `calc(${valuePositionImg}px - 1%)`;
+        rangeValueImg.style.left = `calc(${valuePositionImg}px)`;
     }
     else if (valuePositionImg == 0) {
-        rangeValueImg.style.left = `calc(${valuePositionImg}px + 1%)`;
+        rangeValueImg.style.left = `calc(${valuePositionImg}px)`;
     }
     else {
         rangeValueImg.style.left = `calc(${valuePositionImg}px)`;
