@@ -203,7 +203,7 @@ function RangeValue() {
     // ////////////////////// Pour obtenir la taille en pixel à partir de la taille en pourcentage ///////////////////////////
 
     // Supposons que vous avez un pourcentage et une largeur d'élément parent
-    let pourcentage = 100;  // 50% par exemple
+    let pourcentage = (value - range.min) / (range.max - range.min) * 100;  // 50% par exemple
     let parentElement = document.querySelector('.range-container');  // Parent de l'élément
 
     // Obtenir la largeur de l'élément parent
@@ -236,6 +236,9 @@ function RangeValue() {
 // Mettre à jour la valeur lorsque le curseur se déplace
 range.addEventListener('input', RangeValue);
 
+window.addEventListener('resize', function() {
+    RangeValueImg();
+});
 
 /////////////////////////// Fin Range  ///////////////////////////
 
@@ -265,7 +268,7 @@ function RangeValueImg() {
     // ///// Pour obtenir la taille en pixel à partir de la taille en pourcentage ///
 
     // Supposons que vous avez un pourcentage et une largeur d'élément parent
-    let pourcentage = 100;  // 50% par exemple
+    let pourcentage = (valueImg - range.min) / (range.max - range.min) * 100;  // 50% par exemple
     let parentElement = document.querySelector('.range-containerImg');  // Parent de l'élément
     // Obtenir la largeur de l'élément parent
     let parentWidth = parentElement.offsetWidth;
@@ -294,6 +297,9 @@ RangeValueImg();
 // Mettre à jour la valeur lorsque le curseur se déplace
 rangeImg.addEventListener('input', RangeValueImg);
 
+window.addEventListener('resize', function() {
+    RangeValueImg();
+});
 
 // //////////////////////////////////////////////////////////////////////////////////
         /////////////////////////// Fin Range Img ///////////////////////////
