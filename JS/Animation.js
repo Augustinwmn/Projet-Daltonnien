@@ -21,7 +21,6 @@ window.onload = function () {
 // Fonction pour charger une image aléatoire
 function loadRandomImage() {
     const imgLink = "https://picsum.photos/800/300"; // URL pour une image aléatoire de taille 800x300
-// https://cdn.pixabay.com/photo/2024/03/03/20/44/cat-8611246_1280.jpg
     // Créer l'image et l'afficher dans le premier canvas
     const img = new Image();
     
@@ -78,10 +77,6 @@ function applyFilterToCanvas(container, img, filter) {
 
 // Fonction pour appliquer un filtre de daltonisme
 function applyFilter(canvas, filter) {
-    // const canvas = container.querySelector("canvas");
-    // if (!canvas) {
-    //     console.error('Le canevas n\'existe pas dans le DOM');
-    // }
     const ctx = canvas.getContext("2d");
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     const data = imageData.data;
@@ -161,13 +156,11 @@ dropArea.addEventListener("drop", function (e) {
     if (files.length > 0) {
         inputFile.files = files;
         uploadImage();  // Charger l'image dans la première zone
-        //uploadImages(); // Charger l'image dans la deuxième zone
     }
 });
 
 // Charger l'image à partir du fichier sélectionné
 inputFile.addEventListener("change", uploadImage);
-// inputFile.addEventListener("change", uploadImages);
 
 function uploadImage() {
     const file = inputFile.files[0];
@@ -218,8 +211,6 @@ function RangeValue() {
 
     // Calculer la largeur en pixels
     let widthInPixels = (pourcentage / 100) * parentWidth;
-
-    // console.log(widthInPixels);  
     // Affiche la largeur en pixels
 
     // //////////////////////////////// Et le Réutiliser dans la condition "if" //////////////////////////////////////////////
@@ -228,16 +219,13 @@ function RangeValue() {
     // Positionner la valeur au-dessus du curseur
     if(valuePosition == widthInPixels){
         rangeValue.style.left = `calc(${valuePosition}px - 1%)`;
-        // console.log(valuePosition);
     }
     else if (valuePosition == 0) {
         rangeValue.style.left = `calc(${valuePosition}px + 1%)`;
-        // console.log(valuePosition);
-    }
+    }    
     else {
         // rangeValue.style.left = valuePosition;
         rangeValue.style.left = `calc(${valuePosition}px)`;
-        // console.log(valuePosition);
     }
     // +1rem pour éviter qu'il ne touche la barre
 }
@@ -252,10 +240,9 @@ range.addEventListener('input', RangeValue);
 /////////////////////////// Fin Range  ///////////////////////////
 
 // //////////////////////////////////////////////////////////////////////////////////
-// //////////////////////////////////////////////////////////////////////////////////
         /////////////////////////// Range Value Img ///////////////////////////
 // //////////////////////////////////////////////////////////////////////////////////
-// //////////////////////////////////////////////////////////////////////////////////
+
 // Récupérer les éléments
 const rangeImg = document.getElementById('rangeImg');
 const rangeValueImg = document.getElementById('chiffre');
@@ -264,24 +251,18 @@ const rangeContainerImg = document.querySelector('.range-containerImg');
 // Mettre à jour la valeur affichée et la position
 function RangeValueImg() {
     let valueImg = rangeImg.value;
-    // console.log('Initial value:', valueImg);
     
     const rangeWidthImg = rangeImg.offsetWidth;
-    // console.log('Range width:', rangeWidthImg);
     
     const valuePositionImg = (valueImg - rangeImg.min) / (rangeImg.max - rangeImg.min) * rangeWidthImg;
-    // console.log('Value position:', valuePositionImg);
     
     valueImg = Math.round(valueImg * 10) / 10;  // Multiplie par 10, arrondit, puis divise par 10
-    // console.log('Rounded value:', valueImg);
    
     // Mettre à jour la valeur affichée 
     rangeValueImg.textContent = valueImg;
 
 
-    // //////////////////////////////////////////////////////////////////////////////
     // ///// Pour obtenir la taille en pixel à partir de la taille en pourcentage ///
-    // //////////////////////////////////////////////////////////////////////////////
 
     // Supposons que vous avez un pourcentage et une largeur d'élément parent
     let pourcentage = 100;  // 50% par exemple
@@ -290,25 +271,19 @@ function RangeValueImg() {
     let parentWidth = parentElement.offsetWidth;
     // Calculer la largeur en pixels
     let widthInPixels = (pourcentage / 100) * parentWidth;
-    // console.log('Width in pixels:', widthInPixels);
     // Affiche la largeur en pixels
 
-    // //////////////////////////////////////////////////////////////////////////////
     // ///////////////// Et le Ré utiliser dans la condition "if" //////////////////
-    // //////////////////////////////////////////////////////////////////////////////
 
     // Positionner la valeur au-dessus du curseur
     if(Math.abs(valuePositionImg - widthInPixels) < 1){
         rangeValueImg.style.left = `calc(${valuePositionImg}px - 1%)`;
-        // console.log('Condition 1:', valuePositionImg);
     }
     else if (valuePositionImg == 0) {
         rangeValueImg.style.left = `calc(${valuePositionImg}px + 1%)`;
-        // console.log('Condition 2:', valuePositionImg);
     }
     else {
         rangeValueImg.style.left = `calc(${valuePositionImg}px)`;
-        // console.log('Condition 3:', valuePositionImg);
     }
     // +1rem pour éviter qu'il ne touche la barre
 }
@@ -321,7 +296,5 @@ rangeImg.addEventListener('input', RangeValueImg);
 
 
 // //////////////////////////////////////////////////////////////////////////////////
-// //////////////////////////////////////////////////////////////////////////////////
         /////////////////////////// Fin Range Img ///////////////////////////
-// //////////////////////////////////////////////////////////////////////////////////
 // //////////////////////////////////////////////////////////////////////////////////
