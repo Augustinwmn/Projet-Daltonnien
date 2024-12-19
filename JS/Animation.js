@@ -114,6 +114,13 @@ document.getElementById('btnProtanope').addEventListener('click', () => {
     if (originalImg1 && originalImg2) {
         
         applyFilterToCanvas(imgViews, originalImg2, 'btnProtanope');
+        
+        document.getElementById('btnTritanope').classList.remove("btnActif");
+        document.getElementById('btnProtanope').classList.remove("btnActif");
+        document.getElementById('btnDeutéranope').classList.remove("btnActif");
+
+        document.getElementById('btnProtanope').classList.add("btnActif");
+
     }
 });
 
@@ -122,6 +129,12 @@ document.getElementById('btnDeutéranope').addEventListener('click', () => {
     if (originalImg1 && originalImg2) {
         
         applyFilterToCanvas(imgViews, originalImg2, 'btnDeutéranope');
+
+        document.getElementById('btnTritanope').classList.remove("btnActif");
+        document.getElementById('btnProtanope').classList.remove("btnActif");
+        document.getElementById('btnDeutéranope').classList.remove("btnActif");
+
+        document.getElementById('btnDeutéranope').classList.add("btnActif");
     }
 });
 
@@ -130,6 +143,12 @@ document.getElementById('btnTritanope').addEventListener('click', () => {
     if (originalImg1 && originalImg2) {
         
         applyFilterToCanvas(imgViews, originalImg2, 'btnTritanope');
+
+        document.getElementById('btnTritanope').classList.remove("btnActif");
+        document.getElementById('btnProtanope').classList.remove("btnActif");
+        document.getElementById('btnDeutéranope').classList.remove("btnActif");
+
+        document.getElementById('btnTritanope').classList.add("btnActif");
     }
 });
 
@@ -237,7 +256,7 @@ function RangeValue() {
 range.addEventListener('input', RangeValue);
 
 window.addEventListener('resize', function() {
-    RangeValueImg();
+    RangeValue();
 });
 
 /////////////////////////// Fin Range  ///////////////////////////
